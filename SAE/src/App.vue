@@ -1,6 +1,7 @@
 <script setup>
 import MainPage from './components/MainPage.vue'
 import HeaderContent from './components/HeaderContent.vue'
+import FooterContent from './components/FooterContent.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import HeaderContent from './components/HeaderContent.vue'
       <HelloWorld msg="You did it!" />
     </div> -->
     <MainPage />
+    <FooterContent />
   </header>
 
   <main>

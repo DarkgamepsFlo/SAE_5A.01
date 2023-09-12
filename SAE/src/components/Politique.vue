@@ -1,8 +1,6 @@
 <template>
     <header>
-        <h1>Mon application</h1>
-        <router-link to="/accueil">Accueil</router-link>
-        <router-link to="/connexion">Connectez-vous</router-link>
+        <h1>Politique (Mélenchon VS Zemmour) et Cookie (au chocolat)</h1>
     </header>
   </template>
   

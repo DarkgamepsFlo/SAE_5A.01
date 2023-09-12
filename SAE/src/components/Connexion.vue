@@ -1,8 +1,7 @@
 <template>
     <header>
-        <h1>Mon application</h1>
-        <router-link to="/accueil">Accueil</router-link>
-        <router-link to="/connexion">Connectez-vous</router-link>
+        <h1>Connexion</h1>
+        <router-link to="/mdp"><h2>Mot de passe publié ? Dommage...</h2></router-link>
     </header>
   </template>
   

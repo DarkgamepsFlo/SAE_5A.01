@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1>ABOUT</h1>
+        <h1>Mentions Légales</h1>
     </header>
   </template>
   

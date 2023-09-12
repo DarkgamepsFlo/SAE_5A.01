@@ -1,8 +1,8 @@
 <template>
     <header>
-        <h1>Mon application</h1>
-        <router-link to="/accueil">Accueil</router-link>
-        <router-link to="/connexion">Connectez-vous</router-link>
+        C'est le footer
+        <router-link to="/politique">Cookie et politique de confidentialité</router-link>
+        <router-link to="/about">Mentions légales</router-link>
     </header>
   </template>
   

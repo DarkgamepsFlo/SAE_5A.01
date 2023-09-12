@@ -1,8 +1,7 @@
 <template>
     <header>
-        <h1>Mon application</h1>
-        <router-link to="/accueil">Accueil</router-link>
-        <router-link to="/connexion">Connectez-vous</router-link>
+        <h2>C'est la first page</h2>
+        <router-link to="/inscription"><h1>Inscrivez-vous !</h1></router-link>
     </header>
   </template>
   
