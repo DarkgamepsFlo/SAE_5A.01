@@ -4,19 +4,21 @@ import HeaderContent from './components/HeaderContent.vue'
 import FooterContent from './components/FooterContent.vue'
 import MenuDeroulantGauche from './components/MenuDeroulantGauche.vue'
 import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
+import TestBDD from './components/TestBDD.vue'
 </script>
 
 <template>
   <HeaderContent @toggle-menu-gauche="toggleMenuGauche" @toggle-menu-droit="toggleMenuDroit" />
 
   <div class="menu-container">
-    <MenuDeroulantGauche v-if="isMenuGaucheVisible" />
-    <MenuDeroulantDroit v-if="isMenuDroitVisible" />
+    <!-- <MenuDeroulantGauche v-if="isMenuGaucheVisible" /> -->
+    <!-- <MenuDeroulantDroit v-if="isMenuDroitVisible" /> -->
   </div>
     
-  <MainPage />
+  <TestBDD />
+  <!-- <MainPage /> -->
 
-  <FooterContent />
+  <!-- <FooterContent /> -->
 </template>
 
 <script>

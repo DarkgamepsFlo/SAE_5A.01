@@ -1,0 +1,6 @@
+{
+    "NodeJS" : {
+        "databaseUrl" : "mongodb://localhost:27017",
+        "databaseName" : "SAE_Collego"
+    }
+}
