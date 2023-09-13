@@ -1,7 +1,5 @@
 <template>
-    <header>
-        <h1>Mot de passe oublié : Coiffeton Shiny</h1>
-    </header>
+      <h1>Mot de passe oublié : Coiffeton Shiny</h1>
   </template>
   
   <script>

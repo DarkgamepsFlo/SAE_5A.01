@@ -8,6 +8,13 @@ import Inscription from '../components/Inscription.vue'
 import Connexion from '../components/Connexion.vue'
 import Password from '../components/Password.vue'
 import Politique from '../components/Politique.vue'
+import Contact from '../components/Contact.vue'
+import SearchUser from '../components/SearchUser.vue'
+import SearchSet from '../components/SearchSet.vue'
+import Collection from '../components/Collection.vue'
+import Profil from '../components/Profil.vue'
+import WichList from '../components/WichList.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +46,30 @@ const router = createRouter({
     {
       path: '/politique',
       component: Politique
+    },
+    {
+      path: '/rechercheUser',
+      component: SearchUser
+    },
+    {
+      path: '/rechercheLego',
+      component: SearchSet
+    },
+    {
+      path: '/contact',
+      component: Contact
+    },
+    {
+      path: '/collection',
+      component: Collection
+    },
+    {
+      path: '/wichlist',
+      component: WichList
+    },
+    {
+      path: '/profil',
+      component: Profil
     },
     {
       path: '/:catchAll(.*)', // Cette route attrape toutes les routes inexistantes

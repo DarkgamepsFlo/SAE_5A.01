@@ -1,7 +1,5 @@
 <template>
-    <header>
-        <h1>Inscription</h1>
-    </header>
+    <h1>Inscription</h1>
   </template>
   
   <script>

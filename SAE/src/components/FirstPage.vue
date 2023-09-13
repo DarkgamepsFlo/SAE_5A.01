@@ -1,8 +1,6 @@
 <template>
-    <header>
-        <h2>C'est la first page</h2>
-        <router-link to="/inscription"><h1>Inscrivez-vous !</h1></router-link>
-    </header>
+      <h2>C'est la first page</h2>
+      <router-link to="/inscription"><h1>Inscrivez-vous !</h1></router-link>
   </template>
   
   <script>
