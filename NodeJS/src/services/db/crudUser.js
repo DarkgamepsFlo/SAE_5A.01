@@ -19,10 +19,7 @@ async function findUsers(collectionName) {
       const cursor = collection.find(query, options);
   
       // On va ajouter chaque résultat dans une liste qu'on va afficher
-      const result = [];
-      await cursor.forEach((item) => {
-        result.push(item);
-      });
+      const result = await cursor.toArray();
 
       console.log("oui")
   
@@ -32,7 +29,32 @@ async function findUsers(collectionName) {
       throw e;
       }
   }
+
+
+
+/**
+ * Cette fonction va permettre de récupérer la liste de m'ensemble des utilisateurs
+ * @param {*} collectionName Nom de la collection 
+ * @returns Du code HTML qui va être reconnu par pug
+ */
+async function inscriptionUser(collectionName, donnee) {
+    try {
+  
+      // On va récupérer l'ensemble des éléments dans la table users
+      const collection = getCollection(collectionName);
+
+      const result = await collection.insertOne(donnee);
+
+      console.log("L'utilisateur est bien inséré : ", result)
+  
+      return result;
+    } catch(e) {
+      console.log(`Il y a une erreur dans la fonction inscriptionUser : ${e}`)
+      throw e;
+      }
+  }
   
   module.exports = {
-    findUsers
+    findUsers,
+    inscriptionUser
 };

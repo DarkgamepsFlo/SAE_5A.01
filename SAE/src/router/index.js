@@ -15,6 +15,8 @@ import Collection from '../components/Collection.vue'
 import Profil from '../components/Profil.vue'
 import WichList from '../components/WichList.vue'
 
+import TestCookie from '../components/TestCookie.vue'
+import TestBDD from '../components/TestBDD.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +76,16 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)', // Cette route attrape toutes les routes inexistantes
       component: Error
+    },
+
+    // page de test
+    {
+      path: '/cookie',
+      component: TestCookie
+    },
+    {
+      path: '/bddTest',
+      component: TestBDD
     },
   ]
 })
