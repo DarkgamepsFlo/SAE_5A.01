@@ -9,8 +9,8 @@ import Connexion from '../components/Connexion.vue'
 import Password from '../components/Password.vue'
 import Politique from '../components/Politique.vue'
 import Contact from '../components/Contact.vue'
-import SearchUser from '../components/SearchUser.vue'
-import SearchSet from '../components/SearchSet.vue'
+import RechercherUtilisateur from '../components/RechercheUtilisateur.vue'
+import RechercheBoite from '../components/RechercheBoite.vue'
 import Collection from '../components/Collection.vue'
 import Profil from '../components/Profil.vue'
 import WichList from '../components/WichList.vue'
@@ -51,11 +51,11 @@ const router = createRouter({
     },
     {
       path: '/rechercheUser',
-      component: SearchUser
+      component: RechercherUtilisateur
     },
     {
       path: '/rechercheLego',
-      component: SearchSet
+      component: RechercheBoite
     },
     {
       path: '/contact',

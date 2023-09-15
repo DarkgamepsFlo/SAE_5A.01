@@ -1,10 +1,6 @@
-<script setup>
-import Nouveaute from './Nouveaute.vue';
-</script>
-
 <template>
-<h1>Accueil</h1>
-<Nouveaute />
+<h1>Je suis une boite</h1>
+
 
 
 </template>

@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS public.photo_boite
 CREATE TABLE IF NOT EXISTS public.wishlist
 (
     id_wishlist integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    active_wish boolean,
     CONSTRAINT wishlist_pkey PRIMARY KEY (id_wishlist)
+
 );
 
 
@@ -68,6 +70,7 @@ CREATE TABLE IF NOT EXISTS public.lien_wishlist
 CREATE TABLE IF NOT EXISTS public.collection
 (
     id_collec integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    active_collec boolean,
     CONSTRAINT collection_pkey PRIMARY KEY (id_collec)
 );
 

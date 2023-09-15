@@ -39,13 +39,16 @@ async function inscriptionUser(collectionName, donnee) {
     try {
   
       // On va récupérer l'ensemble des éléments dans la table users
-      const collection = getCollection(collectionName);
+      const queryInsertUser = `INSERT INTO $1:name (pseudo_uti, adresse_mail_uti, mot_de_passe_uti) values ($2, $3, $4)`;
+      const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo, donnee.motDePasse, donnee.email]);
 
-      const result = await collection.insertOne(donnee);
+      const queryInsertWishlist = `INSERT INTO wishlist (active_wish) values (false)`;
+      await db.any(queryInsertWishlist);
 
-      console.log("L'utilisateur est bien inséré : ", result)
+      const queryInsertCollection = `INSERT INTO collection (active_collec) values (false)`;
+      await db.any(queryInsertCollection);
   
-      return result;
+      return resultUser
     } catch(e) {
       console.log(`Il y a une erreur dans la fonction inscriptionUser : ${e}`)
       throw e;
@@ -56,15 +59,10 @@ async function inscriptionUser(collectionName, donnee) {
   async function connexionUser(collectionName, donnee) {
     try {
       // On va récupérer l'ensemble des éléments dans la table users
-      const collection = getCollection(collectionName);
-  
-      const options = { upsert: false };
-  
-      const search = {
-        pseudo: donnee.pseudo
-      };
-  
-      const resultBdd = await collection.findOne(search, options);
+      const queryInsertUser = `SELECT * from $1:name where pseudo_uti like $2`;
+      const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo]);
+
+      console.log(resultUser);
   
       // Utiliser une promesse pour comparer le mot de passe
       return new Promise((resolve, reject) => {

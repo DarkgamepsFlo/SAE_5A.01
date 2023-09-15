@@ -1,11 +1,10 @@
 <script setup>
-import Nouveaute from './Nouveaute.vue';
+import ProfilBoite from '../components/ProfilBoite.vue'
 </script>
 
 <template>
-<h1>Accueil</h1>
-<Nouveaute />
-
+<h1>Voici la recherche de boite avec la liste de boite</h1>
+<ProfilBoite />
 
 </template>
 

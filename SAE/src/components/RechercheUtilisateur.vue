@@ -1,11 +1,10 @@
 <script setup>
-import Nouveaute from './Nouveaute.vue';
+import ProfilUtilisateur from '../components/ProfilUtilisateur.vue'
 </script>
 
 <template>
-<h1>Accueil</h1>
-<Nouveaute />
-
+<h1>Voici la recherche d'utilisateur avec la liste d'utilisateur</h1>
+<ProfilUtilisateur />
 
 </template>
 
