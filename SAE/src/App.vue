@@ -9,6 +9,18 @@ import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
 <template>
   <HeaderContent @toggle-menu-gauche="toggleMenuGauche" @toggle-menu-droit="toggleMenuDroit" />
 
+  <!-- Cette partie permet uniquement de lister l'ensemble des cookies -->
+  <button @click="listAllCookies">Lister tous les cookies</button>
+    <div v-if="cookieList.length">
+      <h2>Liste de tous les cookies :</h2>
+      <ul>
+        <li v-for="cookie in cookieList" :key="cookie.name">
+          <strong>{{ cookie.name }}:</strong> {{ cookie.value }}
+          <button @click="deleteCookie(cookie.name)">Supprimer</button>
+        </li>
+      </ul>
+    </div>
+
   <div class="menu-container">
     <MenuDeroulantGauche v-if="isMenuGaucheVisible" />
     <MenuDeroulantDroit v-if="isMenuDroitVisible" />
@@ -20,12 +32,17 @@ import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
 </template>
 
 <script>
+import Cookies from 'js-cookie';
+
+console.log()
+
   export default {
     data() {
       return {
         // message: "",
         isMenuGaucheVisible: false,
-        isMenuDroitVisible: false
+        isMenuDroitVisible: false,
+        cookieList: [],
       };
     },
     methods: {
@@ -40,7 +57,28 @@ import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
       toggleMenuDroit() {
         // Inversez la valeur de isMenuVisible pour afficher ou masquer MenuDeroulant
         this.isMenuDroitVisible = !this.isMenuDroitVisible;
-      }
+      },
+
+      // Cette fonction permet juste de regarder l'ensemble des cookies, elle permet de tester, elle ne va pas rester définitive
+      listAllCookies() {
+        // Réinitialiser la liste des cookies
+        this.cookieList = [];
+  
+        // Récupérer la liste de tous les cookies présents
+        const allCookies = Cookies.get();
+        for (const [name, value] of Object.entries(allCookies)) {
+          this.cookieList.push({ name, value });
+        }
+      },
+
+      deleteCookie(cookieName) {
+        // Supprimer le cookie spécifique par son nom
+        Cookies.remove(cookieName);
+        
+        // Mettre à jour la liste des cookies après la suppression
+        this.listAllCookies();
+      },
+      
     }
   };
 

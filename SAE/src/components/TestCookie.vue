@@ -10,7 +10,7 @@
         <h2>Liste de tous les cookies :</h2>
         <ul>
           <li v-for="cookie in cookieList" :key="cookie.name">
-            <strong>{{ cookie.name }}:</strong> {{ cookie.value }} (Expire dans {{ getExpirationTime(cookie.expires) }})
+            <strong>{{ cookie.name }}:</strong> {{ cookie.value }} (Expire dans {{ cookie.expires }} jours)
             <button @click="deleteCookie(cookie.name)">Supprimer</button>
           </li>
         </ul>
@@ -50,8 +50,7 @@
         // Récupérer la liste de tous les cookies présents
         const allCookies = Cookies.get();
         for (const [name, value] of Object.entries(allCookies)) {
-          const expires = Cookies.get(name); // Récupérer la date d'expiration du cookie
-          this.cookieList.push({ name, value, expires });
+          this.cookieList.push({ name, value });
         }
       },
       deleteCookie(cookieName) {
@@ -63,7 +62,7 @@
       },
       getExpirationTime(days) {
         const expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + days); // Ajouter le nombre de jours à la date actuelle
+        expirationDate.setDate(expirationDate.getDate() + parseInt(days)); // Ajouter le nombre de jours à la date actuelle
         return expirationDate.toLocaleString();
       },
     },

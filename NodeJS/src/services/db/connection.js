@@ -1,33 +1,28 @@
-const { MongoClient } = require('mongodb');
+const pgp = require('pg-promise')();
 const conf = require("../../conf.json")
-// Connection URI
-const url = conf.NodeJS.databaseUrl;
-const dbName = conf.NodeJS.databaseName;
-// Create a new MongoClient
-const client = new MongoClient(url);
 
-async function connectTodB() {
-    try {
-        console.log('Trying to access the db...');
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect();
+const connection = {
+    user: conf.NodeJS.user,
+    host: conf.NodeJS.localhost, // ou l'adresse IP de votre serveur PostgreSQL
+    database: conf.NodeJS.database,
+    password: conf.NodeJS.password,
+    port: 5432, // Port par défaut de PostgreSQL
+  };
 
-        // Establish and verify connection
-        await client.db('admin').command({ ping: 1 });
-        console.log('Connected successfully to server');
-    } catch (e) {
-        // Ensures that the client will close when you finish/error
-        console.log(JSON.stringify(err));
-        await client.close();
-        throw e;
-    }
-}
+console.log('Trying to access the db...');
+// Connect the client to the server (optional starting in v4.7)
+const db = pgp(connection);
 
-function getCollection(collectionName) {
-    return client.db(dbName).collection(collectionName);
-}
+// Utilisez la méthode connect pour vérifier la connexion
+db.connect()
+  .then(obj => {
+    console.log('Connected successfully to server : ', obj);
+    obj.done(); // Libère le client pool
+      })
+    .catch(error => {
+      console.error('Error connecting to the database:', error);
+      // Gérez l'erreur de connexion ici
+});
 
-module.exports = {
-    connectTodB,
-    getCollection,
-};
+module.exports = db;
+
