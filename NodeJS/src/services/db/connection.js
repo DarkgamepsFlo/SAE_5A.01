@@ -16,7 +16,7 @@ const db = pgp(connection);
 // Utilisez la méthode connect pour vérifier la connexion
 db.connect()
   .then(obj => {
-    console.log('Connected successfully to server : ', obj);
+    console.log('Connected successfully to server !');
     obj.done(); // Libère le client pool
       })
     .catch(error => {

@@ -27,6 +27,7 @@
 <script>
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -60,7 +61,9 @@ export default {
             motDePasse: '',
           };
 
-          if (response.data === true){
+          console.log(response.data);
+
+          if (response.data.success === true){
             Cookies.set("connexion", "Y", { expires: 7 });
 
             // Redirigez l'utilisateur vers la page d'accueil
@@ -68,7 +71,11 @@ export default {
           }
 
           else{
-            console.log("Le mot de passe est faux")
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: response.data.message
+            });
           }
         })
         .catch(error => {

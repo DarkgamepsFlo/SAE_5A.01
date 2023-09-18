@@ -44,7 +44,15 @@
         axios
           .post('http://localhost:3000/users/motdepasse', donneesMotDePasse)
           .then(response => {
-            console.log("Mail envoyé")
+
+            console.log(response.data);
+
+            if (response.data.success) {
+
+              console.log("Mail envoyé")
+              
+            }
+            
   
             // Réinitialisez le formulaire
             this.utilisateur = {
