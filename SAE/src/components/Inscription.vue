@@ -1,29 +1,30 @@
 <template>
-  <div>
-    <h1>Inscription</h1>
+  <div id="blockInscription">
+    <h1>INSCRIPTION</h1>
     <!-- Vérification de la présence du cookie "connexion" et de sa valeur -->
     <div v-if="isAlreadyRegistered">
       Vous êtes déjà connecté.
     </div>
     <div v-else>
       <form @submit.prevent="inscrireUtilisateur">
-      <div>
-        <label for="pseudo">Pseudo:</label>
-        <input type="text" id="pseudo" v-model="utilisateur.pseudo" required />
+      <div id="divUtilisateur">
+        <label for="pseudo" id="labelUtilisateur">Pseudo:</label>
+        <input type="text" id="utilisateur" v-model="utilisateur.pseudo" required />
       </div>
-      <div>
-        <label for="motDePasse">Mot de passe:</label>
-        <input type="password" id="motDePasse" v-model="utilisateur.motDePasse" required />
+      <div id="divAdresseMail">
+        <label for="email" id="labelAdresseMail">Adresse e-mail:</label>
+        <input type="email" id="adresseMail" v-model="utilisateur.email" required />
       </div>
-      <div>
-        <label for="confirmationMotDePasse">Confirmation du mot de passe:</label>
-        <input type="password" id="confirmationMotDePasse" v-model="confirmationMotDePasse" required />
+      <div id="divMdp">
+        <label for="motDePasse" id="labelMdp">Mot de passe:</label>
+        <input type="password" id="mdp" v-model="utilisateur.motDePasse" required />
       </div>
-      <div>
-        <label for="email">Adresse e-mail:</label>
-        <input type="email" id="email" v-model="utilisateur.email" required />
+      <div id="divConfirmationMdp">
+        <label for="confirmationMotDePasse" id="labelConfirmationMdp">Confirmation du mot de passe:</label>
+        <input type="password" id="confirmationMdp" v-model="confirmationMotDePasse" required />
       </div>
-      <button type="submit">S'inscrire</button>
+
+      <div id="divBoutonEnvoie"><button type="submit" id="boutonEnvoie"><span id="spanEnvoie">M'inscrire</span> </button></div>
     </form>
     </div>
   </div>
@@ -128,5 +129,58 @@ export default {
   color: var(--color-text);
   font-size: 16px;
 }
+  @font-face {
+      font-family: 'LegoThick';
+      src: url("../assets/font/Legothick.ttf");
+  }
+  @font-face {
+      font-family: 'Acme';
+      src: url("../assets/font/Acme-Regular.ttf");
+  }
+  #blockInscription{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid;
+    width: 500px;
+  }
+  label{
+    font-family: 'Acme';
+    font-size: 20px;
+    display: block;
+    margin-left: 30px;
+  }
+  h1{
+    margin-top: 50px;
+    font-family: 'LegoThick';
+    font-size: 64px;
+    text-align: center;
+  }
+  input{
+    width: 70%;
+    margin-left: 50px;
+    background-color: lightgray;
+  }
+  #boutonEnvoie{
+    margin-top: 50px;
+    width: 40%;
+    height: 50px;
+    background-image: url("../assets/img/boutonCentral.png");
+    background-size: contain;
+    margin-bottom: 50px;
+    border-color: transparent;
+}
 
+#divBoutonEnvoie{
+    text-align: center;
+}
+
+#spanEnvoie{
+    font-family: 'Acme';
+    font-size: 30px;
+    text-shadow:
+    -1px 0px 0px white,
+    1px 0px 0px white,
+    0px -1px 0px white,
+    0px 1px 0px white;
+}
 </style>
