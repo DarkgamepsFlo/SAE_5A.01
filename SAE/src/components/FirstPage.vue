@@ -1,6 +1,10 @@
 <template>
-      <h2>C'est la first page</h2>
-      <router-link to="/inscription"><h1>Inscrivez-vous !</h1></router-link>
+      <div id="corps">
+        <h1 id="titreAventure">REJOIGNEZ L'AVENTURE</h1>
+        <router-link to="/inscription"><a href="#" id="boutonInscription"><div id="divImgBoutonCentral"><img src="../assets/img/boutonCentral.png" id="imgInscription"></div></a></router-link>
+        <h2 id="description">Le site pour gérer votre collection de lego!</h2>
+      </div>
+      
   </template>
   
   <script>
@@ -10,5 +14,37 @@
   </script>
   
   <style scoped>
-    /* Styles pour l'en-tête */
+    @font-face {
+      font-family: 'LegoThick';
+      src: url("../assets/font/Legothick.ttf");
+    }
+    @font-face {
+        font-family: 'Acme';
+        src: url("../assets/font/Acme-Regular.ttf");
+    }
+
+    #titreAventure{
+        margin-top: 150px;
+        font-family: 'LegoThick';
+        text-align: center;
+    }
+
+    #description{
+        text-align: center;
+        margin-bottom: 100px;
+        font-family: 'Acme';
+    }
+
+    #boutonInscription{
+        text-align: center;
+    }
+    #titreAventure{
+      font-size: 96px;
+    }
+    #description{
+        font-size: 32px;
+    }
+    #imgInscription{
+      width: 400px;
+    }
   </style>
