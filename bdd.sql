@@ -105,13 +105,9 @@ CREATE TABLE IF NOT EXISTS public.utilisateur
     id_collec integer,
     CONSTRAINT utilisateur_pkey PRIMARY KEY (id_uti),
     CONSTRAINT utilisateur_id_collec_fkey FOREIGN KEY (id_collec)
-        REFERENCES public.collection (id_collec) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        REFERENCES public.collection (id_collec),
     CONSTRAINT utilisateur_id_wishlist_fkey FOREIGN KEY (id_wishlist)
-        REFERENCES public.wishlist (id_wishlist) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        REFERENCES public.wishlist (id_wishlist)
 );
 
 

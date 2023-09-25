@@ -1,6 +1,7 @@
 // findUsers.js
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
+const randomstring = require('randomstring');
 const conf = require('../../conf.json')
 const db = require('../../services/db/connection'); // Assurez-vous que le chemin est correct
 
@@ -58,14 +59,20 @@ async function inscriptionUser(collectionName, donnee) {
     }
     else {
       // Si l'utilisateur n'existe pas, insérez-le et retournez un objet avec "true"
-      const queryInsertUser = `INSERT INTO $1:name (pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti) values ($2, $3, $4, $5, $6)`;
-      await db.any(queryInsertUser, [collectionName, donnee.pseudo, donnee.email, donnee.motDePasse, 'f', 't']);
-
       const queryInsertWishlist = `INSERT INTO wishlist (public) values (false)`;
       await db.any(queryInsertWishlist);
 
       const queryInsertCollection = `INSERT INTO collection (public) values (false)`;
       await db.any(queryInsertCollection);
+
+      const queryInsertUser = `INSERT INTO $1:name (pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti) values ($2, $3, $4, $5, $6)`;
+      await db.any(queryInsertUser, [collectionName, donnee.pseudo, donnee.email, donnee.motDePasse, false, true]);
+
+      const querySelectIdUser = `SELECT id_uti from $1:name where pseudo_uti like $2 and adresse_mail_uti like $3`;
+      const resultSelectIdUser = await db.any(querySelectIdUser, [collectionName, donnee.pseudo, donnee.email]);
+
+      const queryInsertIdUser = `UPDATE $1:name set id_wishlist = $2, id_collec = $2 WHERE pseudo_uti like $3`;
+      await db.any(queryInsertIdUser, [collectionName, resultSelectIdUser[0].id_uti, donnee.pseudo]);
 
       return {
         success: true
@@ -136,57 +143,84 @@ async function motdepasseUser(collectionName, donnee) {
 
     console.log(resultSelectEmail);
 
-    if (resultUser.length > 0) {
-      var transport = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-          user: conf.Auth.user,
-          pass: conf.Auth.pass,
-        },
-      });
+    return new Promise((resolve, reject) => {
+      if (resultSelectEmail.length > 0) {
+        var transport = nodemailer.createTransport({
+          service: conf.Auth.host,
+          auth: {
+            user: conf.Auth.user,
+            pass: conf.Auth.pass,
+          },
+        });
 
-      const mailOptions = {
-        from: conf.Auth.user, // Adresse e-mail de l'expéditeur (doit être une adresse Mailtrap)
-        to: donnee.email, // Adresse e-mail du destinataire
-        cc: conf.Auth.user,
-        subject: 'Sujet de l\'e-mail',
-        text: 'Contenu de l\'e-mail',
-      };
+        const code = randomstring.generate({
+          length: 6,
+          charset: 'numeric', // Utilisez 'alphabetic'/'alphanumeric' si vous souhaitez inclure des lettres/ des chiffres et lettres.
+        });
 
-      transport.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log('Erreur lors de l\'envoi de l\'e-mail :', error);
-          // Retourne un objet indiquant une erreur
-          return {
-            success: false,
-            message: 'Erreur lors de l\'envoi de l\'e-mail : ' + error.message,
-          };
-        } else {
-          console.log('E-mail envoyé avec succès :', info.response);
-          // Retourne un objet indiquant le succès
-          return {
-            success: true,
-          };
-        }
-      });
-    } else {
-      // Retourne un objet indiquant une erreur car le résultat est vide
-      console.log('Personne');
-      return {
-        success: false,
-        message: 'Aucun utilisateur trouvé avec ce pseudo.',
-      };
-    }
+        const mailOptions = {
+          from: conf.Auth.user, // Adresse e-mail de l'expéditeur
+          to: donnee.email, // Adresse e-mail du destinataire
+          cc: conf.Auth.user,
+          subject: 'Demande de réinitialisation de mot de passe',
+          text: 'Veuillez insérer ce code de confirmation pour pouvoir réinitialiser votre mot de passe : ' + code,
+        };
+
+        transport.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log('Erreur lors de l\'envoi de l\'e-mail :', error);
+            // Rejeter la promesse en cas d'erreur
+            reject({
+              success: false,
+              message: 'Erreur lors de l\'envoi de l\'e-mail : ' + error.message,
+            });
+          } else {
+            console.log('E-mail envoyé avec succès :', info.response);
+            // Résoudre la promesse en cas de succès
+            resolve({
+              success: true,
+              message: code
+            });
+          }
+        });
+      } else {
+        // Rejeter la promesse en cas de résultat vide
+        console.log('Personne');
+        reject({
+          success: false,
+          message: 'Aucun utilisateur trouvé avec cette adresse e-mail.',
+        });
+      }
+    });
   } catch (e) {
     console.log(`Il y a une erreur dans la fonction motDePasseUser : ${e}`);
+    // Rejeter la promesse en cas d'erreur
+    throw e;
+  }
+}
+
+// 5 //
+async function changerpasswordUser(collectionName, donnee) {
+  try {
+
+    // Si l'utilisateur n'existe pas, insérez-le et retournez un objet avec "true"
+    const queryUpdateUser = `UPDATE $1:name SET mot_de_passe_uti = $2 WHERE adresse_mail_uti = $3`;
+    await db.any(queryUpdateUser, [collectionName, donnee.mdp, donnee.email]);
+
+    return {
+      success: true,
+      message: "Le mot de passe est bien modifié"
+    };
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction inscriptionUser : ${e}`);
     throw e;
   }
 }
   
-  module.exports = {
-    findUsers,
-    inscriptionUser,
-    connexionUser,
-    motdepasseUser
+module.exports = {
+  findUsers,
+  inscriptionUser,
+  connexionUser,
+  motdepasseUser,
+  changerpasswordUser
 };

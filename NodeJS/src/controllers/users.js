@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -138,17 +138,13 @@ async function motdepasse (req, res, next) {
     else {
 
       const result = await motdepasseUser('utilisateur', donnee);
-      
-      if (result.success) {
-        return res.send({
-          success: true
-        });
-      } else {
-        return res.send({
-          success: false,
-          message: result.message
-        });
-      }
+
+      console.log(result);
+
+      return res.send({
+        success: result.success,
+        message: result.message
+      });
     }
     
   }catch(e){
@@ -156,9 +152,58 @@ async function motdepasse (req, res, next) {
   }
 }
 
+// 5 //
+// Cette fonction permet à un utilisateur de changer son mot de passe
+async function changerpassword (req, res, next) {
+  try{
+    const body = req.body;
+
+    const shema = Joi.object({
+      email: Joi.string().email().required(),
+      mdp: Joi.string().required()
+    })
+
+    const { error, value } = shema.validate(body);
+
+    if (error) {
+      console.error('Erreur de validation :', error.details[0].message);
+      return res.send({
+        success: false,
+        message: error.details[0].message
+      });
+    }
+    else {
+
+      const saltRounds = conf.Salt.salt;
+      const salt = await bcrypt.genSalt(saltRounds);
+
+      const motDePasseHache = await bcrypt.hash(body.mdp, salt);
+
+      const donnee = {
+        email: body.email,
+        mdp: motDePasseHache,
+      };
+
+      const result = await changerpasswordUser('utilisateur', donnee);
+
+      console.log(result);
+
+      return res.send({
+        success: result.success,
+        message: result.message
+      });
+    }
+    
+  }catch(e){
+    console.log(`Il y a une erreur dans la fonction motDePasse : ${e}`)
+  }
+}
+
+
 module.exports = {
   findAllUsers,
   inscription,
   connexion,
   motdepasse,
+  changerpassword
 };

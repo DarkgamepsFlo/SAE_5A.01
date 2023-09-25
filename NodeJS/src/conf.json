@@ -8,8 +8,10 @@
     "Salt":{
         "salt": 10
     },
+
     "Auth":{
         "user": "",
-        "pass": ""
+        "pass": "",
+        "host": ""
     }
 }

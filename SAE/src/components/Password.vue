@@ -1,30 +1,68 @@
 <template>
   <h1>Mot de passe oublié : Coiffeton Shiny</h1>
-  <div v-if="isAlreadyRegistered">
-    Vous êtes déjà connecté.
-  </div>
-  <div v-else>
-    <form @submit.prevent="demandeMotDePasse">
-    <div>
-      <label for="email">Adresse e-mail:</label>
-      <input type="email" id="email" v-model="utilisateur.email" required />
-    </div>
-    <button type="submit">Envoyer un mail</button>
+  <div v-if="codeCorrect">
+    <form @submit.prevent="changerPassword">
+      <p>Veuillez définir un nouveau mot de passe</p>
+      <div>
+        <label for="motDePasse">Mot de passe:</label>
+        <input type="password" id="motDePasse" v-model="utilisateur.motDePasse" required />
+      </div>
+      <div>
+        <label for="confirmationMotDePasse">Confirmation du mot de passe:</label>
+        <input type="password" id="confirmationMotDePasse" v-model="confirmationMotDePasse" required />
+      </div>
+      <button type="submit">Changer de mot de passe</button>
     </form>
   </div>
+  <div v-else>
+    <div v-if="codeRecive">
+      Veuillez indiquer le code reçu par mail :
+      <form @submit.prevent="acceptCode">
+        <div>
+          <label for="code">Code:</label>
+          <input type="password" id="code" v-model="utilisateur.codeBase" required />
+        </div>
+        <button type="submit">Vérifier le code</button>
+      </form>
+    </div>
+    <div v-else>
+      <div v-if="isAlreadyRegistered">
+        Vous êtes déjà connecté.
+      </div>
+      <div v-else>
+        <form @submit.prevent="demandeMotDePasse">
+        <div>
+          <label for="email">Adresse e-mail:</label>
+          <input type="email" id="email" v-model="utilisateur.email" required />
+        </div>
+        <button type="submit">Envoyer un mail</button>
+        <p v-if="isAlreadyPressed">Veuillez patienter, votre demande de code est envoyé</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
 </template>
   
 
   <script>
   import axios from 'axios';
   import Cookies from 'js-cookie';
+  import Swal from 'sweetalert2';
 
   export default {
     data() {
       return {
         utilisateur: {
           email: '',
+          code: '',
+          codeBase: '',
+          motDePasse: '',
         },
+        afficherForm: false,
+        boutonPressed: false,
+        afficherNewPassword: false,
+        confirmationMotDePasse: ''
       };
     },
     computed: {
@@ -33,9 +71,20 @@
         // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
         return Cookies.get('connexion') === 'Y';
       },
+      isAlreadyPressed() {
+        return this.boutonPressed;
+      },
+      codeRecive() {
+        return this.afficherForm;
+      },
+      codeCorrect() {
+        return this.afficherNewPassword;
+      }
     },
     methods: {
       demandeMotDePasse() {
+
+        this.boutonPressed = true;
         
         const donneesMotDePasse = {
           email: this.utilisateur.email
@@ -51,31 +100,87 @@
 
               console.log("Mail envoyé")
               
+              this.utilisateur.code = response.data.message;
+              this.afficherForm = true;
+              this.boutonPressed = false;
             }
-            
-  
-            // Réinitialisez le formulaire
-            this.utilisateur = {
-              email: '',
-            };
-  
-            // if (response) {
-            //   console.log(response);
-  
-            //   Cookies.set("connexion", "Y", { expires: 7 });
-  
-            //   // Redirigez l'utilisateur vers la page d'accueil
-            //   window.location.href = "http://127.0.0.1:5173/accueil";
-            // }
+
+            else{
+              console.log('Problème au niveau de l\'envoie du mail');
+              // Réinitialisez le formulaire
+              this.utilisateur = {
+                email: '',
+                code: '',
+                codeBase: '',
+                motDePasse: '',
+              };
+            }
           })
           .catch(error => {
             console.log("Il y a une erreur :", error)
           });
       },
+      acceptCode() {
+        if (this.utilisateur.codeBase === this.utilisateur.code){
+          console.log('Votre code est bien accepté, affichage du formulaire permettant d\'entrer un nouveau mot de passe');
+
+          this.afficherNewPassword = true;
+          this.afficherForm = false;
+          this.boutonPressed = false;
+        }
+        else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Veuillez recopier le code envoyé par mail !'
+          });
+        }
+      },
+      changerPassword() {
+
+        if (this.utilisateur.motDePasse !== this.confirmationMotDePasse) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Les mots de passe ne correspondent pas.',
+          });
+          return;
+        }
+
+        const donneeschangerPassword = {
+          email: this.utilisateur.email,
+          mdp: this.utilisateur.motDePasse,
+        }
+
+        console.log(donneeschangerPassword);
+
+        axios
+          .post('http://localhost:3000/users/changerpassword', donneeschangerPassword)
+          .then(response => {
+
+            console.log(response.data);
+
+            if (response.data.success) {
+
+              console.log("Mot de passe modifié")
+              
+              window.location.href = "http://127.0.0.1:5173/connexion";
+            }
+
+            else{
+              console.log('Problème au niveau du changement du mot de passe');
+              // Réinitialisez le formulaire
+              this.utilisateur.motDePasse = '';
+              this.utilisateur.confirmationMotDePasse = '';
+            }
+          })
+          .catch(error => {
+            console.log("Il y a une erreur :", error)
+          });
+      }
     },
   };
   </script>
-  
   
   <style scoped>
     /* Styles pour l'en-tête */
