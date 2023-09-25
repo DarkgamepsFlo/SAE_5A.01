@@ -14,6 +14,7 @@ import RechercheBoite from '../components/RechercheBoite.vue'
 import Collection from '../components/Collection.vue'
 import Profil from '../components/Profil.vue'
 import WichList from '../components/WichList.vue'
+import AjoutBoite from '../components/AjoutBoite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -74,9 +75,14 @@ const router = createRouter({
       component: Profil
     },
     {
+      path: '/ajoutBoite',
+      component: AjoutBoite
+    },
+    {
       path: '/:catchAll(.*)', // Cette route attrape toutes les routes inexistantes
       component: Error
     },
+    
 
     // page de test
     {
