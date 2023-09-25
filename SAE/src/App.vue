@@ -85,7 +85,7 @@ console.log()
 </script>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
 }
 
@@ -99,9 +99,9 @@ header {
 }
 
 /* Styliser les menus déroulants individuellement si nécessaire */
-.menu-container > * {
+/* .menu-container > * {
   margin-right: 10px; /* Espace entre les menus déroulants */
-}
+/* } */
 
 /* Styliser les menus déroulants individuellement si nécessaire */
 
