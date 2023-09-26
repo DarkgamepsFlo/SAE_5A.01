@@ -1,28 +1,4 @@
 <template>
-    <!-- <div> -->
-      <!-- <h1>Connexion</h1>-->
-        <!-- Vérification de la présence du cookie "connexion" et de sa valeur -->
-        <!-- <div v-if="isAlreadyRegistered">
-          Vous êtes déjà connecté.
-        </div>
-        <div v-else>
-            <form @submit.prevent="connexionUtilisateur">
-              <div>
-                <label for="pseudo">Pseudo:</label>-->
-                <!-- GARDE CA SINON PAS COIFFETON SHINY : v-model="utilisateur.pseudo" required -->
-                <!-- <input type="text" id="pseudo" v-model="utilisateur.pseudo" required />
-              </div>
-              <div>
-                <label for="motDePasse">Mot de passe:</label>
-                <input type="password" id="motDePasse" v-model="utilisateur.motDePasse" required />
-              </div> -->
-              <!-- <button type="submit">Se connecter</button>
-          </form>
-        </div>
-      </div> -->
-    <!-- <router-link to="/mdp"><h2>Mot de passe publié ? Dommage...</h2></router-link>
-    <router-link to="/inscription"><h2>Pas encore de compte ? Viens mun gamin !</h2></router-link>  -->
-
     <div id="blockAjout">
         <h1>AJOUTER UNE BOITE</h1>
         <label id="labelInputFile">
@@ -93,9 +69,7 @@
               pseudo: '',
               motDePasse: '',
             };
-  
-            console.log(response.data);
-  
+    
             if (response.data.success === true){
               Cookies.set("connexion", "Y", { expires: 7 });
   
@@ -109,10 +83,11 @@
                 title: 'Erreur',
                 text: response.data.message
               });
+              console.error(response.data.message);
             }
           })
           .catch(error => {
-            console.log("Il y a une erreur :", error)
+            console.error("Il y a une erreur :", error);
           });
       },
     },

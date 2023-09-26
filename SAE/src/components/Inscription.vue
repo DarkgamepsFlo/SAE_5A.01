@@ -8,19 +8,19 @@
     <div v-else>
       <form @submit.prevent="inscrireUtilisateur">
       <div id="divUtilisateur">
-        <label for="pseudo" id="labelUtilisateur">Pseudo:</label>
+        <label for="utilisateur" id="labelUtilisateur">Pseudo:</label>
         <input type="text" id="utilisateur" v-model="utilisateur.pseudo" required />
       </div>
-      <div id="divAdresseMail">
-        <label for="email" id="labelAdresseMail">Adresse e-mail:</label>
+      <div id="divadresseMail">
+        <label for="adresseMail" id="labelAdresseMail">Adresse e-mail:</label>
         <input type="email" id="adresseMail" v-model="utilisateur.email" required />
       </div>
       <div id="divMdp">
-        <label for="motDePasse" id="labelMdp">Mot de passe:</label>
+        <label for="mdp" id="labelMdp">Mot de passe:</label>
         <input type="password" id="mdp" v-model="utilisateur.motDePasse" required />
       </div>
       <div id="divConfirmationMdp">
-        <label for="confirmationMotDePasse" id="labelConfirmationMdp">Confirmation du mot de passe:</label>
+        <label for="confirmationMdp" id="labelConfirmationMdp">Confirmation du mot de passe:</label>
         <input type="password" id="confirmationMdp" v-model="confirmationMotDePasse" required />
       </div>
 
@@ -50,8 +50,12 @@ export default {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
     isAlreadyRegistered() {
       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-      return Cookies.get('connexion') === 'Y';
-    },
+      const cookieValue = Cookies.get('connexion');
+      if (cookieValue) {
+        return true
+      }
+      return false
+    }
   },
   methods: {
     inscrireUtilisateur() {
@@ -83,9 +87,8 @@ export default {
           this.confirmationMotDePasse = '';
 
           if (response.data.success === true) {
-            console.log("Inscription réussie");
             this.confirmationMotDePasse = '';
-            Cookies.set("connexion", "Y", { expires: 7 });
+            Cookies.set("connexion", JSON.stringify(response.data), { expires: 1 });
             // Redirigez l'utilisateur vers la page d'accueil
             window.location.href = "http://127.0.0.1:5173/accueil";
           } else {
@@ -100,10 +103,11 @@ export default {
               },
               background: 'var(--color-background)',
             });
+            console.error(response.data.message);
           }
         })
         .catch(error => {
-          console.log("Il y a une erreur :", error);
+          console.error("Il y a une erreur :", error);
         });
     },
   },

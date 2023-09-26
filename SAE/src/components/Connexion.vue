@@ -41,9 +41,13 @@ export default {
   computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
     isAlreadyRegistered() {
-     // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-      return Cookies.get('connexion') === 'Y';
-    },
+      // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+      const cookieValue = Cookies.get('connexion');
+      if (cookieValue) {
+        return true
+      }
+      return false
+    }
   },
   methods: {
     connexionUtilisateur() {
@@ -61,10 +65,9 @@ export default {
             motDePasse: '',
           };
 
-          console.log(response.data);
-
           if (response.data.success === true){
-            Cookies.set("connexion", "Y", { expires: 7 });
+
+            Cookies.set("connexion", JSON.stringify(response.data), { expires: 1 });
 
             // Redirigez l'utilisateur vers la page d'accueil
             window.location.href = "http://127.0.0.1:5173/accueil";
@@ -76,10 +79,11 @@ export default {
               title: 'Erreur',
               text: response.data.message
             });
+            console.error(response.data.message);
           }
         })
         .catch(error => {
-          console.log("Il y a une erreur :", error)
+          console.error("Il y a une erreur :", error);
         });
     },
   },

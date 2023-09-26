@@ -4,7 +4,6 @@ const { findAllUsers, inscription, connexion, motdepasse, changerpassword } = re
 
 // 1 //
 router.get("/findUser", findAllUsers);
-
 // 2 //
 router.post("/inscription", inscription);
 // 3 //

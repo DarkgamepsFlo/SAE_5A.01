@@ -31,34 +31,36 @@ async function findUsers(collectionName) {
 }
 
 // 2 //
+/**
+ * Cette méthode permet de réaliser l'inscription d'un utilisateur
+ * @param {*} collectionName Nom de la table pour insérer l'utilisateur
+ * @param {*} donnee L'ensemble des données de l'utilisateur à insérer
+ * @returns L'ensemble des informations utiles pour le site
+ */
 async function inscriptionUser(collectionName, donnee) {
   try {
+    // On va vérifier si un utilisateur ne possède pas déjà le même pseudo
     const querySelectUser = `SELECT * from $1:name where pseudo_uti like $2`;
     const resultSelectUser = await db.any(querySelectUser, [collectionName, donnee.pseudo]);
-
-    console.log(resultSelectUser);
-
+    // On va vérifier si un utilisateur ne possède pas déjà la même adresse mail
     const querySelectMail = `SELECT * from $1:name where adresse_mail_uti like $2`;
     const resultSelectMail = await db.any(querySelectMail, [collectionName, donnee.email]);
 
-    console.log(resultSelectMail);
-
+    // Si jamais le mail ou/et le pseudo est/sont utilisé(s), on envoie une erreur
     if (resultSelectUser.length > 0) {
-      // Si l'utilisateur existe déjà, retournez un objet avec "false" et un message d'erreur
       return {
         success: false,
         message: "Ce pseudo est déjà existant, veuillez réessayer !"
       };
     } 
     if (resultSelectMail.length > 0) {
-      // Si l'utilisateur existe déjà, retournez un objet avec "false" et un message d'erreur
       return {
         success: false,
         message: "L'adresse mail est déjà associé à un compte, veuillez réessayer !"
       };
     }
     else {
-      // Si l'utilisateur n'existe pas, insérez-le et retournez un objet avec "true"
+      // On va insérer l'ensemble des informations dans la base de données et on va lui attribuer une wishlist ainsi qu'une collection vide
       const queryInsertWishlist = `INSERT INTO wishlist (public) values (false)`;
       await db.any(queryInsertWishlist);
 
@@ -71,46 +73,59 @@ async function inscriptionUser(collectionName, donnee) {
       const querySelectIdUser = `SELECT id_uti from $1:name where pseudo_uti like $2 and adresse_mail_uti like $3`;
       const resultSelectIdUser = await db.any(querySelectIdUser, [collectionName, donnee.pseudo, donnee.email]);
 
-      const queryInsertIdUser = `UPDATE $1:name set id_wishlist = $2, id_collec = $2 WHERE pseudo_uti like $3`;
-      await db.any(queryInsertIdUser, [collectionName, resultSelectIdUser[0].id_uti, donnee.pseudo]);
+      const queryInsertIdUser = `UPDATE $1:name set id_wishlist = $2, id_collec = $2 WHERE id_uti = $2`;
+      await db.any(queryInsertIdUser, [collectionName, resultSelectIdUser[0].id_uti]);
 
+      const querySelectInfoUser = `SELECT * FROM $1:name WHERE id_uti = $2`;
+      const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, resultSelectIdUser[0].id_uti]);
+
+      // On renvoie l'ensemble des informations qui vont être utiles
       return {
-        success: true
+        success: true,
+        id_uti: resultSelectInfoUser[0].id_uti,
+        pseudo_uti: resultSelectInfoUser[0].pseudo_uti,
+        admin_uti: resultSelectInfoUser[0].admin_uti
       };
     }
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction inscriptionUser : ${e}`);
+    console.error(`Il y a une erreur dans la fonction inscriptionUser : ${e}`);
     throw e;
   }
 }
 
 // 3 //
+/**
+ * Cette fonction permet d'effectuer la connexion d'un utilisateur
+ * @param {*} collectionName Nom de la table pour insérer l'utilisateur
+ * @param {*} donnee L'ensemble des données de l'utilisateur à insérer
+ * @returns L'ensemble des informations utiles pour le site
+ */
 async function connexionUser(collectionName, donnee) {
   try {
-    console.log(donnee);
-    // On va récupérer l'ensemble des éléments dans la table users
+    // On va regarder si l'utilisateur est bien existant dans la base de donées
     const queryInsertUser = `SELECT * from $1:name where pseudo_uti like $2`;
     const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo]);
 
-    console.log(resultUser);
-
-    // Utiliser une promesse pour comparer le mot de passe
+    // On va ensuite décrypter le mot de passe puis on va vérifier si les deux mots de passe correspond
+    // Si il n'y a pas d'utilisateur ayant le même pseudo, on va renvoyer une erreur à l'utilisateur
     return new Promise((resolve, reject) => {
-      if (resultUser.length > 0) { // Vérifie si resultUser n'est pas vide
+      if (resultUser.length > 0) {
         bcrypt.compare(donnee.motDePasse, resultUser[0].mot_de_passe_uti, (err, resultat) => {
+          // Si ça ne marche pas, en renvoie une erreur
           if (err) {
-            // Gérer les erreurs
-            console.error(err);
             resolve({
               success: false,
               message: err
             });
           } else {
-            console.log(resultat);
+            // Si le mot de passe correspond, on va renvoyer un ensemble d'information utiles pour le site web
+            // Sinon, on envoie une erreur
             if (resultat === true) {
-              // Cette fonction permet de renvoyer directement le résultat dans la partie data d'axios
               resolve({
-                success: true
+                success: true,
+                id_uti: resultUser[0].id_uti,
+                pseudo_uti: resultUser[0].pseudo_uti,
+                admin_uti: resultUser[0].admin_uti
               });
             } else {
               resolve({
@@ -136,12 +151,8 @@ async function connexionUser(collectionName, donnee) {
 // 4 //
 async function motdepasseUser(collectionName, donnee) {
   try {
-    console.log(donnee);
-
     const querySelectEmail = `SELECT * from $1:name where adresse_mail_uti like $2`;
     const resultSelectEmail = await db.any(querySelectEmail, [collectionName, donnee.email]);
-
-    console.log(resultSelectEmail);
 
     return new Promise((resolve, reject) => {
       if (resultSelectEmail.length > 0) {
@@ -168,15 +179,11 @@ async function motdepasseUser(collectionName, donnee) {
 
         transport.sendMail(mailOptions, function (error, info) {
           if (error) {
-            console.log('Erreur lors de l\'envoi de l\'e-mail :', error);
-            // Rejeter la promesse en cas d'erreur
             reject({
               success: false,
               message: 'Erreur lors de l\'envoi de l\'e-mail : ' + error.message,
             });
           } else {
-            console.log('E-mail envoyé avec succès :', info.response);
-            // Résoudre la promesse en cas de succès
             resolve({
               success: true,
               message: code
@@ -184,8 +191,6 @@ async function motdepasseUser(collectionName, donnee) {
           }
         });
       } else {
-        // Rejeter la promesse en cas de résultat vide
-        console.log('Personne');
         reject({
           success: false,
           message: 'Aucun utilisateur trouvé avec cette adresse e-mail.',

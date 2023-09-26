@@ -34,8 +34,6 @@ import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
 <script>
 import Cookies from 'js-cookie';
 
-console.log()
-
   export default {
     data() {
       return {
@@ -63,11 +61,15 @@ console.log()
       listAllCookies() {
         // Réinitialiser la liste des cookies
         this.cookieList = [];
-  
+
         // Récupérer la liste de tous les cookies présents
         const allCookies = Cookies.get();
-        for (const [name, value] of Object.entries(allCookies)) {
-          this.cookieList.push({ name, value });
+        for (const cookieName in allCookies) {
+          if (Object.prototype.hasOwnProperty.call(allCookies, cookieName)) {
+            const cookieValue = allCookies[cookieName];
+            // Ajouter le nom et la valeur du cookie à la liste cookieList si nécessaire
+            this.cookieList.push({ name: cookieName, value: cookieValue });
+          }
         }
       },
 
@@ -78,14 +80,13 @@ console.log()
         // Mettre à jour la liste des cookies après la suppression
         this.listAllCookies();
       },
-      
     }
   };
 
 </script>
 
 <style scoped>
-/* header {
+header {
   line-height: 1.5;
 }
 
@@ -99,9 +100,9 @@ console.log()
 }
 
 /* Styliser les menus déroulants individuellement si nécessaire */
-/* .menu-container > * {
+.menu-container > * {
   margin-right: 10px; /* Espace entre les menus déroulants */
-/* } */
+}
 
 /* Styliser les menus déroulants individuellement si nécessaire */
 

@@ -69,7 +69,11 @@
       // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
       isAlreadyRegistered() {
         // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-        return Cookies.get('connexion') === 'Y';
+        const cookieValue = Cookies.get('connexion');
+        if (cookieValue) {
+          return true
+        }
+        return false
       },
       isAlreadyPressed() {
         return this.boutonPressed;
@@ -94,11 +98,9 @@
           .post('http://localhost:3000/users/motdepasse', donneesMotDePasse)
           .then(response => {
 
-            console.log(response.data);
-
             if (response.data.success) {
 
-              console.log("Mail envoyé")
+              console.info("Mail envoyé avec succès")
               
               this.utilisateur.code = response.data.message;
               this.afficherForm = true;
@@ -106,7 +108,7 @@
             }
 
             else{
-              console.log('Problème au niveau de l\'envoie du mail');
+              console.error('Problème au niveau de l\'envoie du mail');
               // Réinitialisez le formulaire
               this.utilisateur = {
                 email: '',
@@ -117,12 +119,12 @@
             }
           })
           .catch(error => {
-            console.log("Il y a une erreur :", error)
+            console.error("Il y a une erreur :", error)
           });
       },
       acceptCode() {
         if (this.utilisateur.codeBase === this.utilisateur.code){
-          console.log('Votre code est bien accepté, affichage du formulaire permettant d\'entrer un nouveau mot de passe');
+          console.info('Votre code est validé');
 
           this.afficherNewPassword = true;
           this.afficherForm = false;
@@ -152,30 +154,23 @@
           mdp: this.utilisateur.motDePasse,
         }
 
-        console.log(donneeschangerPassword);
-
         axios
           .post('http://localhost:3000/users/changerpassword', donneeschangerPassword)
           .then(response => {
 
-            console.log(response.data);
-
             if (response.data.success) {
-
-              console.log("Mot de passe modifié")
-              
               window.location.href = "http://127.0.0.1:5173/connexion";
             }
 
             else{
-              console.log('Problème au niveau du changement du mot de passe');
+              console.error('Problème au niveau du changement du mot de passe');
               // Réinitialisez le formulaire
               this.utilisateur.motDePasse = '';
               this.utilisateur.confirmationMotDePasse = '';
             }
           })
           .catch(error => {
-            console.log("Il y a une erreur :", error)
+            console.error("Il y a une erreur :", error)
           });
       }
     },

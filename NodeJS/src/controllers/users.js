@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
 const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser } = require("../services/db/crudUser");
@@ -50,10 +51,14 @@ async function inscription(req, res, next) {
       const result = await inscriptionUser('utilisateur', donnee);
       console.log("RESULT : ", result);
 
-      if (result.success) {
+      if (result?.success) {
+        const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
+
         return res.send({
-          success: true
+          success: true,
+          token: token
         });
+
       } else {
         return res.send({
           success: false,
@@ -97,9 +102,15 @@ async function connexion (req, res, next) {
       console.log("RESULT : ", result);
 
       if (result.success) {
+        const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
+
+        console.log(token);
+
         return res.send({
-          success: true
+          success: true,
+          token: token
         });
+
       } else {
         return res.send({
           success: false,

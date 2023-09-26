@@ -29,8 +29,12 @@
             // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
             isAlreadyRegistered() {
             // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-            return Cookies.get('connexion') === 'Y';
-            },
+            const cookieValue = Cookies.get('connexion');
+            if (cookieValue) {
+              return true
+            }
+            return false
+          },
         },
         methods: {
         // Cette fonction permet juste de regarder l'ensemble des cookies, elle permet de tester, elle ne va pas rester définitive
