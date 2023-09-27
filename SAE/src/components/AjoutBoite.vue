@@ -84,8 +84,6 @@
               descriptif: '',
             };
 
-            console.info(response);
-            
             if (response.data.success === true){
               console.log("MARCHE !!!")
   

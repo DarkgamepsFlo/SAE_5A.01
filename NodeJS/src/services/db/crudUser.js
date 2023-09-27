@@ -221,7 +221,6 @@ async function changerpasswordUser(collectionName, donnee) {
     throw e;
   }
 }
-  
 module.exports = {
   findUsers,
   inscriptionUser,
