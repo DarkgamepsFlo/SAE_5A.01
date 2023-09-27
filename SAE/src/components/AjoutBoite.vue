@@ -83,13 +83,7 @@
               anneeSortie: '',
               descriptif: '',
             };
-<<<<<<< Updated upstream
     
-=======
-            console.log("ayo");
-            console.log(response.data);
-  
->>>>>>> Stashed changes
             if (response.data.success === true){
               Cookies.set("connexion", "Y", { expires: 7 });
   
