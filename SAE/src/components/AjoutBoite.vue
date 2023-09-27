@@ -12,7 +12,7 @@
         </div>
         <div id="divNumBoite">
             <label for="numBoite" id="labelNumBoite">Numéro de la boite</label>
-            <input type="text" id="numBoite" v-model="suggestion.numBoite" required/>
+            <input type="number" id="numBoite" v-model="suggestion.numBoite" step="1" required/>
         </div>   
         <div id="divUnivers">
             <label for="univers" id="labelUnivers">Univers</label>
@@ -20,11 +20,11 @@
         </div>  
         <div id="divNbrPiece">
             <label for="nbrPiece" id="labelNbrPiece">Nombre de pièces</label>
-            <input type="text" id="nbrPiece" v-model="suggestion.NbrPiece" required />
+            <input type="number" id="nbrPiece" v-model="suggestion.NbrPiece" step="1" required />
         </div>  
         <div id="divAnneeSortie">
             <label for="anneeSortie" id="labelAnneeSortie">Année de sortie</label>
-            <input type="text" id="anneeSortie" v-model="suggestion.anneeSortie" required />
+            <input type="number" id="anneeSortie" v-model="suggestion.anneeSortie" step="1" required />
         </div>  
         <div id="divDescriptif">
             <label for="descriptif" id="labelDescriptif">Descriptif</label>
@@ -63,12 +63,12 @@
     methods: {
       submitSuggestion() {
         const donneesSuggestion = {
-          nomboite: this.nomBoite,
-          numBoite: this.numBoite,
-          univers: this.univers,
-          NbrPiece: this.NbrPiece,
-          anneeSortie: this.anneeSortie,
-          descriptif: this.descriptif,
+          nomBoite: this.suggestion.nomBoite,
+          numBoite: this.suggestion.numBoite,
+          univers: this.suggestion.univers,
+          NbrPiece: this.suggestion.NbrPiece,
+          anneeSortie: this.suggestion.anneeSortie,
+          descriptif: this.suggestion.descriptif,
         }
   
         axios
