@@ -83,15 +83,11 @@
               anneeSortie: '',
               descriptif: '',
             };
-<<<<<<< Updated upstream
-    
-=======
-            console.log("ayo");
-            console.log(response.data);
-  
->>>>>>> Stashed changes
+
+            console.info(response);
+            
             if (response.data.success === true){
-              Cookies.set("connexion", "Y", { expires: 7 });
+              console.log("MARCHE !!!")
   
               // Redirigez l'utilisateur vers la page d'accueil
               //window.location.href = "http://127.0.0.1:5173/accueil";
