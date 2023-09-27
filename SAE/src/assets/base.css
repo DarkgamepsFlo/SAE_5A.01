@@ -71,3 +71,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+.divBoutonPrincipal{
+  text-align: center;
+}
+
+.boutonPrincipal{
+  margin-top: 50px;
+  width: 40%;
+  height: 50px;
+  background-image: url("../assets/img/boutonCentral.png");
+  background-size: contain;
+  margin-bottom: 50px;
+  border-color: transparent;
+}
+
+.spanBoutonPrincipal{
+  font-family: 'Acme';
+  font-size: 30px;
+  text-shadow:
+  -1px 0px 0px white,
+  1px 0px 0px white,
+  0px -1px 0px white,
+  0px 1px 0px white;
+}
