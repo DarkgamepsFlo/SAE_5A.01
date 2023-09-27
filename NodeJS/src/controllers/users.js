@@ -210,7 +210,6 @@ async function changerpassword (req, res, next) {
   }
 }
 
-
 module.exports = {
   findAllUsers,
   inscription,
