@@ -1,20 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HelloWorld from '../components/HelloWorld.vue'
-import About from '../components/About.vue'
-import Error from '../components/Error.vue'
-import FirstPage from '../components/FirstPage.vue'
-import Inscription from '../components/Inscription/Inscription.inscription.vue'
-import Connexion from '../components/Connexion.vue'
-import Password from '../components/Password.vue'
-import Politique from '../components/Politique.vue'
-import Contact from '../components/Contact.vue'
-import RechercherUtilisateur from '../components/RechercheUtilisateur.vue'
-import RechercheBoite from '../components/RechercheBoite.vue'
-import Collection from '../components/Collection.vue'
-import Profil from '../components/Profil.vue'
-import WichList from '../components/WichList.vue'
-import AjoutBoite from '../components/AjoutBoite.vue'
+// import Accueil from '../components/HelloWorld.vue'
+// import Error from '../components/Error.vue'
+// import About from '../components/About.vue'
+// import FirstPage from '../components/FirstPage.vue'
+// import Inscription from '../components/Inscription.vue'
+// import Connexion from '../components/Connexion.vue'
+// import Password from '../components/Password.vue'
+// import Politique from '../components/Politique.vue'
+// import Contact from '../components/Contact.vue'
+// import RechercherUtilisateur from '../components/RechercheUtilisateur.vue'
+// import RechercheBoite from '../components/RechercheBoite.vue'
+// import Collection from '../components/Collection.vue'
+// import Profil from '../components/Profil.vue'
+// import WichList from '../components/WichList.vue'
+// import AjoutBoite from '../components/AjoutBoite.vue'
+
+import Accueil from '../pages/Accueil/Accueil.accueil.vue'
+import MentionLegale from '../pages/MentionLegale/MentionLegale.mentionlegale.vue'
+import Error from "../pages/Error/Error.error.vue"
+import FirstPage from '../pages/FirstPage/FirstPage.firstpage.vue'
+import Inscription from '../pages/Inscription/Inscription.inscription.vue'
+import Connexion from '../pages/Connexion/Connexion.connexion.vue'
+import Password from '../pages/Password/Password.password.vue'
+import Politique from '../components/Politique/Politique.politique.vue'
+import Contact from '../pages/Contact/Contact.contact.vue'
+import RechercherUtilisateur from '../components/RechercheUtilisateur/RechercheUtilisateur.rechercheutilisateur.vue'
+import RechercheBoite from '../components/RechercheBoite/RechercheBoite.rechercheboite.vue'
+import Collection from '../components/Collection/Collection.collection.vue'
+import Profil from '../pages/Profil/Profil.profil.vue'
+import WichList from '../pages/WichList/WichList.wichlist.vue'
+import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -28,7 +44,7 @@ const router = createRouter({
     },
     {
       path: '/accueil',
-      component: HelloWorld
+      component: Accueil
     },
     {
       path: '/inscription',
@@ -44,7 +60,7 @@ const router = createRouter({
     },
     {
       path: '/about',
-      component: About
+      component: MentionLegale
     },
     {
       path: '/politique',

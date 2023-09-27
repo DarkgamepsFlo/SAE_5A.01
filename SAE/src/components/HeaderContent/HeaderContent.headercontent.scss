@@ -1,0 +1,30 @@
+header{
+    background-image: url("../../assets/img/headerImg.png");
+    height: 220px;
+    width: 100%;
+}
+
+#imgProfil{
+    float: right;
+}
+
+#boutonProfil{
+    background: transparent;
+    border-color: transparent;
+}
+
+#boutonMenu{
+    background: transparent;
+    border-color: transparent;
+}
+#imgBoutonMenu{
+    height: 100px;
+    margin-top: -50px;
+}
+#imgLogo{
+    height: 220px;
+}
+#divImgLogo{
+    display: inline-block;
+    margin-left: 40%;
+}

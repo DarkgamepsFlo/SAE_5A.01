@@ -1,9 +1,15 @@
 <script setup>
-import MainPage from './components/MainPage.vue'
-import HeaderContent from './components/HeaderContent.vue'
-import FooterContent from './components/FooterContent.vue'
-import MenuDeroulantGauche from './components/MenuDeroulantGauche.vue'
-import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
+import MainPage from './pages/MainPage/MainPage.manepage.vue'
+import HeaderContent from './components/HeaderContent/HeaderContent.headercontent.vue'
+import FooterContent from './components/FooterContent/FooterContent.footercontent.vue'
+import MenuDeroulantGauche from './components/MenuGauche/MenuGauche.menugauche.vue'
+import MenuDeroulantDroit from './components/MenuDroit/MenuDroit.menudroit.vue'
+
+// import MainPage from './components/MainPage.vue'
+// import HeaderContent from './components/HeaderContent.vue'
+// import FooterContent from './components/FooterContent.vue'
+// import MenuDeroulantGauche from './components/MenuDeroulantGauche.vue'
+// import MenuDeroulantDroit from './components/MenuDeroulantDroit.vue'
 </script>
 
 <template>
