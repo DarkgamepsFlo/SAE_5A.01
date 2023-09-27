@@ -1,35 +1,37 @@
 <template>
     <div id="blockAjout">
-        <h1>AJOUTER UNE BOITE</h1>
+      <h1>AJOUTER UNE BOITE</h1>
+      <form @submit.prevent="submitSuggestion">
         <label id="labelInputFile">
             <input type="file" id="imageBoiteProposition" name="imageBoiteProposition" accept="image/png, image/jpeg" />
             <img src="../assets/img/inputFile.png" id="imgInputFile">
         </label>
         <div id="divNomBoite">
             <label for="nom" id="labelNom">Nom de la boite</label>
-            <input type="text" id="nom" nom="nomBoite" v-model="utilisateur.pseudo" required/>
+            <input type="text" id="nom" nom="nomBoite" v-model="suggestion.nomBoite" required/>
         </div>
         <div id="divNumBoite">
             <label for="numBoite" id="labelNumBoite">Numéro de la boite</label>
-            <input type="text" id="numBoite" v-model="utilisateur.pseudo" required/>
+            <input type="text" id="numBoite" v-model="suggestion.numBoite" required/>
         </div>   
         <div id="divUnivers">
             <label for="univers" id="labelUnivers">Univers</label>
-            <input type="text" id="univers" v-model="utilisateur.pseudo" required/>
+            <input type="text" id="univers" v-model="suggestion.univers" required/>
         </div>  
         <div id="divNbrPiece">
             <label for="nbrPiece" id="labelNbrPiece">Nombre de pièces</label>
-            <input type="text" id="nbrPiece" v-model="utilisateur.pseudo" required />
+            <input type="text" id="nbrPiece" v-model="suggestion.NbrPiece" required />
         </div>  
         <div id="divAnneeSortie">
             <label for="anneeSortie" id="labelAnneeSortie">Année de sortie</label>
-            <input type="text" id="anneeSortie" v-model="utilisateur.pseudo" required />
+            <input type="text" id="anneeSortie" v-model="suggestion.anneeSortie" required />
         </div>  
         <div id="divDescriptif">
             <label for="descriptif" id="labelDescriptif">Descriptif</label>
-            <input type="text" id="descriptif" v-model="utilisateur.pseudo" required />
+            <input type="text" id="descriptif" v-model="suggestion.descriptif" required />
         </div>  
         <div id="divBoutonEnvoie"><button type="submit" id="boutonEnvoie"><span id="spanEnvoie">Envoyer</span> </button></div>
+      </form>
     </div>
   </template>
   
@@ -41,9 +43,13 @@
   export default {
     data() {
       return {
-        utilisateur: {
-          pseudo: '',
-          motDePasse: '',
+        suggestion: {
+          nomBoite: '',
+          numBoite: '',
+          univers: '',
+          NbrPiece: '',
+          anneeSortie: '',
+          descriptif: '',
         },
       };
     },
@@ -55,26 +61,40 @@
       },
     },
     methods: {
-      connexionUtilisateur() {
-        const donneesConnexion = {
-          pseudo: this.utilisateur.pseudo,
-          motDePasse: this.utilisateur.motDePasse,
+      submitSuggestion() {
+        const donneesSuggestion = {
+          nomboite: this.nomBoite,
+          numBoite: this.numBoite,
+          univers: this.univers,
+          NbrPiece: this.NbrPiece,
+          anneeSortie: this.anneeSortie,
+          descriptif: this.descriptif,
         }
   
         axios
-          .post('http://localhost:3000/users/connexion', donneesConnexion)
+          .post('http://localhost:3000/suggestion/add', donneesSuggestion)
           .then(response => {
             // Réinitialisez le formulaire
-            this.utilisateur = {
-              pseudo: '',
-              motDePasse: '',
+            this.suggestion = {
+              nomBoite: '',
+              numBoite: '',
+              univers: '',
+              NbrPiece: '',
+              anneeSortie: '',
+              descriptif: '',
             };
+<<<<<<< Updated upstream
     
+=======
+            console.log("ayo");
+            console.log(response.data);
+  
+>>>>>>> Stashed changes
             if (response.data.success === true){
               Cookies.set("connexion", "Y", { expires: 7 });
   
               // Redirigez l'utilisateur vers la page d'accueil
-              window.location.href = "http://127.0.0.1:5173/accueil";
+              //window.location.href = "http://127.0.0.1:5173/accueil";
             }
   
             else{

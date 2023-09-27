@@ -225,7 +225,7 @@ INSERT INTO utilisateur(pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_ut
 
 INSERT INTO collection(public) VALUES (true);
 INSERT INTO wishlist(public) VALUES (false);
-INSERT INTO utilisateur(pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti, id_wishlist, id_collec) VALUES ('Jean', 'jean55@gmail.com', 'qlsfhsdffd', false, true, 7,7);
+INSERT INTO utilisateur(pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti, id_wishlist, id_collec) VALUES ('Jeanne', 'jeanne55@gmail.com', 'qlsfhsdffd', false, true, 7,7);
 
 INSERT INTO collection(public) VALUES (true);
 INSERT INTO wishlist(public) VALUES (true);

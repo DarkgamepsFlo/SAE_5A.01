@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const users = require('./users');
+const suggestion = require('./suggestion');
 
 const cors = require('cors');
 const corsOptions = {
@@ -13,6 +14,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/users', users);
+
+app.use('/suggestion', suggestion);
 
 // Lien qui nous mène sur le Menu principal
 app.get('/', (req, res, next) => {
