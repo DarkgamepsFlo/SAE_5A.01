@@ -25,12 +25,12 @@ import axios from 'axios';
     methods: {
       submitSuggestion() {
         const donneesSuggestion = {
-          nomboite: this.nomBoite,
-          numBoite: this.numBoite,
-          univers: this.univers,
-          NbrPiece: this.NbrPiece,
-          anneeSortie: this.anneeSortie,
-          descriptif: this.descriptif,
+          nomBoite: this.suggestion.nomBoite,
+          numBoite: this.suggestion.numBoite,
+          univers: this.suggestion.univers,
+          NbrPiece: this.suggestion.NbrPiece,
+          anneeSortie: this.suggestion.anneeSortie,
+          descriptif: this.suggestion.descriptif,
         }
   
         axios
@@ -48,6 +48,7 @@ import axios from 'axios';
 
             if (response.data.success === true){
               console.log("MARCHE !!!")
+              console.log(response);
   
               // Redirigez l'utilisateur vers la page d'accueil
               //window.location.href = "http://127.0.0.1:5173/accueil";
