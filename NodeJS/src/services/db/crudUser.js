@@ -7,17 +7,18 @@ const db = require('../../services/db/connection'); // Assurez-vous que le chemi
 
 // 1 //
 /**
- * Cette fonction va permettre de récupérer la liste de m'ensemble des utilisateurs
+ * Cette fonction va permettre de récupérer un utilisateur à partir de son pseudo
  * @param {*} collectionName Nom de la collection 
+ * @param {*} where WHERE de la requête
  * @returns Du code HTML qui va être reconnu par pug
  */
-async function findUsers(collectionName) {
+async function findUsers(collectionName, donnee) {
   try {
 
     // Utilisez une requête imbriquée pour sélectionner tous les utilisateurs
-    const query = `SELECT * FROM $1:name`;
-
-    const users = await db.any(query, [collectionName]);
+    const query = `SELECT * FROM $1:name WHERE pseudo_uti LIKE $2`;
+    console.log("test3");
+    const users = await db.any(query, [collectionName, donnee.where]);
 
     // Utilisez les données des utilisateurs ici, par exemple, les afficher dans la console
     console.log(users);

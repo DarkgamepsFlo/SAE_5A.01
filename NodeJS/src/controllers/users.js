@@ -210,10 +210,27 @@ async function changerpassword (req, res, next) {
   }
 }
 
+// 6 //
+// Cette fonction permet d'appeler la fonction search lorsqu'on se situe sur la bonne URL
+async function search(req, res, next) {
+  try{
+    const body = req.body;
+    const donnee = {
+      where: body.where + '*'
+    };
+    console.log("test2");
+    const result = await findUsers("utilisateur", donnee);
+    return res.send(result);
+  }catch(e){
+    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+  }
+}
+
 module.exports = {
   findAllUsers,
   inscription,
   connexion,
   motdepasse,
-  changerpassword
+  changerpassword,
+  search,
 };
