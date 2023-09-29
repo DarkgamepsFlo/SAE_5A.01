@@ -1,5 +1,5 @@
 <template>
-    <div id="blockAjout">
+    <div id="blockAjout" v-if="isAlreadyRegistered">
       <h1>AJOUTER UNE BOITE</h1>
       <form @submit.prevent="submitSuggestion">
         <label id="labelInputFile">
@@ -32,7 +32,7 @@
         </div>  
         <div id="divBoutonEnvoie"><button type="submit" id="boutonEnvoie"><span id="spanEnvoie">Envoyer</span> </button></div>
       </form>
-    </div>
+    </div>    
 </template>
 
 <script src="./AjoutBoite.ajoutboite.js"></script>
