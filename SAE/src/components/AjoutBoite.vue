@@ -54,12 +54,16 @@
       };
     },
     computed: {
-      // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
-      isAlreadyRegistered() {
-       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-        return Cookies.get('connexion') === 'Y';
-      },
-    },
+    // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
+    isAlreadyRegistered() {
+      // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+      const cookieValue = Cookies.get('connexion');
+      if (cookieValue) {
+        return true
+      }
+      return false
+    }
+  },
     methods: {
       submitSuggestion() {
         const donneesSuggestion = {

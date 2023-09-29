@@ -1,6 +1,6 @@
 import axios from 'axios';
-  import Cookies from 'js-cookie';
-  import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
   
   export default {
     data() {
@@ -18,19 +18,24 @@ import axios from 'axios';
     computed: {
       // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
       isAlreadyRegistered() {
-       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-        return Cookies.get('connexion') === 'Y';
-      },
+        // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+        const cookieValue = Cookies.get('connexion');
+        if (cookieValue) {
+          return true
+        }
+        window.location.href = '../Connexion';
+        return false
+      }
     },
     methods: {
       submitSuggestion() {
         const donneesSuggestion = {
-          nomboite: this.nomBoite,
-          numBoite: this.numBoite,
-          univers: this.univers,
-          NbrPiece: this.NbrPiece,
-          anneeSortie: this.anneeSortie,
-          descriptif: this.descriptif,
+          nomBoite: this.suggestion.nomBoite,
+          numBoite: this.suggestion.numBoite,
+          univers: this.suggestion.univers,
+          NbrPiece: this.suggestion.NbrPiece,
+          anneeSortie: this.suggestion.anneeSortie,
+          descriptif: this.suggestion.descriptif,
         }
   
         axios
@@ -48,6 +53,10 @@ import axios from 'axios';
 
             if (response.data.success === true){
               console.log("MARCHE !!!")
+              Swal.fire({
+                title: 'Votre suggestion a bien été prise en compte !',
+                icon: 'success',
+            })       
   
               // Redirigez l'utilisateur vers la page d'accueil
               //window.location.href = "http://127.0.0.1:5173/accueil";
