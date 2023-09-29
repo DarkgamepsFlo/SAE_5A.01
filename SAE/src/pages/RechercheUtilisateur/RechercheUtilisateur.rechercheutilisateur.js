@@ -1,4 +1,4 @@
-import ProfilUtilisateur from '../ProfilUtilisateur/ProfilUtilisateur.profilutilisateur.vue';
+import ProfilUtilisateur from '../../components/ProfilUtilisateur/ProfilUtilisateur.profilutilisateur.vue';
 import axios from 'axios';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   methods: {
     search: function(event){
       const where = {
-        where: "Xelven",
+        where: "Jean",
       }
       console.log("test1");
       axios
@@ -23,3 +23,4 @@ export default {
         });
   },
 }}
+

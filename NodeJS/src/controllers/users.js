@@ -8,6 +8,7 @@ const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswo
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
 async function findAllUsers(req, res, next) {
   try{
+    console.log("Je suis dans findAllUser")
     const result = await findUsers("utilisateur");
     return res.send(result);
   }catch(e){
@@ -215,11 +216,8 @@ async function changerpassword (req, res, next) {
 async function search(req, res, next) {
   try{
     const body = req.body;
-    const donnee = {
-      where: body.where + '*'
-    };
     console.log("test2");
-    const result = await findUsers("utilisateur", donnee);
+    const result = await findUsers("utilisateur", body);
     return res.send(result);
   }catch(e){
     console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
