@@ -2,6 +2,8 @@ header{
     background-image: url("../../assets/img/headerImg.png");
     height: 220px;
     width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #imgProfil{
@@ -11,6 +13,8 @@ header{
 #boutonProfil{
     background: transparent;
     border-color: transparent;
+    float: right;
+    margin-top: 50px;
 }
 
 #boutonMenu{
@@ -19,7 +23,7 @@ header{
 }
 #imgBoutonMenu{
     height: 100px;
-    margin-top: -50px;
+    margin-bottom: 50px;
 }
 #imgLogo{
     height: 220px;

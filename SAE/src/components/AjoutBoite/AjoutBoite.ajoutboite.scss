@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'LegoThick';
-    src: url("../assets/font/Legothick.ttf");
+    src: url("../../assets/font/Legothick.ttf");
     }
     @font-face {
         font-family: 'Acme';
-        src: url("../assets/font/Acme-Regular.ttf");
+        src: url("../../assets/font/Acme-Regular.ttf");
     }
 
     #blockAjout{
@@ -73,7 +73,7 @@
         margin-top: 50px;
         width: 40%;
         height: 50px;
-        background-image: url("../assets/img/boutonCentral.png");
+        background-image: url("../../assets/img/boutonCentral.png");
         background-size: contain;
         margin-bottom: 100px;
         border-color: transparent;

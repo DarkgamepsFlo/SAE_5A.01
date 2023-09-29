@@ -187,7 +187,7 @@
       border: 1px solid;
       width: 600px;
     }
-    /* .divBoutonPrincipal{
+    .divBoutonPrincipal{
   text-align: center;
 }
 
@@ -209,5 +209,5 @@
   1px 0px 0px white,
   0px -1px 0px white,
   0px 1px 0px white;
-} */
+}
   </style>
