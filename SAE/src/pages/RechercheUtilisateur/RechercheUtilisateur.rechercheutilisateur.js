@@ -8,7 +8,7 @@ export default {
   methods: {
     search: function(event){
       const where = {
-        where: "Jean",
+        where: event.target.value + "%",
       }
       console.log("test1");
       axios
@@ -16,11 +16,13 @@ export default {
         .then(response =>{
           if(response.data.success === true){
             console.log(response);
+            console.log("qfdfjhbgdfkjgbdhkh");
           }
         })
         .catch(error => {
           console.error("Il y a une erreur :", error);
         });
+        console.log(response);
   },
 }}
 

@@ -14,7 +14,7 @@ const db = require('../../services/db/connection'); // Assurez-vous que le chemi
  */
 async function findUsers(collectionName, donnee) {
   try {
-
+    
     // Utilisez une requête imbriquée pour sélectionner tous les utilisateurs
     const query = `SELECT * FROM $1:name WHERE pseudo_uti LIKE $2`;
     console.log("test3");
@@ -22,6 +22,7 @@ async function findUsers(collectionName, donnee) {
 
     // Utilisez les données des utilisateurs ici, par exemple, les afficher dans la console
     console.log(users);
+    console.log("test4");
 
     // Vous pouvez retourner les données des utilisateurs si vous en avez besoin
     return users;
