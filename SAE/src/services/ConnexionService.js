@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-class InscriptionService {
+class ConnexionService {
   // Méthode pour inscrire un utilisateur
-  async inscrireUtilisateur(utilisateur) {
+  async connexionUtilisateur(utilisateur) {
     try {
-      const response = await axios.post('http://localhost:3000/users/inscription', utilisateur);
+      const response = await axios.post('http://localhost:3000/users/connexion', utilisateur);
       return response.data;
     } catch (error) {
       throw error;
@@ -13,4 +13,4 @@ class InscriptionService {
 }
 
 // Exportez une instance de votre service pour pouvoir l'utiliser dans vos composants
-export default new InscriptionService();
+export default new ConnexionService();

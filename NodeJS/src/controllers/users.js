@@ -218,6 +218,8 @@ async function search(req, res, next) {
     const body = req.body;
     console.log("test2");
     const result = await findUsers("utilisateur", body);
+    console.log(result);
+    console.log("test5");
     return res.send(result);
   }catch(e){
     console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)

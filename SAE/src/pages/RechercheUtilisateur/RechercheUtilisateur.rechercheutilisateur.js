@@ -8,14 +8,18 @@ export default {
   methods: {
     search: function(event){
       const where = {
-        where: "Jean",
+        where: event.target.value + "%",
       }
       console.log("test1");
       axios
         .post('http://localhost:3000/users/findUser', where)
         .then(response =>{
+          
+          console.log(response);
+
           if(response.data.success === true){
-            console.log(response);
+            
+            console.log("qfdfjhbgdfkjgbdhkh");
           }
         })
         .catch(error => {
