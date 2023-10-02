@@ -14,15 +14,17 @@ export default {
       axios
         .post('http://localhost:3000/users/findUser', where)
         .then(response =>{
+          
+          console.log(response);
+
           if(response.data.success === true){
-            console.log(response);
+            
             console.log("qfdfjhbgdfkjgbdhkh");
           }
         })
         .catch(error => {
           console.error("Il y a une erreur :", error);
         });
-        console.log(response);
   },
 }}
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import DemandeMotDePasseService from '../../services/DemandeMotDePasseService';
 
 export default {
     data() {
@@ -38,43 +39,38 @@ export default {
       }
     },
     methods: {
-      demandeMotDePasse() {
+      async demandeMotDePasse() {
 
         this.boutonPressed = true;
         
         const donneesMotDePasse = {
           email: this.utilisateur.email
         }
+
+        const response = await DemandeMotDePasseService.demandeMotDePasse(donneesMotDePasse)
   
-        axios
-          .post('http://localhost:3000/users/motdepasse', donneesMotDePasse)
-          .then(response => {
-
-            if (response.data.success) {
-
-              console.info("Mail envoyé avec succès")
+        if (response.success) {
+            console.info("Mail envoyé avec succès")
               
-              this.utilisateur.code = response.data.message;
-              this.afficherForm = true;
-              this.boutonPressed = false;
-            }
+            this.utilisateur.code = response.message;
+            this.afficherForm = true;
+            this.boutonPressed = false;
+        }
 
-            else{
-              console.error('Problème au niveau de l\'envoie du mail');
-              // Réinitialisez le formulaire
-              this.utilisateur = {
-                email: '',
-                code: '',
-                codeBase: '',
-                motDePasse: '',
-              };
-            }
-          })
-          .catch(error => {
-            console.error("Il y a une erreur :", error)
-          });
-      },
-      acceptCode() {
+        else{
+          console.error('Problème au niveau de l\'envoie du mail');
+          // Réinitialisez le formulaire
+          this.utilisateur = {
+            email: '',
+            code: '',
+            codeBase: '',
+            motDePasse: '',
+          };
+        }
+      }
+    },
+    acceptCode() {
+        console.log("AAAAAAAAAAAAAAAAAAAAA");
         if (this.utilisateur.codeBase === this.utilisateur.code){
           console.info('Votre code est validé');
 
@@ -125,5 +121,4 @@ export default {
             console.error("Il y a une erreur :", error)
           });
       }
-    },
-  };
+    };

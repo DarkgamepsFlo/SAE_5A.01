@@ -21,6 +21,7 @@ async function findUsers(collectionName, donnee) {
     const users = await db.any(query, [collectionName, donnee.where]);
 
     // Utilisez les données des utilisateurs ici, par exemple, les afficher dans la console
+    
     console.log(users);
     console.log("test4");
 

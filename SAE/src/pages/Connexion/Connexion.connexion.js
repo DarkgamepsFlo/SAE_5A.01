@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import ConnexionService from '../../services/ConnexionService';
 
 export default {
   data() {
@@ -23,41 +24,33 @@ export default {
     }
   },
   methods: {
-    connexionUtilisateur() {
+    async connexionUtilisateur() {
       const donneesConnexion = {
         pseudo: this.utilisateur.pseudo,
         motDePasse: this.utilisateur.motDePasse,
       }
 
-      axios
-        .post('http://localhost:3000/users/connexion', donneesConnexion)
-        .then(response => {
+      const response = await ConnexionService.connexionUtilisateur(donneesConnexion)
+      
+      this.utilisateur = {
+        pseudo: '',
+        motDePasse: '',
+      };
+
+      if (response.success === true) {
           // Réinitialisez le formulaire
-          this.utilisateur = {
-            pseudo: '',
-            motDePasse: '',
-          };
-
-          if (response.data.success === true){
-
-            Cookies.set("connexion", JSON.stringify(response.data), { expires: 1 });
-
-            // Redirigez l'utilisateur vers la page d'accueil
-            window.location.href = "http://127.0.0.1:5173/accueil";
-          }
-
-          else{
-            Swal.fire({
-              icon: 'error',
-              title: 'Erreur',
-              text: response.data.message
-            });
-            console.error(response.data.message);
-          }
-        })
-        .catch(error => {
-          console.error("Il y a une erreur :", error);
-        });
-    },
+          Cookies.set("connexion", JSON.stringify(response), { expires: 1 });
+          // Redirigez l'utilisateur vers la page d'accueil
+          window.location.href = "http://127.0.0.1:5173/accueil";
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: response.data.message
+          });
+          console.error(response.data.message);
+        }
+      }
   },
 };
