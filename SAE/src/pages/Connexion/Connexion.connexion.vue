@@ -9,15 +9,15 @@
           <h1>CONNEXION</h1>
           <form @submit.prevent="connexionUtilisateur">
           <div>
-            <label for="pseudo" id="labelPseudo">Pseudo:</label>
+            <label for="pseudo" id="labelPseudo" class="labelForm">Pseudo:</label>
             <!-- GARDE CA SINON PAS COIFFETON SHINY : v-model="utilisateur.pseudo" required -->
-            <input type="text" id="pseudo" v-model="utilisateur.pseudo" required />
+            <input type="text" id="pseudo" class="inputForm" v-model="utilisateur.pseudo" required />
           </div>
           <div>
-            <label for="motDePasse" id="labelMPD">Mot de passe:</label>
-            <input type="password" id="motDePasse" v-model="utilisateur.motDePasse" required />
+            <label for="motDePasse" id="labelMPD" class="labelForm">Mot de passe:</label>
+            <input type="password" id="motDePasse" class="inputForm" v-model="utilisateur.motDePasse" required />
           </div>
-          <div id="divBoutonConnexion"><button type="submit" id="boutonConnexion"><span id="spanConnexion">Se connecter</span> </button></div>
+          <div id="divBoutonConnexion" class="divBoutonPrincipal"><button type="submit" id="boutonConnexion" class="boutonPrincipal"><span id="spanConnexion" class="spanBoutonPrincipal">Se connecter</span> </button></div>
         </form>
         </div>
       </div>

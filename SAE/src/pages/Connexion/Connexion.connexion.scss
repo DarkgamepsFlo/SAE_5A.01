@@ -1,56 +1,10 @@
-@font-face {
-    font-family: 'LegoThick';
-    src: url("../../assets/font/Legothick.ttf");
-    }
-  @font-face {
-        font-family: 'Acme';
-        src: url("../../assets/font/Acme-Regular.ttf");
-    }
+
 
     #blockConnexion{
-      margin-left: auto;
-      margin-right: auto;
-      border: 1px solid;
-      width: 700px;
-    }
-
-    label{
-        font-family: 'Acme';
-        font-size: 20px;
-        display: block;
-        margin-left: 70px;
-    }
-    h1{
-        font-family: 'LegoThick';
-        font-size: 64px;
-        text-align: center;
-    }
-    input{
-      width: 70%;
-      margin-left: 90px;
-      background-color: lightgray;
-    }
-
-    #boutonConnexion{
-        margin-top: 50px;
-        width: 40%;
-        height: 50px;
-        background-image: url("../../assets/img/boutonCentral.png");
-        background-size: contain;
-        margin-bottom: 100px;
-        border-color: transparent;
-    }
-
-    #divBoutonConnexion{
-        text-align: center;
-    }
-
-    #spanConnexion{
-        font-family: 'Acme';
-        font-size: 30px;
-        text-shadow:
-        -1px 0px 0px white,
-        1px 0px 0px white,
-        0px -1px 0px white,
-        0px 1px 0px white;
+        margin-left: var(--position-auto);
+        margin-right: var(--position-auto);
+        border: var(--taille-1-px) var(--type-solid);
+        width: var(--taille-700-px);
+        margin-top: var(--taille-100-px);
+        margin-bottom: var(--taille-100-px);
     }

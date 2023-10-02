@@ -29,6 +29,8 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --color-light-gray: lightgray;
+  --color-transparent: transparent;
 }
 
 /* semantic color variables for this project */
@@ -47,20 +49,65 @@
 
 :root{  
   --font--h1 : 'LegoThick';
-  --font--text : 'Acme'
+  --font--text : 'Acme';
+  --font--size-h1: 64px;
+  --font--size-text-button: 30px;
+
+  --font--border-w : -1px 0px 0px white,
+  1px 0px 0px white,
+  0px -1px 0px white,
+  0px 1px 0px white;
+  --background--size-central-button: contain;
 }
 
 :root{
   --img-background-b-central : url("../assets/img/boutonCentral.png");
   --img-background-header : url("../../assets/img/headerImg.png");
+  --img-background-footer : url("../../assets/img/footerImg.png");
 }
 
 :root{
-  --margin-50 : 50px;
-  --margin-100 : 100px;
-  --margin-50-p : 40%;
-  --margin-50-p : 50%;
+  --taille-0-px : 0px;
+  --taille-1-px : 1px;
+  --taille-2-px : 2px;
+  --taille-8-px : 8px;
+  --taille-16-px : 16px;
+  --taille-20-px : 20px;
+  --taille-30-px : 30px;
+  --taille-32-px : 32px;
+  --taille-50-px : 50px;
+  --taille-70-px : 70px;
+  --taille-90-px : 90px;
+  --taille-96-px : 96px;
+  --taille-100-px : 100px;
+  --taille-150-px : 150px;
+  --taille-220-px : 220px;
+  --taille-400-px : 400px;
+  --taille-500-px : 500px;
+  --taille-600-px : 600px;
+  --taille-700-px : 700px;
+  --taille-40-p : 40%;
+  --taille-50-p : 50%;
+  --taille-60-p : 60%;
+  --taille-70-p : 70%;
+  --taille-80-p : 80%;
+  --taille-90-p : 90%;
+  --taille-100-p : 100%;
+}
 
+:root{
+  --position-c: center;
+  --position-r: right;
+  --position-l: left;
+  --position-auto: auto;
+
+  --display-il: inline;
+  --display-b: block;
+  --display-ilb: inline-block;
+
+  --type-solid : solid;
+
+  --img--type-contain: contain;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,30 +148,38 @@ body {
 
 
 .divBoutonPrincipal{
-  text-align: center;
+  text-align: var(--position-c);
 }
 
 .boutonPrincipal{
-  margin-top: 50px;
-  width: 40%;
-  height: 50px;
-  background-image: url("../assets/img/boutonCentral.png");
-  background-size: contain;
-  margin-bottom: 50px;
-  border-color: transparent;
+  margin-top: var(--taille-50-px);
+  width: var(--taille-40-p);
+  height: var(--taille-50-px);
+  background-image: var(--img-background-b-central);
+  background-size: var(--img--type-contain);
+  margin-bottom: var(--taille-50-px);
+  border-color: var(--color-transparent);
 }
 
 .spanBoutonPrincipal{
-  font-family: 'Acme';
-  font-size: 30px;
-  text-shadow:
-  -1px 0px 0px white,
-  1px 0px 0px white,
-  0px -1px 0px white,
-  0px 1px 0px white;
+  font-family: var(--font--text);
+  font-size: var(--taille-30-px);
+  text-shadow:var(--font--border-w)
 }
 
 h1{
   font-family: var(--font--h1);
   
+}
+
+.inputForm{
+  width: var(--taille-70-p);
+  margin-left: var(--taille-90-px);
+  background-color: var(--color-light-gray);
+}
+
+.labelForm{
+  font-size: var(--taille-20-px);
+  display: var(--display-b);
+  margin-left: var(--taille-70-px);
 }

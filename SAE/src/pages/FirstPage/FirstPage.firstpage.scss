@@ -1,33 +1,24 @@
-@font-face {
-    font-family: 'LegoThick';
-    src: url("../../assets/font/Legothick.ttf");
-  }
-  @font-face {
-      font-family: 'Acme';
-      src: url("../../assets/font/Acme-Regular.ttf");
-  }
-
-  #titreAventure{
-      margin-top: 150px;
-      text-align: center;
+#titreAventure{
+      margin-top: var(--taille-150-px);
+      text-align: var(--position-c);
   }
 
   #description{
-      text-align: center;
-      margin-bottom: 100px;
-      font-family: 'Acme';
+      text-align: var(--position-c);
+      margin-bottom: var(--taille-100-px);
+      font-family: var(--font--text);
   }
 
   #boutonInscription{
-      text-align: center;
+      text-align: var(--position-c);
   }
   #titreAventure{
-    font-size: 96px;
+    font-size: var(--taille-96-px);
   }
   #description{
-      font-size: 32px;
+      font-size: var(--taille-32-px);
   }
   
   #imgInscription{
-    width: 400px;
+    width: var(--taille-400-px);
   }
