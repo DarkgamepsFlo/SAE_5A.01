@@ -67,8 +67,8 @@ export default {
             motDePasse: '',
           };
         }
-      }
-    },
+      },
+
     acceptCode() {
         console.log("AAAAAAAAAAAAAAAAAAAAA");
         if (this.utilisateur.codeBase === this.utilisateur.code){
@@ -86,7 +86,8 @@ export default {
           });
         }
       },
-      changerPassword() {
+
+      async changerPassword() {
 
         if (this.utilisateur.motDePasse !== this.confirmationMotDePasse) {
           Swal.fire({
@@ -102,11 +103,9 @@ export default {
           mdp: this.utilisateur.motDePasse,
         }
 
-        axios
-          .post('http://localhost:3000/users/changerpassword', donneeschangerPassword)
-          .then(response => {
+        const response = await DemandeMotDePasseService.changerMotDePasse(donneeschangerPassword);
 
-            if (response.data.success) {
+            if (response.success) {
               window.location.href = "http://127.0.0.1:5173/connexion";
             }
 
@@ -116,9 +115,6 @@ export default {
               this.utilisateur.motDePasse = '';
               this.utilisateur.confirmationMotDePasse = '';
             }
-          })
-          .catch(error => {
-            console.error("Il y a une erreur :", error)
-          });
       }
-    };
+    },
+  };
