@@ -88,7 +88,7 @@ export default {
 
           if (response.data.success === true) {
             this.confirmationMotDePasse = '';
-            Cookies.set("connexion", JSON.stringify(response.data), { expires: 1 });
+            Cookies.set("connexion", JSON.stringify(response.data), { expires: 1/24 });
             // Redirigez l'utilisateur vers la page d'accueil
             window.location.href = "http://127.0.0.1:5173/accueil";
           } else {
