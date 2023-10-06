@@ -8,14 +8,12 @@ export default {
   data() {
     return{
     items: [],
-    inputValue: '',
     
   }},
   methods: {
     search: function(event){
-      this.inputValue = event.target.value;
       const where = {
-        where: event.target.value + "%",
+        where: event.target.value.toLowerCase() + "%",
       }
       console.log("test1");
       axios

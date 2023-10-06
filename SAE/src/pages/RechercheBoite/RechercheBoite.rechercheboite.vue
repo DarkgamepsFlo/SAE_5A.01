@@ -1,8 +1,14 @@
 <template>
-<h1>Voici la recherche de boite avec la liste de boite</h1>
-<ProfilBoite />
-<router-link to="/ajoutBoite">voila la boite</router-link>
+    <div id="search-page">
+        <h1>Rechercher une boite</h1>
+        <input type="text" placeholder="Entrez le nom d'une boite, un numero, ou une licence..." id="search-bar" @input="search">
+        <div id="tab-container">
+            <div><div>Photo de la boite</div><div>Nom de la boite</div><div>Numéro de la boite</div><div>Nombre de pièces</div><div>Année de sortie de la boite</div></div>
+            <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" />
+        </div>
+    </div>
 </template>
+<!--<router-link to="/ajoutBoite">voila la boite</router-link>-->
 
 <style src="./RechercheBoite.rechercheboite.scss"></style>
 <script src="./RechercheBoite.rechercheboite.js"></script>

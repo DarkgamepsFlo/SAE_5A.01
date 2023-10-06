@@ -16,7 +16,7 @@ async function findUsers(collectionName, donnee) {
   try {
     
     // Utilisez une requête imbriquée pour sélectionner tous les utilisateurs
-    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti WHERE pseudo_uti LIKE $2`;
+    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti WHERE LOWER(pseudo_uti) LIKE $2`;
     console.log("test3");
     const users = await db.any(query, [collectionName, donnee.where]);
 
@@ -225,7 +225,7 @@ async function changerpasswordUser(collectionName, donnee) {
   }
 }
 
-async function searchAllUsrs(collectionName, donnee) {
+async function searchAllUsrs(collectionName) {
   try {
     const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti`;
     const users = await db.any(query, [collectionName]);
