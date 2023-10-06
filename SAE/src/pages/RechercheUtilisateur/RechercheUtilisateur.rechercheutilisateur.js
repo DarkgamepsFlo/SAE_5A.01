@@ -5,26 +5,39 @@ export default {
   components: {
     ProfilUtilisateur,
   },
+  data() {
+    return{
+    items: [],
+    inputValue: '',
+    
+  }},
   methods: {
     search: function(event){
+      this.inputValue = event.target.value;
       const where = {
         where: event.target.value + "%",
       }
       console.log("test1");
       axios
         .post('http://localhost:3000/users/findUser', where)
-        .then(response =>{
-          
+        .then(response =>{          
+          this.items = response.data;
           console.log(response);
-
-          if(response.data.success === true){
-            
-            console.log("qfdfjhbgdfkjgbdhkh");
-          }
         })
-        .catch(error => {
+        .catch(error =>{
           console.error("Il y a une erreur :", error);
         });
-  },
-}}
+  },},
+  mounted() {
+    axios
+      .post('http://localhost:3000/users/searchAllUsers')
+      .then(response =>{          
+        this.items = response.data;
+        console.log(this.items);
+      })
+      .catch(error =>{
+        console.error("Il y a une erreur :", error);
+      });
+   }
+}
 

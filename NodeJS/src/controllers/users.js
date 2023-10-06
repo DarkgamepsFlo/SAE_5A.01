@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -226,6 +226,19 @@ async function search(req, res, next) {
   }
 }
 
+// 7 //
+//
+async function searchAllUsers(req, res, next) {
+  try{
+    const result = await searchAllUsrs("utilisateur");
+    console.log(result);
+    console.log("test5");
+    return res.send(result);
+  }catch(e){
+    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+  }
+}
+
 module.exports = {
   findAllUsers,
   inscription,
@@ -233,4 +246,5 @@ module.exports = {
   motdepasse,
   changerpassword,
   search,
+  searchAllUsers,
 };
