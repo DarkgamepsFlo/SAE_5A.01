@@ -1,6 +1,7 @@
-#titreAventure{
-      margin-top: var(--taille-150-px);
-      text-align: var(--position-c);
+@media (min-width: 800px){
+  #titreAventure{
+    margin-top: var(--taille-150-px);
+    text-align: var(--position-c);
   }
 
   #description{
@@ -18,7 +19,33 @@
   #description{
       font-size: var(--taille-32-px);
   }
-  
+
   #imgInscription{
     width: var(--taille-400-px);
   }
+}
+
+@media (max-width: 800px){
+  #titreAventure{
+    margin-top: var(--taille-100-px);
+    text-align: var(--position-c);
+    font-size: var(--taille-35-px);
+  }
+
+  #description{
+      text-align: var(--position-c);
+      margin-bottom: var(--taille-100-px);
+      font-family: var(--font--text);
+  }
+
+  #boutonInscription{
+      text-align: var(--position-c);
+  }
+  #description{
+      font-size: var(--taille-32-px);
+  }
+
+  #imgInscription{
+    width: var(--taille-300-px);
+  }
+}

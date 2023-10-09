@@ -1,6 +1,6 @@
 <template>
     <div id="blockContact">
-        <h1>CONTACT</h1>
+        <h1 class="titreBlock">CONTACT</h1>
         <form @submit.prevent="contact">
         <div id="divSujet">
           <label for="sujet" id="labelSujet" class="labelForm">Sujet:</label>

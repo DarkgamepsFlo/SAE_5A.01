@@ -178,13 +178,4 @@ export default {
     text-align: center;
 }
 
-#spanEnvoie{
-    font-family: 'Acme';
-    font-size: 30px;
-    text-shadow:
-    -1px 0px 0px white,
-    1px 0px 0px white,
-    0px -1px 0px white,
-    0px 1px 0px white;
-}
 </style>

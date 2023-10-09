@@ -6,7 +6,7 @@
           Vous êtes déjà connecté.
         </div>
         <div v-else id="blockConnexion">
-          <h1>CONNEXION</h1>
+          <h1 class="titreBlock">CONNEXION</h1>
           <form @submit.prevent="connexionUtilisateur">
           <div>
             <label for="pseudo" id="labelPseudo" class="labelForm">Pseudo:</label>

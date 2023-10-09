@@ -1,6 +1,6 @@
 <template>
     <div id="blockInscription">
-      <h1>INSCRIPTION</h1>
+      <h1 class="titreBlock">INSCRIPTION</h1>
       <!-- Vérification de la présence du cookie "connexion" et de sa valeur -->
       <div v-if="isAlreadyRegistered">
         Vous êtes déjà connecté.

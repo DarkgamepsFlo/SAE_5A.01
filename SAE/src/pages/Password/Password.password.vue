@@ -1,6 +1,6 @@
 <template>
   <div class="block" id="blockPassword">
-    <h1>MOT DE PASSE OUBLIE</h1>
+    <h1 class="titreBlock">MOT DE PASSE OUBLIE</h1>
     <div v-if="codeCorrect">
       <form @submit.prevent="changerPassword">
         <p>Veuillez définir un nouveau mot de passe</p>

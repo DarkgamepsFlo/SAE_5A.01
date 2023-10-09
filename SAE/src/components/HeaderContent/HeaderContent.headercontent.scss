@@ -1,34 +1,77 @@
-header{
-    background-image: url("../../assets/img/headerImg.png");
-    height: 220px;
-    width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
+@media (min-width: 800px){
+    header{
+        background-image: url("../../assets/img/headerImg.png");
+        height: 220px;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #imgProfil{
+        float: right;
+    }
+    
+    #boutonProfil{
+        background: transparent;
+        border-color: transparent;
+        float: right;
+        margin-top: 50px;
+    }
+    
+    #boutonMenu{
+        background: transparent;
+        border-color: transparent;
+    }
+    #imgBoutonMenu{
+        height: 100px;
+        margin-bottom: 50px;
+    }
+    #imgLogo{
+        height: 220px;
+    }
+    #divImgLogo{
+        display: inline-block;
+        margin-left: 40%;
+    }
 }
 
-#imgProfil{
-    float: right;
+@media (max-width: 400px){
+    header{
+        background-image: url("../../assets/img/headerImg.png");
+        height: 70px;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #imgProfil{
+        float: right;
+        height: var(--taille-70-px);
+    }
+    
+    #boutonProfil{
+        background: transparent;
+        border-color: transparent;
+        float: right;
+        margin-left: 20px;
+        height: var(--taille-20-p);
+    }
+    
+    #boutonMenu{
+        background: transparent;
+        border-color: transparent;
+    }
+    #imgBoutonMenu{
+        height: 60px;
+    }
+    #imgLogo{
+        height: 70px;
+    }
+    #divImgLogo{
+        display: inline-block;
+        margin-left: 20%;
+    }
 }
 
-#boutonProfil{
-    background: transparent;
-    border-color: transparent;
-    float: right;
-    margin-top: 50px;
-}
 
-#boutonMenu{
-    background: transparent;
-    border-color: transparent;
-}
-#imgBoutonMenu{
-    height: 100px;
-    margin-bottom: 50px;
-}
-#imgLogo{
-    height: 220px;
-}
-#divImgLogo{
-    display: inline-block;
-    margin-left: 40%;
-}
+

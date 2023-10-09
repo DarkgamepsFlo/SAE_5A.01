@@ -75,17 +75,23 @@
   --taille-20-px : 20px;
   --taille-30-px : 30px;
   --taille-32-px : 32px;
+  --taille-35-px : 35px;
+  --taille-40-px : 40px;
   --taille-50-px : 50px;
   --taille-70-px : 70px;
   --taille-90-px : 90px;
   --taille-96-px : 96px;
   --taille-100-px : 100px;
   --taille-150-px : 150px;
+  --taille-200-px : 200px;
   --taille-220-px : 220px;
+  --taille-300-px : 300px;
   --taille-400-px : 400px;
   --taille-500-px : 500px;
   --taille-600-px : 600px;
   --taille-700-px : 700px;
+  --taille-20-p : 20%;
+  --taille-30-p : 30%;
   --taille-40-p : 40%;
   --taille-50-p : 50%;
   --taille-60-p : 60%;
@@ -146,40 +152,85 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.divBoutonPrincipal{
+.titreBlock{
   text-align: var(--position-c);
 }
 
-.boutonPrincipal{
-  margin-top: var(--taille-50-px);
-  width: var(--taille-40-p);
-  height: var(--taille-50-px);
-  background-image: var(--img-background-b-central);
-  background-size: var(--img--type-contain);
-  margin-bottom: var(--taille-50-px);
-  border-color: var(--color-transparent);
-}
-
-.spanBoutonPrincipal{
-  font-family: var(--font--text);
-  font-size: var(--taille-30-px);
-  text-shadow:var(--font--border-w)
-}
-
-h1{
-  font-family: var(--font--h1);
+@media (min-width: 800px) {
+  .divBoutonPrincipal{
+    text-align: var(--position-c);
+  }
   
+  .boutonPrincipal{
+    margin-top: var(--taille-50-px);
+    width: var(--taille-40-p);
+    height: var(--taille-50-px);
+    background-image: var(--img-background-b-central);
+    background-size: var(--img--type-contain);
+    margin-bottom: var(--taille-50-px);
+    border-color: var(--color-transparent);
+  }
+  
+  .spanBoutonPrincipal{
+    font-family: var(--font--text);
+    font-size: var(--taille-30-px);
+    text-shadow:var(--font--border-w)
+  }
+  
+  h1{
+    font-family: var(--font--h1);
+    
+  }
+  
+  .inputForm{
+    width: var(--taille-70-p);
+    margin-left: var(--taille-90-px);
+    background-color: var(--color-light-gray);
+  }
+  
+  .labelForm{
+    font-size: var(--taille-20-px);
+    display: var(--display-b);
+    margin-left: var(--taille-70-px);
+  }
 }
 
-.inputForm{
-  width: var(--taille-70-p);
-  margin-left: var(--taille-90-px);
-  background-color: var(--color-light-gray);
-}
-
-.labelForm{
-  font-size: var(--taille-20-px);
-  display: var(--display-b);
-  margin-left: var(--taille-70-px);
+@media (max-width: 400px) {
+  .divBoutonPrincipal{
+    text-align: var(--position-c);
+  }
+  
+  .boutonPrincipal{
+    margin-top: var(--taille-50-px);
+    width: var(--taille-40-p);
+    height: var(--taille-30-px);
+    background-image: var(--img-background-b-central);
+    background-size: var(--img--type-contain);
+    margin-bottom: var(--taille-50-px);
+    border-color: var(--color-transparent);
+  }
+  
+  .spanBoutonPrincipal{
+    font-family: var(--font--text);
+    font-size: var(--taille-20-px);
+    text-shadow:var(--font--border-w)
+  }
+  
+  h1{
+    font-family: var(--font--h1);
+    
+  }
+  
+  .inputForm{
+    width: var(--taille-70-p);  
+    margin-left: var(--taille-40-px);
+    background-color: var(--color-light-gray); 
+  }
+  
+  .labelForm{
+    font-family: var(--font--text);
+    font-size: var(--taille-20-px);
+    display: var(--display-b);
+    margin-left: var(--taille-40-px);
+  }
 }

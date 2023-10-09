@@ -1,8 +1,20 @@
-#blockContact{
-    margin-left: var(--position-auto);
-    margin-right: var(--position-auto);
-    border: var(--taille-1-px) var(--type-solid);
-    width: var(--taille-700-px);
-    margin-top: var(--taille-100-px);
-    margin-bottom: var(--taille-100-px);
+  @media (min-width: 400px){
+    #blockContact{
+      margin-left: var(--position-auto);
+      margin-right: var(--position-auto);
+      border: var(--taille-1-px) var(--type-solid);
+      width: var(--taille-700-px);
+      margin-top: var(--taille-100-px);
+      margin-bottom: var(--taille-100-px);
+    }
+  }
+  @media (max-width: 400px){
+    #blockContact{
+      margin-left: var(--position-auto);
+      margin-right: var(--position-auto);
+      border: var(--taille-1-px) var(--type-solid);
+      width: var(--taille-300-px);
+      margin-top: var(--taille-100-px);
+      margin-bottom: var(--taille-100-px);
+    }
   }
