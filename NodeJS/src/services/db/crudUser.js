@@ -334,6 +334,22 @@ async function changerInfoSansMdpUser(collectionName, donnee) {
   }
 }
 
+// 11 //
+async function profilpublic(collectionName, donnee){
+  try {
+    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro, lien_img_boi, nom_boite, public FROM $1:name AS U 
+                    INNER JOIN collection as C ON U.id_collec = C.id_collec 
+                    INNER JOIN photo_profil AS PP ON U.id_uti = PP.id_uti 
+                    INNER JOIN lien_collection as LC ON C.id_collec = LC.id_collec 
+                    INNER JOIN boite as B ON LC.id_boite = B.id_boite 
+                    INNER JOIN photo_boite as PB ON B.id_boite = PB.id_boite 
+                    WHERE U.id_uti = $2;`;
+    const profilpublic = await db.any(query, [collectionName, donnee.where])
+    return profilpublic;
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction profilpublic : ${e}`);
+  }
+}
 
 module.exports = {
   findUsers,
@@ -343,5 +359,6 @@ module.exports = {
   motdepasseUser,
   changerpasswordUser,
   changerInfoAvecMdpUser,
-  changerInfoSansMdpUser
+  changerInfoSansMdpUser,
+  profilpublic,
 };

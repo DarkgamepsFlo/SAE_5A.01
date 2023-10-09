@@ -22,6 +22,7 @@ router.post("/getinfouser", getInformation);
 router.post("/modifinfoavecmdp", changerInfoAvecMdp);
 // 10 // 
 router.post("/modifinfosansmdp", changerInfoSansMdp);
-
+// 11 //
+router.post("/profilpublic", profilU);
 
 module.exports = router;
