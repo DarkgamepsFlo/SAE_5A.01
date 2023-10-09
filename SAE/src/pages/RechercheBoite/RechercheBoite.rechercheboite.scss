@@ -1,18 +1,10 @@
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
 #tab-container{
-  margin: auto;
-  display: block;
-  background-color: #2196F3;
-  padding: 10px;
-  width: 800px;
+  margin: var(--position-auto);
+  display: var(--display-b);
+  padding: var(--taille-10-px);
+  width: var(--taille-800-px);
 }
 
 #tab-container div{
-  display: inline-block;
+  display: var(--display-ilb);
 }

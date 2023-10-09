@@ -1,40 +1,39 @@
 div{
-  margin: 0px;
-  padding: 0px;
+  margin: var(--taille-0-px);
+  padding: var(--taille-0-px);
 }
 
 .utilisateur img{
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  border-radius: 20px;
+  width: var(--taille-160-px);
+  height: var(--taille-160-px);
+  object-fit: var(--img--type-contain);
+  border-radius: var(--taille-20-px);
 }
 
 .utilisateur{
-  width: 160px;
-  height: 160px;
-  padding : 0px;
-  position: relative;
-  transition: 0.5s;
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-  color: black;
-  border-radius: 20px;
+  width: var(--taille-160-px);
+  height: var(--taille-160-px);
+  padding : var(--taille-0-px);
+  position: var(--position-re);
+  background-color: var(--color-white1);
+  text-align: var(--position-c);
+  padding: var(--taille-20-px) var(--taille-0);
+  font-size: var(--taille-30-px);
+  color: var(--color-black);
+  border-radius: var(--taille-20-px);
 }
 
 .utilisateur:hover{
-  color:#000000;
-  box-shadow: 0 5px 15px #000000;
+  color:var(--color-black);
+  box-shadow: var(--taille-0) var(--taille-5-px) var(--taille-15-px) var(--color-black);
 }
 
 .pseudo{
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: 100%;
-  background: rgba($color: #000000, $alpha: 0.1);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  position: var(--position-a);
+  bottom: var(--taille-0-px);
+  right: var(--taille-0-px);
+  width: var(--taille-100-p);
+  background: rgba($color: var(--color-black), $alpha: var--taille-0-1);
+  border-bottom-left-radius: var(--taille-20-px);
+  border-bottom-right-radius: var(--taille-20-px);
 }

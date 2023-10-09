@@ -7,30 +7,30 @@
             <img src="../../assets/img/inputFile.png" id="imgInputFile">
         </label>
         <div id="divNomBoite">
-            <label for="nom" id="labelNom">Nom de la boite</label>
-            <input type="text" id="nom" nom="nomBoite" v-model="suggestion.nomBoite" required/>
+            <label for="nom" id="labelNom" class="labelForm">Nom de la boite</label>
+            <input type="text" id="nom" nom="nomBoite" class="inputForm" v-model="suggestion.nomBoite" required/>
         </div>
         <div id="divNumBoite">
-            <label for="numBoite" id="labelNumBoite">Numéro de la boite</label>
-            <input type="number" id="numBoite" v-model="suggestion.numBoite" step="1" required/>
+            <label for="numBoite" id="labelNumBoite" class="labelForm">Numéro de la boite</label>
+            <input type="number" id="numBoite" class="inputForm" v-model="suggestion.numBoite" step="1" required/>
         </div>   
         <div id="divUnivers">
-            <label for="univers" id="labelUnivers">Univers</label>
-            <input type="text" id="univers" v-model="suggestion.univers" required/>
+            <label for="univers" id="labelUnivers" class="labelForm">Univers</label>
+            <input type="text" id="univers" class="inputForm" v-model="suggestion.univers" required/>
         </div>  
         <div id="divNbrPiece">
-            <label for="nbrPiece" id="labelNbrPiece">Nombre de pièces</label>
-            <input type="number" id="nbrPiece" v-model="suggestion.NbrPiece" step="1" required />
+            <label for="nbrPiece" id="labelNbrPiece" class="labelForm">Nombre de pièces</label>
+            <input type="number" id="nbrPiece" class="inputForm" v-model="suggestion.NbrPiece" step="1" required />
         </div>  
         <div id="divAnneeSortie">
-            <label for="anneeSortie" id="labelAnneeSortie">Année de sortie</label>
-            <input type="number" id="anneeSortie" v-model="suggestion.anneeSortie" step="1" required />
+            <label for="anneeSortie" id="labelAnneeSortie" class="labelForm">Année de sortie</label>
+            <input type="number" id="anneeSortie" class="inputForm" v-model="suggestion.anneeSortie" step="1" required />
         </div>  
         <div id="divDescriptif">
-            <label for="descriptif" id="labelDescriptif">Descriptif</label>
-            <input type="text" id="descriptif" v-model="suggestion.descriptif" required />
+            <label for="descriptif" id="labelDescriptif" class="labelForm">Descriptif</label>
+            <input type="text" id="descriptif" class="inputForm" v-model="suggestion.descriptif" required />
         </div>  
-        <div id="divBoutonEnvoie"><button type="submit" id="boutonEnvoie"><span id="spanEnvoie">Envoyer</span> </button></div>
+        <div id="divBoutonEnvoie" class="divBoutonPrincipal"><button type="submit" id="boutonEnvoie" class="boutonPrincipal"><span id="spanEnvoie" class="spanBoutonPrincipal">Envoyer</span> </button></div>
       </form>
     </div>    
 </template>

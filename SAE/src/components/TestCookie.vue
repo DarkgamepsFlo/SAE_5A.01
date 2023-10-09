@@ -38,7 +38,7 @@
           Cookies.set(this.cookieName, this.cookieValue, { expires: this.cookieExpires });
           
           // Ajouter le cookie à la liste
-          this.cookieList.push({ name: this.cookieName, value: this.cookieValue, expires: this.getExpirationTime(this.cookieExpires) });
+          this.cookieList.push({ name: "connexion", value: {success: true, token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWNjZXNzIjp0cnVlLCJpZF91dGkiOjU0LCJwc2V1ZG9fdXRpIjoiYXplcnR5IiwiYWRyZXNzZV9tYWlsX3V0aSI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJhZG1pbl91dGkiOmZhbHNlLCJhY3RpdmVfdXRpIjp0cnVlLCJ3aXNobGlzdF9pZCI6NTQsImNvbGxlY3Rpb25faWQiOjU0LCJwdWJsaWNfYyI6ZmFsc2UsInB1YmxpY193IjpmYWxzZSwibGllbl9pbWdfcHJvX3BwIjoiaHR0cHM6Ly9tZWRpYS5pc3RvY2twaG90by5jb20vaWQvMTMwMDg0NTYyMC9mci92ZWN0b3JpZWwvYXBwYXJ0ZW1lbnQtZGljJUMzJUI0bmUtZHV0aWxpc2F0ZXVyLWlzb2wlQzMlQTktc3VyLWxlLWZvbmQtYmxhbmMtc3ltYm9sZS11dGlsaXNhdGV1ci5qcGc_cz02MTJ4NjEyJnc9MCZrPTIwJmM9QlZPZlM3bW12eTJsbmZCUGdoa05fX2s4T01zZzdObHlrcGdqbjBZT0hqMD0iLCJpYXQiOjE2OTY4MzgyMjEsImV4cCI6MTY5Njg0MTgyMX0.U1ffQpJFAQ0L3lk-w7VWbU1yF5bAkEhQmVVI5dq6RBI"}, expires: this.getExpirationTime(this.cookieExpires) });
         } else {
           alert('Veuillez saisir un nom et une valeur pour le cookie.');
         }

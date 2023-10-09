@@ -29,7 +29,9 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --color-white1: rgba(255, 255, 255, 0.8);
   --color-light-gray: lightgray;
+  --color-black: black;
   --color-transparent: transparent;
 }
 
@@ -67,6 +69,8 @@
 }
 
 :root{
+  --taille-0 : 0;
+  --taille-0-1 : 0.1;
   --taille-0-px : 0px;
   --taille-1-px : 1px;
   --taille-2-px : 2px;
@@ -83,6 +87,7 @@
   --taille-96-px : 96px;
   --taille-100-px : 100px;
   --taille-150-px : 150px;
+  --taille-160-px : 160px;
   --taille-200-px : 200px;
   --taille-220-px : 220px;
   --taille-300-px : 300px;
@@ -90,6 +95,7 @@
   --taille-500-px : 500px;
   --taille-600-px : 600px;
   --taille-700-px : 700px;
+  --taille-800-px : 800px;
   --taille-20-p : 20%;
   --taille-30-p : 30%;
   --taille-40-p : 40%;
@@ -105,13 +111,18 @@
   --position-c: center;
   --position-r: right;
   --position-l: left;
+  --position-a: absolute;
+  --position-re: relative;
   --position-auto: auto;
 
   --display-il: inline;
   --display-b: block;
   --display-ilb: inline-block;
+  --display-g: grid;
 
   --type-solid : solid;
+
+  --type-fit-c : fit-content;
 
   --img--type-contain: contain;
 }
