@@ -17,7 +17,8 @@ export default {
       new_mdp: '',
       conf_mdp: '',
       public_c: false,
-      public_w: false
+      public_w: false,
+      lien_img_pro_pp: ""
     };
   },
   created() {
@@ -49,7 +50,10 @@ export default {
         this.wishlist_id = infoUser.info.wishlist_id
         this.public_c = infoUser.info.public_c
         this.public_w = infoUser.info.public_w
-         
+        this.lien_img_pro_pp = infoUser.info.lien_img_pro_pp
+
+        console.log(this.lien_img_pro_pp)
+
       } catch (error) {
         console.error('Erreur lors de la récupération des informations utilisateur :', error);
       }

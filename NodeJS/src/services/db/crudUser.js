@@ -70,16 +70,20 @@ async function inscriptionUser(collectionName, donnee) {
       const queryInsertCollection = `INSERT INTO collection (public) values (false)`;
       await db.any(queryInsertCollection);
 
+      
       const queryInsertUser = `INSERT INTO $1:name (pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti) values ($2, $3, $4, $5, $6)`;
       await db.any(queryInsertUser, [collectionName, donnee.pseudo, donnee.email, donnee.motDePasse, false, true]);
 
       const querySelectIdUser = `SELECT id_uti from $1:name where pseudo_uti like $2 and adresse_mail_uti like $3`;
       const resultSelectIdUser = await db.any(querySelectIdUser, [collectionName, donnee.pseudo, donnee.email]);
 
+      const queryInsertPhoto = `INSERT INTO photo_profil (lien_img_pro, id_uti) values ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', $1)`;
+      await db.any(queryInsertPhoto, [resultSelectIdUser[0].id_uti]);
+
       const queryInsertIdUser = `UPDATE $1:name set id_wishlist = $2, id_collec = $2 WHERE id_uti = $2`;
       await db.any(queryInsertIdUser, [collectionName, resultSelectIdUser[0].id_uti]);
 
-      const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE u.id_uti = $2`;
+      const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE u.id_uti = $2`;
       const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, resultSelectIdUser[0].id_uti]);
 
       console.log(resultSelectInfoUser);
@@ -96,6 +100,7 @@ async function inscriptionUser(collectionName, donnee) {
         collection_id: resultSelectInfoUser[0].id_collec,
         public_c: resultSelectInfoUser[0].public_c,
         public_w: resultSelectInfoUser[0].public_w,
+        lien_img_pro_pp: resultSelectInfoUser[0].lien_img_pro_pp
       };
     }
   } catch (e) {
@@ -114,7 +119,7 @@ async function inscriptionUser(collectionName, donnee) {
 async function connexionUser(collectionName, donnee) {
   try {
     // On va regarder si l'utilisateur est bien existant dans la base de donées
-    const queryInsertUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE pseudo_uti like $2`;
+    const queryInsertUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE pseudo_uti like $2`;
     const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo]);
 
     console.log(resultUser);
@@ -145,6 +150,7 @@ async function connexionUser(collectionName, donnee) {
                 collection_id: resultUser[0].id_collec,
                 public_c: resultUser[0].public_c,
                 public_w: resultUser[0].public_w,
+                lien_img_pro_pp: resultUser[0].lien_img_pro_pp
               });
             } else {
               resolve({
@@ -265,7 +271,7 @@ async function changerInfoAvecMdpUser(collectionName, donnee) {
     const queryUpdateUser = `UPDATE $1:name set pseudo_uti = $2, adresse_mail_uti = $3, mot_de_passe_uti = $4 WHERE id_uti = $5`;
     await db.any(queryUpdateUser, [collectionName, donnee.pseudo_uti, donnee.adresse_mail_uti, donnee.new_mdp, donnee.id_uti]);
 
-    const querySelectInfoUser = `SELECT u.*, c.public, w.public FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE id_uti = $2`;
+    const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE id_uti = $2`;
     const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
 
     console.log(resultSelectInfoUser);
@@ -282,6 +288,7 @@ async function changerInfoAvecMdpUser(collectionName, donnee) {
       collection_id: resultSelectInfoUser[0].id_collec,
       public_c: resultSelectInfoUser[0].public_c,
       public_w: resultSelectInfoUser[0].public_w,
+      lien_img_pro_pp: resultSelectInfoUser[0].lien_img_pro_pp
     };
   } catch (e) {
     console.error(`Il y a une erreur dans la fonction changementinfosansmdpUser : ${e}`);
@@ -302,7 +309,7 @@ async function changerInfoSansMdpUser(collectionName, donnee) {
     const queryUpdateUser = `UPDATE $1:name set pseudo_uti = $2, adresse_mail_uti = $3 WHERE id_uti = $4`;
     await db.any(queryUpdateUser, [collectionName, donnee.pseudo_uti, donnee.adresse_mail_uti, donnee.id_uti]);
 
-    const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE u.id_uti = $2`;
+    const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE u.id_uti = $2`;
     const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
 
     console.log(resultSelectInfoUser);
@@ -319,6 +326,7 @@ async function changerInfoSansMdpUser(collectionName, donnee) {
       collection_id: resultSelectInfoUser[0].id_collec,
       public_c: resultSelectInfoUser[0].public_c,
       public_w: resultSelectInfoUser[0].public_w,
+      lien_img_pro_pp: resultSelectInfoUser[0].lien_img_pro_pp
     };
   } catch (e) {
     console.error(`Il y a une erreur dans la fonction changementinfoavecmdpUser : ${e}`);
