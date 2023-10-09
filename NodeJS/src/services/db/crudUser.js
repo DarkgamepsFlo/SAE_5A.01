@@ -335,22 +335,31 @@ async function changerInfoSansMdpUser(collectionName, donnee) {
 }
 
 // 11 //
-async function profilpublic(collectionName, donnee){
+//Cette méthode permet de sélectionner les données d'un utilisateur à partir de son id
+async function profilUsr(collectionName, donnee) {
   try {
-    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro, lien_img_boi, nom_boite, public FROM $1:name AS U 
-                    INNER JOIN collection as C ON U.id_collec = C.id_collec 
-                    INNER JOIN photo_profil AS PP ON U.id_uti = PP.id_uti 
-                    INNER JOIN lien_collection as LC ON C.id_collec = LC.id_collec 
-                    INNER JOIN boite as B ON LC.id_boite = B.id_boite 
-                    INNER JOIN photo_boite as PB ON B.id_boite = PB.id_boite 
-                    WHERE U.id_uti = $2;`;
-    const profilpublic = await db.any(query, [collectionName, donnee.where])
-    return profilpublic;
+    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro, C.public FROM $1:name AS U INNER JOIN photo_profil AS PP ON U.id_uti = PP.id_uti INNER JOIN collection AS C ON U.id_collec = C.id_collec WHERE U.id_uti = $2;`;
+    const result = await db.any(query, [collectionName, donnee]);
+    return result;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilpublic : ${e}`);
+    console.log(`Il y a une erreur dans la fonction profilUsr : ${e}`);
   }
 }
 
+// 12 //
+//Cette méthode permet de sélectionner les collections lié à un utilisateur à partir de son id
+async function profilCollec(collectionName, donnee){
+  try {
+    const query = `SELECT B.nom_boite, PB.lien_img_boi FROM utilisateur AS U INNER JOIN lien_collection AS LC ON U.id_collec = LC.id_collec
+                                                                        INNER JOIN boite AS B ON LC.id_boite = B.id_boite
+                                                                        INNER JOIN photo_boite AS PB ON B.id_boite = PB.id_boite
+                                                                        WHERE U.id_uti = $2`;
+    const result = await db.any(query, [collectionName, donnee]);
+    return result;
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction profilCollec : ${e}`);
+  }
+}
 module.exports = {
   findUsers,
   searchAllUsrs,
@@ -360,5 +369,6 @@ module.exports = {
   changerpasswordUser,
   changerInfoAvecMdpUser,
   changerInfoSansMdpUser,
-  profilpublic,
+  profilUsr,
+  profilCollec,
 };

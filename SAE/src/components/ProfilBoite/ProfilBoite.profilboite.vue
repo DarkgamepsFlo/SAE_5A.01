@@ -1,5 +1,5 @@
 <template>
-    <div class="boite" @click="redirection">
+    <div class="boite">
         <div class="image"><img :src="boite.lien_img_boi"></div>
         <div class="nom">{{ boite.nom_boite }}</div>
         <div class="numero">{{  boite.numero_boi }}</div>

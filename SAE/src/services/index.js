@@ -31,6 +31,7 @@ import Collection from '../components/Collection/Collection.collection.vue'
 import Profil from '../pages/Profil/Profil.profil.vue'
 import WichList from '../pages/WichList/WichList.wichlist.vue'
 import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
+import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -97,6 +98,12 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)', // Cette route attrape toutes les routes inexistantes
       component: Error
+    },
+    {
+      path: '/user/:id_uti',
+      name: 'user',
+      component: ProfilPublic,
+      props: true
     },
     
 

@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, searchAllUsrs, profilpublic } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -411,14 +411,28 @@ async function searchAllUsers(req, res, next) {
 }
 
 // 13 //
-//Permet de récupérer les données d'un utilisateur pour son profil
-async function profilU(req, res, next){
+//Permet de faire appel à la fonction profilPb lorsqu'on est sur la bonne URL
+async function profilUser(req, res, next){
   try {
     const body = req.body;
-    const result = await profilpublic("utilisateur", body);
+    const where = body.where;
+    const result = await profilUsr('utilisateur', where);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilU : ${e}`)
+    console.log(`Il y a une erreur dans la fonction profilPublic : ${e}`);
+  }
+}
+
+// 14 //
+//Permet de faire appel à la fonction profilCollec lorsqu'on est sur la bonne URL
+async function profilCollection(req, res, next){
+  try {
+    const body = req.body;
+    const where = body.where;
+    const result = await profilCollec('utilisateur', where);
+    return res.send(result);
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction profilCollection : ${e}`);
   }
 }
 
@@ -435,5 +449,6 @@ module.exports = {
   changerInfoAvecMdp,
   search,
   searchAllUsers,
-  profilU,
+  profilUser,
+  profilCollection,
 };
