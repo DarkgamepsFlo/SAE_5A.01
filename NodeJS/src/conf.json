@@ -1,9 +1,9 @@
 {
     "NodeJS" : {
-        "user" : "enzo",
-        "database" : "saecollego",
-        "password": "denji62",
-        "localhost": "172.28.143.31"
+        "user" : "",
+        "database" : "",
+        "password": "",
+        "localhost": ""
     },
     "Salt":{
         "salt": 10
