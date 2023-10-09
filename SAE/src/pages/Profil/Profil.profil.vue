@@ -7,6 +7,7 @@
         <h1>Mon Compte</h1>
       </div>
       <p>Bonjour {{pseudo_uti}}, Welcome to votre compte !</p>
+      <img :src="lien_img_pro_pp">
       <!-- Placer une div prévu pour l'image -->
       <div>
         <h1>GERER MON COMPTE</h1>
