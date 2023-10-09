@@ -1,17 +1,17 @@
 {
     "NodeJS" : {
-        "user" : "flo",
-        "database" : "saecollego",
-        "password": "florian",
-        "localhost": "172.27.243.19"
+        "user" : "",
+        "database" : "",
+        "password": "",
+        "localhost": ""
     },
     "Salt":{
         "salt": 10
     },
     "secretKey" : "AAAAAAAA",
     "Auth":{
-        "user": "f.oges.62@gmail.com",
-        "pass": "josggxgmhwcxqjqb",
-        "host": "Gmail"
+        "user": "",
+        "pass": "",
+        "host": ""
     }
 }
