@@ -3,7 +3,7 @@
         <h1>Rechercher un utilisateur</h1>
         <input type="text" placeholder="Entrez le nom d'un utilisateur..." id="search-bar" @input="search">
         <div id="grid-container">
-            <div class="utilisateur" v-for="n in 7" v-bind:key="n">{{ n }}</div>
+            <ProfilUtilisateur v-for="user in items" :key="user.pseudo_uti" :user="user" />
         </div>
     </div>
 </template>

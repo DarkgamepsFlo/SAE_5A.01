@@ -16,7 +16,7 @@ async function findUsers(collectionName, donnee) {
   try {
     
     // Utilisez une requête imbriquée pour sélectionner tous les utilisateurs
-    const query = `SELECT * FROM $1:name WHERE pseudo_uti LIKE $2`;
+    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti WHERE LOWER(pseudo_uti) LIKE $2`;
     console.log("test3");
     const users = await db.any(query, [collectionName, donnee.where]);
 
@@ -79,15 +79,23 @@ async function inscriptionUser(collectionName, donnee) {
       const queryInsertIdUser = `UPDATE $1:name set id_wishlist = $2, id_collec = $2 WHERE id_uti = $2`;
       await db.any(queryInsertIdUser, [collectionName, resultSelectIdUser[0].id_uti]);
 
-      const querySelectInfoUser = `SELECT * FROM $1:name WHERE id_uti = $2`;
+      const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE u.id_uti = $2`;
       const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, resultSelectIdUser[0].id_uti]);
+
+      console.log(resultSelectInfoUser);
 
       // On renvoie l'ensemble des informations qui vont être utiles
       return {
         success: true,
         id_uti: resultSelectInfoUser[0].id_uti,
         pseudo_uti: resultSelectInfoUser[0].pseudo_uti,
-        admin_uti: resultSelectInfoUser[0].admin_uti
+        adresse_mail_uti: resultSelectInfoUser[0].adresse_mail_uti,
+        admin_uti: resultSelectInfoUser[0].admin_uti,
+        active_uti: resultSelectInfoUser[0].active_uti,
+        wishlist_id: resultSelectInfoUser[0].id_wishlist,
+        collection_id: resultSelectInfoUser[0].id_collec,
+        public_c: resultSelectInfoUser[0].public_c,
+        public_w: resultSelectInfoUser[0].public_w,
       };
     }
   } catch (e) {
@@ -106,8 +114,10 @@ async function inscriptionUser(collectionName, donnee) {
 async function connexionUser(collectionName, donnee) {
   try {
     // On va regarder si l'utilisateur est bien existant dans la base de donées
-    const queryInsertUser = `SELECT * from $1:name where pseudo_uti like $2`;
+    const queryInsertUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE pseudo_uti like $2`;
     const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo]);
+
+    console.log(resultUser);
 
     // On va ensuite décrypter le mot de passe puis on va vérifier si les deux mots de passe correspond
     // Si il n'y a pas d'utilisateur ayant le même pseudo, on va renvoyer une erreur à l'utilisateur
@@ -128,7 +138,13 @@ async function connexionUser(collectionName, donnee) {
                 success: true,
                 id_uti: resultUser[0].id_uti,
                 pseudo_uti: resultUser[0].pseudo_uti,
-                admin_uti: resultUser[0].admin_uti
+                adresse_mail_uti: resultUser[0].adresse_mail_uti,
+                admin_uti: resultUser[0].admin_uti,
+                active_uti: resultUser[0].active_uti,
+                wishlist_id: resultUser[0].id_wishlist,
+                collection_id: resultUser[0].id_collec,
+                public_c: resultUser[0].public_c,
+                public_w: resultUser[0].public_w,
               });
             } else {
               resolve({
@@ -224,10 +240,100 @@ async function changerpasswordUser(collectionName, donnee) {
     throw e;
   }
 }
+
+async function searchAllUsrs(collectionName) {
+  try {
+    const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti`;
+    const users = await db.any(query, [collectionName]);
+    return users;
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction findUsers : ${e}`);
+    throw e;
+  }
+}
+
+// 9 //
+async function changerInfoAvecMdpUser(collectionName, donnee) {
+  try {
+
+    const queryUpdateWish = `UPDATE $1:name set public = $2 WHERE id_wishlist = $3`;
+    await db.any(queryUpdateWish, ['wishlist', donnee.public_w, donnee.id_uti]);
+
+    const queryUpdateCollec = `UPDATE $1:name set public = $2 WHERE id_collec = $3`;
+    await db.any(queryUpdateCollec, ['collection', donnee.public_c, donnee.id_uti]);
+
+    const queryUpdateUser = `UPDATE $1:name set pseudo_uti = $2, adresse_mail_uti = $3, mot_de_passe_uti = $4 WHERE id_uti = $5`;
+    await db.any(queryUpdateUser, [collectionName, donnee.pseudo_uti, donnee.adresse_mail_uti, donnee.new_mdp, donnee.id_uti]);
+
+    const querySelectInfoUser = `SELECT u.*, c.public, w.public FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE id_uti = $2`;
+    const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
+
+    console.log(resultSelectInfoUser);
+
+    // On renvoie l'ensemble des informations qui vont être utiles
+    return {
+      success: true,
+      id_uti: resultSelectInfoUser[0].id_uti,
+      pseudo_uti: resultSelectInfoUser[0].pseudo_uti,
+      adresse_mail_uti: resultSelectInfoUser[0].adresse_mail_uti,
+      admin_uti: resultSelectInfoUser[0].admin_uti,
+      active_uti: resultSelectInfoUser[0].active_uti,
+      wishlist_id: resultSelectInfoUser[0].id_wishlist,
+      collection_id: resultSelectInfoUser[0].id_collec,
+      public_c: resultSelectInfoUser[0].public_c,
+      public_w: resultSelectInfoUser[0].public_w,
+    };
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction changementinfosansmdpUser : ${e}`);
+    throw e;
+  }
+}
+
+// 10 //
+async function changerInfoSansMdpUser(collectionName, donnee) {
+  try {
+
+    const queryUpdateWish = `UPDATE $1:name set public = $2 WHERE id_wishlist = $3`;
+    await db.any(queryUpdateWish, ['wishlist', donnee.public_w, donnee.id_uti]);
+
+    const queryUpdateCollec = `UPDATE $1:name set public = $2 WHERE id_collec = $3`;
+    await db.any(queryUpdateCollec, ['collection', donnee.public_c, donnee.id_uti]);
+
+    const queryUpdateUser = `UPDATE $1:name set pseudo_uti = $2, adresse_mail_uti = $3 WHERE id_uti = $4`;
+    await db.any(queryUpdateUser, [collectionName, donnee.pseudo_uti, donnee.adresse_mail_uti, donnee.id_uti]);
+
+    const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec WHERE u.id_uti = $2`;
+    const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
+
+    console.log(resultSelectInfoUser);
+
+    // On renvoie l'ensemble des informations qui vont être utiles
+    return {
+      success: true,
+      id_uti: resultSelectInfoUser[0].id_uti,
+      pseudo_uti: resultSelectInfoUser[0].pseudo_uti,
+      adresse_mail_uti: resultSelectInfoUser[0].adresse_mail_uti,
+      admin_uti: resultSelectInfoUser[0].admin_uti,
+      active_uti: resultSelectInfoUser[0].active_uti,
+      wishlist_id: resultSelectInfoUser[0].id_wishlist,
+      collection_id: resultSelectInfoUser[0].id_collec,
+      public_c: resultSelectInfoUser[0].public_c,
+      public_w: resultSelectInfoUser[0].public_w,
+    };
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction changementinfoavecmdpUser : ${e}`);
+    throw e;
+  }
+}
+
+
 module.exports = {
   findUsers,
+  searchAllUsrs,
   inscriptionUser,
   connexionUser,
   motdepasseUser,
-  changerpasswordUser
+  changerpasswordUser,
+  changerInfoAvecMdpUser,
+  changerInfoSansMdpUser
 };

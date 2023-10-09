@@ -1,5 +1,12 @@
 <template>
-<h1>Je suis UN Boite</h1>
+    <div class="boite" @click="redirection">
+        <div class="image"><img :src="boite.lien_img_boi"></div>
+        <div class="nom">{{ boite.nom_boite }}</div>
+        <div class="numero">{{  boite.numero_boi }}</div>
+        <div class="univers">{{ boite.univers }}</div>
+        <div class="nombrePieces">{{ boite.nbr_pieceboi }}</div>
+        <div class="dateDeSortie">{{ boite.annee_sortie_boi }}</div>
+    </div>
 </template>
 
 <style src="./ProfilBoite.profilboite.scss"></style>

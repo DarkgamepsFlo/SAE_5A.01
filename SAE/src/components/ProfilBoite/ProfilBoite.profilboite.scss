@@ -1,6 +1,33 @@
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.boite{
+  display: block;
+  background-color: aquamarine;
+  border: solid 1px black;
+  height: 160px;
+  width: 100%;
   position: relative;
-  top: -10px;
+}
+
+.boite div{
+  display: inline-block;
+  border: solid 1px black;
+  color: black;
+  position: relative;
+  top: 0px;
+}
+
+.boite img{
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  background-color: white;
+}
+
+.nom{
+  width: 320px;
+  height: 160px;
 }
