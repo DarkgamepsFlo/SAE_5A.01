@@ -32,6 +32,7 @@ import Profil from '../pages/Profil/Profil.profil.vue'
 import WichList from '../pages/WichList/WichList.wichlist.vue'
 import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
 import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
+import Boite from '../pages/Boite/Boite.boite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -103,6 +104,12 @@ const router = createRouter({
       path: '/user/:id_uti',
       name: 'user',
       component: ProfilPublic,
+      props: true
+    },
+    {
+      path: '/boite/:id_boite',
+      name: 'boite',
+      component: Boite,
       props: true
     },
     

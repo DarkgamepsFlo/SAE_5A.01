@@ -6,7 +6,7 @@ export default {
     return{
       user: [],
       collection: [],
-      ifPublic: false, // Initialisez ifPublic à false
+      ifPublic: false,
     }
   },
   methods: {},

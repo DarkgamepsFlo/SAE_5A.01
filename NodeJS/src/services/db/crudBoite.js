@@ -28,6 +28,11 @@ async function findBoite(collectionName, donnee) {
   }
 }
 
+/**
+ * Cette fonction va permettre de récupérer toutes les boites
+ * @param {*} collectionName Nom de la collection
+ * @returns Du code HTML qui va être reconnu par pug
+ */
 async function searchAllBts(collectionName) {
   try {
     const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite`;
@@ -38,7 +43,17 @@ async function searchAllBts(collectionName) {
     throw e;
   }
 }
+async function ficheBt(collectionName, donnee){
+  try {
+    const query = `SELECT B.id_boite, nom_boite, numero_boi, univers, descriptif_boi, annee_sortie_boi, nbr_pieceboi, P.lien_img_boi FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE B.id_boite = $2`;
+    const boite = await db.any(query, [collectionName, donnee.where]);
+    return boite;
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction ficheBt : ${e}`);
+  }
+}
 module.exports = {
   findBoite,
   searchAllBts,
+  ficheBt,
 };
