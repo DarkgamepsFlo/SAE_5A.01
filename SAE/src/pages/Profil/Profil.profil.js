@@ -1,10 +1,15 @@
 import RecupererInformationUser from '../../services/RecupererInformationUser';
 import ChangerInformationService from '../../services/ChangerInformationService';
+import SuggestionBoite from '../../components/SuggestionBoite/SuggestionBoite.suggestionboite.vue';
+import SuggestionService from '../../services/SuggestionService';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 
 
 export default {
+  components: {
+    SuggestionBoite,
+  },
   data() {
     return {
       active_uti: null,
@@ -16,14 +21,16 @@ export default {
       wishlist_id: null,
       new_mdp: '',
       conf_mdp: '',
-      public_c: false,
-      public_w: false,
-      lien_img_pro_pp: ""
+      public_c: null,
+      public_w: null,
+      lien_img_pro_pp: "",
+      suggestions: [],
     };
   },
   created() {
     if(this.isAlreadyRegistered)
       this.getInformation();
+      this.searchSuggestion();
   },
   computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
@@ -52,10 +59,19 @@ export default {
         this.public_w = infoUser.info.public_w
         this.lien_img_pro_pp = infoUser.info.lien_img_pro_pp
 
-        console.log(this.lien_img_pro_pp)
-
       } catch (error) {
         console.error('Erreur lors de la récupération des informations utilisateur :', error);
+      }
+    },
+
+    async searchSuggestion(){
+      try{
+        const result = await SuggestionService.getSuggestion();
+        if(result.success){
+          this.suggestions = result.suggest.suggest;
+        }
+      } catch (error) {
+        console.error("Erreur lors de la récupération des suggestions", error)
       }
     },
 

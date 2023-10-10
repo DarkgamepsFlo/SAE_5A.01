@@ -58,6 +58,9 @@
       </form>
       <div v-if="admin_uti">
         <h1>VOUS ETES ADMIN</h1>
+        <div id="tab-container">
+          <SuggestionBoite v-for="suggestion in suggestions" :key="suggestion.nom_boite_sugg" :suggestion="suggestion" />
+        </div>
       </div>
     </div>
 </template>

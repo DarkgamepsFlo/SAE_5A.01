@@ -36,6 +36,7 @@ import Boite from '../pages/Boite/Boite.boite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
+import TestUploadFile from '../components/TestUploadFile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -123,6 +124,10 @@ const router = createRouter({
       path: '/bddTest',
       component: TestBDD
     },
+    {
+      path: '/fileTest',
+      component: TestUploadFile
+    }
   ]
 })
 

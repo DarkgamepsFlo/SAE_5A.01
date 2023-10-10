@@ -3,8 +3,11 @@
       <h1>AJOUTER UNE BOITE</h1>
       <form @submit.prevent="submitSuggestion">
         <label id="labelInputFile">
-            <input type="file" id="imageBoiteProposition" name="imageBoiteProposition" accept="image/png, image/jpeg" />
-            <img src="../../assets/img/inputFile.png" id="imgInputFile">
+            <input type="file" style="display: none" ref="fileInput" id="imageBoiteProposition" name="imageBoiteProposition" accept="image/png, image/jpeg" @change="onFilePicked"/>
+            <img v-if="!image" src="../../assets/img/inputFile.png" id="imgInputFile">
+            <img v-else :src="image" alt="Image sélectionnée" />
+            <h2 v-if="imageSizeError">{{ imageSizeError }}</h2>
+            <button class="btn btn-info" @click="onPickFile">Upload profile picture</button>
         </label>
         <div id="divNomBoite">
             <label for="nom" id="labelNom" class="labelForm">Nom de la boite</label>

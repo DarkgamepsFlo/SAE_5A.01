@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS public.suggestion
     nbr_piece_sugg integer,
     description_sugg character varying COLLATE pg_catalog."default",
     annee_sortie_sugg integer,
+    type_sugg character varying,
     id_uti integer,
     CONSTRAINT suggestion_pkey PRIMARY KEY (id_suggestion),
     CONSTRAINT suggestion_id_uti_fkey FOREIGN KEY (id_uti)

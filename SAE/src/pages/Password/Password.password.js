@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import DemandeMotDePasseService from '../../services/DemandeMotDePasseService';

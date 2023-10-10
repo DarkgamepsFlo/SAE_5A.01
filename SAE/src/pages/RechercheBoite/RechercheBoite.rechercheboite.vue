@@ -7,8 +7,8 @@
             <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" />
         </div>
     </div>
+    <router-link v-if="isAlreadyRegistered" to="/ajoutBoite">Boite pas présente ? Ajoute là !</router-link>
 </template>
-<!--<router-link to="/ajoutBoite">voila la boite</router-link>-->
 
 <style src="./RechercheBoite.rechercheboite.scss"></style>
 <script src="./RechercheBoite.rechercheboite.js"></script>
