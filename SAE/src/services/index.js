@@ -33,6 +33,7 @@ import WichList from '../pages/WichList/WichList.wichlist.vue'
 import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
 import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
 import Boite from '../pages/Boite/Boite.boite.vue'
+import MaCollection from '../pages/MaCollection/MaCollection.macollection.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -112,6 +113,10 @@ const router = createRouter({
       name: 'boite',
       component: Boite,
       props: true
+    },
+    {
+      path: '/macollection',
+      component: MaCollection
     },
     
 

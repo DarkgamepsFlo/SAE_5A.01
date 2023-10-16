@@ -360,6 +360,21 @@ async function profilCollec(collectionName, donnee){
     console.log(`Il y a une erreur dans la fonction profilCollec : ${e}`);
   }
 }
+
+// 13 //
+//Cette méthode permet de retourner les boites et leurs données de la collection d'un utilisateur à partir de l'id de sa collection
+async function getCollection(donnee){
+  try {
+    const query = `SELECT B.id_boite, B.nom_boite, B.numero_boi, univers, B.nbr_pieceboi, B.annee_sortie_boi, PB.lien_img_boi FROM lien_collection AS LC 
+                                                                                                                              INNER JOIN boite as B ON LC.id_boite = B.id_boite 
+                                                                                                                              INNER JOIN photo_boite AS PB ON B.id_boite = PB.id_boite
+                                                                                                                              WHERE LC.id_collec = $1`;
+    const result = await db.any(query, [donnee]);
+    return result;
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction getCollection : ${e}`);
+  }
+}
 module.exports = {
   findUsers,
   searchAllUsrs,
@@ -371,4 +386,5 @@ module.exports = {
   changerInfoSansMdpUser,
   profilUsr,
   profilCollec,
+  getCollection,
 };

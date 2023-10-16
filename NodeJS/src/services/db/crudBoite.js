@@ -74,9 +74,28 @@ async function getNouveaute(collectionName){
     console.log(`Il y a une erreur dans la fonction getNouveaute : ${e}`);
   }
 }
+
+/**
+ * Cette fonction va permettre de supprimer une liste de boites
+ * @param {*} collectionName Nom de la collection
+ * @param {*} boites Liste de boites à supprimer
+ * @returns
+ */
+async function deleteBts(collectionName, boites, id_collec){
+  try {
+    for (const element of boites) {
+      const query = 'DELETE FROM $1:name WHERE id_collec = $2 AND id_boite = $3';
+      const result = await db.any(query, [collectionName, id_collec, element]);
+      return result;
+    }
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction deleteBoite : ${e}`);
+  }
+}
 module.exports = {
   findBoite,
   searchAllBts,
   ficheBt,
   getNouveaute,
+  deleteBts,
 };

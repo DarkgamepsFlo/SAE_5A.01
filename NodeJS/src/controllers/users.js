@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -436,6 +436,19 @@ async function profilCollection(req, res, next){
   }
 }
 
+// 15 //
+//Permet de faire appel à la fonction getCollection lorsqu'on est sur la bonne URL
+async function collection(req, res, next){
+  try {
+    const body = req.body;
+    const where = body.where;
+    const result = await getCollection(where);
+    return res.send(result);
+  } catch (e) {
+    console.log(`Il y a une erreur dans la fonction collection : ${e}`);
+  }
+}
+
 module.exports = {
   findAllUsers,
   inscription,
@@ -451,4 +464,5 @@ module.exports = {
   searchAllUsers,
   profilUser,
   profilCollection,
+  collection,
 };
