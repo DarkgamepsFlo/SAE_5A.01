@@ -1,13 +1,13 @@
 <template>
-    <div class="boite">
-      <img :src="suggestion.lien_img_sugg">
-      <div>
-        <p>{{ suggestion.type_sugg }} :</p>
-        <p>{{ suggestion.nom_boite_sugg }}</p>
-        <p>{{ suggestion.numero_boite_sugg }}</p>
-        <p>{{ suggestion.univers_sugg }}</p>
-        <p>{{ suggestion.nbr_piece_sugg }}</p>
-        <p>{{ suggestion.annee_sortie_sugg }}</p>
+    <div class="boite" id="boiteDivSugg">
+      <div id="divImgSugg"><img id="idImgSugg" :src="suggestion.lien_img_sugg"></div>
+      <div id="divSugg">
+        <div id="typeSuggP"><p>{{ suggestion.type_sugg }} :</p></div>
+        <div id="nomBoiteSugg"><p>{{ suggestion.nom_boite_sugg }}</p></div>
+        <div id="numeroBoiteSugg"><p>{{ suggestion.numero_boite_sugg }}</p></div>
+        <div id="universSugg"><p>{{ suggestion.univers_sugg }}</p></div>
+        <div id="nbrPieceSugg"><p>{{ suggestion.nbr_piece_sugg }}</p></div>
+        <div id="anneSortieSugg"><p>{{ suggestion.annee_sortie_sugg }}</p></div>
       </div>
       <div class="actions">
         <button @click="ajouterDansBDD">Ajouter</button>
