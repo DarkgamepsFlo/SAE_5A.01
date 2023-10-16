@@ -1,12 +1,19 @@
 export default {
     props: {
-        boite: Object, //Objet user qui contient les données de la boite
+        boite: Object, //Objet qui contient les données de la boite
         search: Boolean, //Si true = Utilisé dans RechercheBoite, false ailleurs
-        inCollec: Boolean //Si true = dans la collection de l'utilisateur, false non
+        inCollec: Boolean, //Si true = dans la collection de l'utilisateur, false non
+        collection_uti: Object //Objet qui contient la collection de l'utilisateur
     },
     data(){
         return{
             value: 0,
+        }
+    },
+    computed: {
+        isBoiteInCollection() {
+            //Vérifie si la boite est aussi présente dans la collection de l'utilisateur
+            return this.collection_uti.some(boite => boite.id_boite === this.boite.id_boite);
         }
     },
     methods: {
