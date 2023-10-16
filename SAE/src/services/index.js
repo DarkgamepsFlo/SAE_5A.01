@@ -84,7 +84,7 @@ const router = createRouter({
     },
     {
       path: '/collection',
-      component: Collection
+      component: MaCollection
     },
     {
       path: '/wichlist',
@@ -113,10 +113,6 @@ const router = createRouter({
       name: 'boite',
       component: Boite,
       props: true
-    },
-    {
-      path: '/macollection',
-      component: MaCollection
     },
     
 
