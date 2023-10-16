@@ -7,7 +7,6 @@
             <div class="univers" id="universProfilBoite"><p>{{ boite.univers }}</p></div>
             <div class="nombrePieces" id="nombrePiecesProfilBoite"><p>{{ boite.nbr_pieceboi }}</p></div>
             <div class="dateDeSortie" id="dateDeSortieProfilBoite"><p>{{ boite.annee_sortie_boi }}</p></div>
-            <div>{{ boite.id_boite }}</div>
         </div>
     </router-link>
 </template>
