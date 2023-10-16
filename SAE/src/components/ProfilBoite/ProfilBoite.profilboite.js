@@ -10,14 +10,11 @@ export default {
     },
     methods: {
         action(event){
-            const checkbox = event.target;
-            const boiteId = checkbox.getAttribute("data-id");
+            event.preventDefault();
+            const button = event.target;
+            const boiteId = button.getAttribute("data-id");
             if(this.search){//Méthode d'action quand le composant est appelé dans RechercheBoite
-                if (checkbox.checked) {
-                    console.log("yes");
-                } else {
-                    console.log("no");
-                }
+                
             } else{//Méthode d'action quand le composant est appelé ailleurs
                 this.$emit('deleteBoite', boiteId);
             }

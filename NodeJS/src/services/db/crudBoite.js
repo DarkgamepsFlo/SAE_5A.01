@@ -81,13 +81,11 @@ async function getNouveaute(collectionName){
  * @param {*} boites Liste de boites à supprimer
  * @returns
  */
-async function deleteBts(collectionName, boites, id_collec){
+async function deleteBts(collectionName, boite, id_collec){
   try {
-    for (const element of boites) {
-      const query = 'DELETE FROM $1:name WHERE id_collec = $2 AND id_boite = $3';
-      const result = await db.any(query, [collectionName, id_collec, element]);
-      return result;
-    }
+    const query = 'DELETE FROM $1:name WHERE id_collec = $2 AND id_boite = $3';
+    const result = await db.any(query, [collectionName, id_collec, boite]);
+    return result;
   } catch (e) {
     console.log(`Il y a une erreur dans la fonction deleteBoite : ${e}`);
   }
