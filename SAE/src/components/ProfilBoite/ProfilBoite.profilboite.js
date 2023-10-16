@@ -1,7 +1,8 @@
 export default {
     props: {
         boite: Object, //Objet user qui contient les données de la boite
-        search: Boolean //Si true = Utilisé dans RechercheBoite, else ailleurs
+        search: Boolean, //Si true = Utilisé dans RechercheBoite, false ailleurs
+        inCollec: Boolean //Si true = dans la collection de l'utilisateur, false non
     },
     data(){
         return{
