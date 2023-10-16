@@ -1,13 +1,7 @@
 <template>
     <div id="collec">
         <h1>Ma collection</h1>
-        <div id="gestion">
-            <div id="control-line">
-                <div>+ Ajouter une boite</div>
-                <div @click="test">Supprimer une boite x</div>
-            </div>
-        </div>
-        <Collection :collection="collection" ref="childComponent"></Collection>
+        <Collection v-if="collection_id !== -1" :collection_id="collection_id"></Collection>
     </div>
 </template>
 

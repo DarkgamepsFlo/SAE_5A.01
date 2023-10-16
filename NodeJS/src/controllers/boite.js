@@ -60,7 +60,7 @@ async function nouveaute(req, res, next){
 //Permet de récupérer la fonction deleteBts lorsqu'on est sur la bonne URL
 async function deleteBoites(req, res, next){
   try {
-    const boites = req.body.boites;
+    const boites = req.body.boite;
     const id_collec = req.body.id_collec
     const result = await deleteBts('lien_collection', boites, id_collec);
     return res.send(result);
