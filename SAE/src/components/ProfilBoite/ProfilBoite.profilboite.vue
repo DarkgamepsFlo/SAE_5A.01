@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{ name: 'boite', params: { id_boite: boite.id_boite } }">
-        <div class="boite">
+        <div class="boite" id="boiteProfilDiv">
             <div class="image" id="imageProfilBoite"><img :src="boite.lien_img_boi"></div>
             <div class="nom" id="nomProfilBoite"><p>{{ boite.nom_boite }}</p></div>
             <div class="numero" id="numeroProfilBoite"><p>{{  boite.numero_boi }}</p></div>
