@@ -10,13 +10,10 @@ const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts } = require(".
 async function search(req, res, next) {
   try{
     const body = req.body;
-    console.log("test2");
     const result = await findBoite("boite", body);
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction search : ${e}`)
+    console.error(`Il y a une erreur dans la fonction search : ${e}`)
   }
 }
 
@@ -25,11 +22,9 @@ async function search(req, res, next) {
 async function searchAllBoites(req, res, next) {
   try{
     const result = await searchAllBts("boite");
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction searchAllBoites : ${e}`)
+    console.error(`Il y a une erreur dans la fonction searchAllBoites : ${e}`)
   }
 }
 
@@ -41,7 +36,7 @@ async function ficheBoite(req, res, next){
     const result = await ficheBt('boite', where);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction ficheBoite : ${e}`);
+    console.error(`Il y a une erreur dans la fonction ficheBoite : ${e}`);
   }
 }
 
@@ -52,7 +47,7 @@ async function nouveaute(req, res, next){
     const result = await getNouveaute('boite');
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans a fonction nouveaute : ${e}`);
+    console.error(`Il y a une erreur dans a fonction nouveaute : ${e}`);
   }
 }
 
@@ -65,7 +60,7 @@ async function deleteBoites(req, res, next){
     const result = await deleteBts('lien_collection', boites, id_collec);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction deleteBoites : ${e}`);
+    console.error(`Il y a une erreur dans la fonction deleteBoites : ${e}`);
   }
 }
 

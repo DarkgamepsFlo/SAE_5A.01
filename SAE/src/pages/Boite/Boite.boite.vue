@@ -9,8 +9,10 @@
             <p>{{ item.annee_sortie_boi }}</p>
             <p>{{ item.nbr_pieceboi }}</p>
             <p>{{ item.descriptif_boi }}</p>
+            <router-link v-if="isAlreadyRegistered" :to="{ name: 'modifboite', params: { id_boite: item.id_boite } }">Cette boite n'est pas à jour ? Modifie là !</router-link>
         </div>
     </div>
+    
 </template>
 
 <style src="./Boite.boite.scss"></style>

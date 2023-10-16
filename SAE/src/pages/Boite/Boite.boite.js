@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from 'js-cookie';
 
 export default {
     props: ['id_boite'],
@@ -21,5 +22,16 @@ export default {
         .catch(error =>{
           console.error("Il y a une erreur :", error);
         });
-    }
+    },
+    computed: {
+      // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
+      isAlreadyRegistered() {
+        // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+        const cookieValue = Cookies.get('connexion');
+        if (cookieValue) {
+          return true
+        }
+        return false
+      }
+    },
 }

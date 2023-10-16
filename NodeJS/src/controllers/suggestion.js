@@ -14,10 +14,19 @@ async function ajoutBoite(req, res, next){
             descriptif: body.descriptif,
             anneeSortie: body.anneeSortie,
             imgBoite: body.imgBoite,
-            id_uti: body.id_uti
+            id_uti: body.id_uti,
+            num_boite_base: body.num_boite_base
         }
-        const result = await insertSuggestion(donnee);
-        console.log("RESULT : ", result);
+        
+        if (!!body.id_boite){
+          const type = "modif";
+          const id_boite = body.num_boite_base;
+          result = await insertSuggestion(donnee, type, id_boite);
+        }
+
+        else {
+          result = await insertSuggestion(donnee);
+        }
 
         if (result.success) {
           return res.send({
@@ -30,7 +39,7 @@ async function ajoutBoite(req, res, next){
           });
         }
     } catch (e) {
-        console.log(`Il y a une erreur dans la fonction ajoutBoite : ${e}`);
+        console.error(`Il y a une erreur dans la fonction ajoutBoite : ${e}`);
         throw e;
     }
 }
@@ -41,7 +50,6 @@ async function findSuggestion(req, res, next){
   try {
       
       const result = await findSuggestions();
-      console.log("RESULT : ", result);
 
       if (result.success) {
         return res.send({
@@ -54,7 +62,7 @@ async function findSuggestion(req, res, next){
         });
       }
   } catch (e) {
-      console.log(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
+      console.error(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
       throw e;
   }
 }
@@ -63,8 +71,9 @@ async function findSuggestion(req, res, next){
 async function addSuggestion(req, res, next){
   try {
       const body = req.body
+
       const result = await addSuggestions(body);
-      console.log("RESULT : ", result);
+      console.errpr("RESULT : ", result);
 
       if (result.success) {
         return res.send({
@@ -76,7 +85,7 @@ async function addSuggestion(req, res, next){
         });
       }
   } catch (e) {
-      console.log(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
+      console.error(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
       throw e;
   }
 }
@@ -87,7 +96,7 @@ async function removeSuggestion(req, res, next){
   try {
       const body = req.body
       const result = await removeSuggestions(body);
-      console.log("RESULT : ", result);
+      console.error("RESULT : ", result);
 
       if (result.success) {
         return res.send({
@@ -99,29 +108,7 @@ async function removeSuggestion(req, res, next){
         });
       }
   } catch (e) {
-      console.log(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
-      throw e;
-  }
-}
-
-// 5 // Permet d'ajouter une suggestion dans la vraie table de boite mais concernant une boite déjà existante
-async function updateSuggestion(req, res, next){
-  try {
-      const body = req.body
-      const result = await updateSuggestions(body);
-      console.log("RESULT : ", result);
-
-      if (result.success) {
-        return res.send({
-          success: true
-        });
-      } else {
-        return res.send({
-          success: false
-        });
-      }
-  } catch (e) {
-      console.log(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
+      console.error(`Il y a une erreur dans la fonction findSuggestion : ${e}`);
       throw e;
   }
 }
@@ -131,5 +118,4 @@ module.exports = {
     findSuggestion,  
     addSuggestion,
     removeSuggestion,
-    updateSuggestion,
   };

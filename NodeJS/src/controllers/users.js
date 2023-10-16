@@ -8,11 +8,10 @@ const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswo
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
 async function findAllUsers(req, res, next) {
   try{
-    console.log("Je suis dans findAllUser")
     const result = await findUsers("utilisateur");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -37,7 +36,6 @@ async function inscription(req, res, next) {
         message: error.details[0].message
       });
     } else {
-      console.log('Données valides :', value);
       const saltRounds = conf.Salt.salt;
       const salt = await bcrypt.genSalt(saltRounds);
 
@@ -50,7 +48,6 @@ async function inscription(req, res, next) {
       };
 
       const result = await inscriptionUser('utilisateur', donnee);
-      console.log("RESULT : ", result);
 
       if (result?.success) {
         const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
@@ -68,7 +65,7 @@ async function inscription(req, res, next) {
       }
     }
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction inscription : ${e}`);
+    console.error(`Il y a une erreur dans la fonction inscription : ${e}`);
     return res.send({
       success: false,
       message: "Une erreur s'est produite lors de l'inscription."
@@ -97,15 +94,10 @@ async function connexion (req, res, next) {
       });
     }
     else {
-      console.log('Données valides :', value);
-
       const result = await connexionUser('utilisateur', donnee);
-      console.log("RESULT : ", result);
 
       if (result.success) {
         const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
-
-        console.log(token);
 
         return res.send({
           success: true,
@@ -151,8 +143,6 @@ async function motdepasse (req, res, next) {
 
       const result = await motdepasseUser('utilisateur', donnee);
 
-      console.log(result);
-
       return res.send({
         success: result.success,
         message: result.message
@@ -160,7 +150,7 @@ async function motdepasse (req, res, next) {
     }
     
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction motDePasse : ${e}`)
+    console.error(`Il y a une erreur dans la fonction motDePasse : ${e}`)
   }
 }
 
@@ -198,8 +188,6 @@ async function changerpassword (req, res, next) {
 
       const result = await changerpasswordUser('utilisateur', donnee);
 
-      console.log(result);
-
       return res.send({
         success: result.success,
         message: result.message
@@ -207,7 +195,7 @@ async function changerpassword (req, res, next) {
     }
     
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction motDePasse : ${e}`)
+    console.error(`Il y a une erreur dans la fonction motDePasse : ${e}`)
   }
 }
 
@@ -216,13 +204,10 @@ async function changerpassword (req, res, next) {
 async function search(req, res, next) {
   try{
     const body = req.body;
-    console.log("test2");
     const result = await findUsers("utilisateur", body);
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -231,11 +216,9 @@ async function search(req, res, next) {
 async function searchAllUsers(req, res, next) {
   try{
     const result = await searchAllUsrs("utilisateur");
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -243,10 +226,8 @@ async function searchAllUsers(req, res, next) {
 async function getInformation(req, res, next) {
   try{
     const body = req.body;
-    console.log(body)
 
     const decodedToken = jwt.verify(body.token, conf.secretKey);
-    console.log('Contenu du token décodé :', decodedToken);
 
     return res.send({
       info: decodedToken
@@ -281,7 +262,6 @@ async function changerInfoAvecMdp(req, res, next) {
         message: error.details[0].message
       });
     } else {
-      console.log('Données valides :', value);
       const saltRounds = conf.Salt.salt;
       const salt = await bcrypt.genSalt(saltRounds);
 
@@ -297,7 +277,6 @@ async function changerInfoAvecMdp(req, res, next) {
       };
 
       const result = await changerInfoAvecMdpUser('utilisateur', donnee);
-      console.log("RESULT : ", result);
 
       if (result?.success) {
         const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
@@ -315,7 +294,7 @@ async function changerInfoAvecMdp(req, res, next) {
       }
     }
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction changerinfoavecmdp : ${e}`);
+    console.error(`Il y a une erreur dans la fonction changerinfoavecmdp : ${e}`);
     return res.send({
       success: false,
       message: "Une erreur s'est produite lors du changement."
@@ -345,8 +324,6 @@ async function changerInfoSansMdp(req, res, next) {
         message: error.details[0].message
       });
     } else {
-      console.log('Données valides :', value);
-
       const donnee = {
         pseudo_uti: body.pseudo_uti,
         adresse_mail_uti: body.adresse_mail_uti,
@@ -356,7 +333,6 @@ async function changerInfoSansMdp(req, res, next) {
       };
 
       const result = await changerInfoSansMdpUser('utilisateur', donnee);
-      console.log("RESULT : ", result);
 
       if (result?.success) {
         const token = jwt.sign(result, conf.secretKey, { expiresIn: '1h' });
@@ -374,7 +350,7 @@ async function changerInfoSansMdp(req, res, next) {
       }
     }
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction changerinfosansmdp : ${e}`);
+    console.error(`Il y a une erreur dans la fonction changerinfosansmdp : ${e}`);
     return res.send({
       success: false,
       message: "Une erreur s'est produite lors du changement."
@@ -387,13 +363,10 @@ async function changerInfoSansMdp(req, res, next) {
 async function search(req, res, next) {
   try{
     const body = req.body;
-    console.log("test2");
     const result = await findUsers("utilisateur", body);
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -402,11 +375,9 @@ async function search(req, res, next) {
 async function searchAllUsers(req, res, next) {
   try{
     const result = await searchAllUsrs("utilisateur");
-    console.log(result);
-    console.log("test5");
     return res.send(result);
   }catch(e){
-    console.log(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -419,7 +390,7 @@ async function profilUser(req, res, next){
     const result = await profilUsr('utilisateur', where);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilPublic : ${e}`);
+    console.error(`Il y a une erreur dans la fonction profilPublic : ${e}`);
   }
 }
 
@@ -432,7 +403,7 @@ async function profilCollection(req, res, next){
     const result = await profilCollec('utilisateur', where);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilCollection : ${e}`);
+    console.error(`Il y a une erreur dans la fonction profilCollection : ${e}`);
   }
 }
 
@@ -445,7 +416,7 @@ async function collection(req, res, next){
     const result = await getCollection(where);
     return res.send(result);
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction collection : ${e}`);
+    console.error(`Il y a une erreur dans la fonction collection : ${e}`);
   }
 }
 

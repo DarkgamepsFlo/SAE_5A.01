@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ajoutBoite, findSuggestion, addSuggestion, removeSuggestion, updateSuggestion } = require("../controllers/suggestion");
+const { ajoutBoite, findSuggestion, addSuggestion, removeSuggestion } = require("../controllers/suggestion");
 
 // 1 //
 router.post("/add", ajoutBoite);
@@ -10,7 +10,5 @@ router.get("/find", findSuggestion);
 router.post("/addinboite", addSuggestion);
 // 4 //
 router.post("/remove", removeSuggestion);
-// 5 //
-router.post("/update", updateSuggestion);
 
 module.exports = router;

@@ -4,7 +4,6 @@ class SuggestionService {
   // Méthode pour inscrire un utilisateur
   async getSuggestion() {
     try {
-
       const response = await axios.get('http://localhost:3000/suggestion/find');
       return response.data;
 
@@ -27,17 +26,6 @@ class SuggestionService {
     try {
 
       const response = await axios.post('http://localhost:3000/suggestion/remove', suggestion);
-      return response.data;
-
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async modifSuggestion(suggestion) {
-    try {
-
-      const response = await axios.post('http://localhost:3000/suggestion/update', suggestion);
       return response.data;
 
     } catch (error) {

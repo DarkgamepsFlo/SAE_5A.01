@@ -34,6 +34,7 @@ import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
 import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
 import Boite from '../pages/Boite/Boite.boite.vue'
 import MaCollection from '../pages/MaCollection/MaCollection.macollection.vue'
+import ModifBoite from '../components/ModifBoite/ModifBoite.modifboite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 import TestBDD from '../components/TestBDD.vue'
@@ -112,6 +113,12 @@ const router = createRouter({
       path: '/boite/:id_boite',
       name: 'boite',
       component: Boite,
+      props: true
+    },
+    {
+      path: '/modifboite/:id_boite',
+      name: 'modifboite',
+      component: ModifBoite,
       props: true
     },
     
