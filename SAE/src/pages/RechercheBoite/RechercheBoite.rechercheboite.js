@@ -1,47 +1,57 @@
 import ProfilBoite from "../../components/ProfilBoite/ProfilBoite.profilboite.vue";
+import RecupererInformationUser from "../../services/RecupererInformationUser";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
 export default {
     components: {
-        ProfilBoite,
+      ProfilBoite,
     },
   data() {
     return{
-    items: [],
-    
+      items: [],
+      collection_id: 0,
+      collection_uti: []    
   }},
   methods: {
-    search: function(event){
-      if (typeof event.target.value === "number") {
-        const where = {
-            where: event.target.value,
-        }
-        axios
-          .post('http://localhost:3000/boite/search', where)
-          .then(response =>{          
-            this.items = response.data;
-            console.log(response);
-          })
-          .catch(error =>{
-            console.error("Il y a une erreur :", error);
-          });
-      } else {
-        const where = {
-            where: event.target.value.toLowerCase() + "%",
-        }
-        axios
-          .post('http://localhost:3000/boite/search', where)
-          .then(response =>{          
-            this.items = response.data;
-            console.log(response);
-          })
-          .catch(error =>{
-            console.error("Il y a une erreur :", error);
-          });
-      }
-      console.log("test1");
-  },},
+    search: function(event){//Recherche par numéro, nombre de pièces, année
+      const inputValue = event.target.value;
+  if (!isNaN(inputValue)) {
+    // Si l'entrée est un nombre, effectuez la recherche par numéro.
+    const where = {
+      where: parseInt(inputValue), // Convertir en nombre
+    };
+    console.log(where);
+    axios
+      .post('http://localhost:3000/boite/search', where)
+      .then(response => {
+        this.items = response.data;
+        console.log(response);
+      })
+      .catch(error => {
+        console.error("Il y a une erreur :", error);
+      });
+  } else {
+    // Sinon, effectuez la recherche par nom de boite ou licence.
+    const where = {
+      where: inputValue.toLowerCase() + "%",
+    };
+    axios
+      .post('http://localhost:3000/boite/search', where)
+      .then(response => {
+        this.items = response.data;
+        console.log(response);
+      })
+      .catch(error => {
+        console.error("Il y a une erreur :", error);
+      });
+  }
+    },
+    async getInformation(){
+      const infoUser = await RecupererInformationUser.getToken();
+      this.collection_id = infoUser.info.collection_id;
+    },
+  },
   mounted() {
     axios
       .post('http://localhost:3000/boite/searchAllBoite')

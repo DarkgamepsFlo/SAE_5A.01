@@ -11,8 +11,10 @@ const db = require('../../services/db/connection'); // Assurez-vous que le chemi
  */
 async function findBoite(collectionName, donnee) {
   try {
-    if (typeof donnee.where === "number") {
-        const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE annee_sortie_boi = $2 OR nbr_pieceboi = $2`;
+    if (!isNaN(donnee.where)) {
+        donnee.where = parseInt(donnee.where) + "%";
+        console.log(donnee.where);
+        const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE CAST(annee_sortie_boi AS TEXT) LIKE $2 OR CAST(nbr_pieceboi AS TEXT) LIKE $2`;
         const boite = await db.any(query, [collectionName, donnee.where]);
         console.log(boite);
         return boite;   
