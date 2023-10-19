@@ -63,8 +63,6 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
         if (files.length > 0) {
           const selectedFile = files[0];
 
-          console.log(selectedFile.size)
-
           if (selectedFile.size <= 90000) { // 102400 représente 100 Ko (la limite de POST)
             const fileReader = new FileReader();
             fileReader.addEventListener('load', () => {
@@ -132,9 +130,9 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
               Swal.fire({
                 icon: 'error',
                 title: 'Erreur',
-                text: response.data.message
+                text: result.message
               });
-              console.error(response.data.message);
+              console.error(result.message);
         }
       },
     },

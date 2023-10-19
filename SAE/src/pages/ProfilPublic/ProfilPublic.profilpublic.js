@@ -1,4 +1,4 @@
-import axios from "axios";
+import ProfilService from "../../services/ProfilService";
 
 export default {
   props: ['id_uti'],
@@ -10,31 +10,29 @@ export default {
     }
   },
   methods: {},
-  mounted(){
-    //Première requête pour récupérer les données lié à l'utilisateur
-    const where = {
-      where: this.id_uti
-    }
-    axios
-    .post('http://localhost:3000/users/profiluser', where)
-    .then(response =>{          
-      this.user = response.data;
-      console.log(this.user);
-      this.ifPublic = this.user.some(item => item.public);
-    })
-    .catch(error =>{
-      console.error("Il y a une erreur :", error);
-    });
+  async mounted(){
 
-    //Deuxième requête pour récupérer lié à sa collection
-    axios
-    .post('http://localhost:3000/users/profilcollection', where)
-    .then(response =>{          
-      this.collection = response.data;
-      console.log(this.collection);
-    })
-    .catch(error =>{
-      console.error("Il y a une erreur :", error);
-    });
+    try{
+      //Première requête pour récupérer les données lié à l'utilisateur
+      const where = {
+        where: this.id_uti
+      }
+
+      const responseProfil = await ProfilService.getProfil(where);
+
+      if(responseProfil){
+        this.user = responseProfil;
+        this.ifPublic = this.user.some(item => item.public);
+      }
+
+      const responseCollec = await ProfilService.getProfilCollection(where);
+
+      if (responseCollec){
+        this.collection = responseCollec
+      }
+
+    } catch (e) {
+      console.error("Il y a une erreur :", e);
+    }
   }
 }

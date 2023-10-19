@@ -9,14 +9,14 @@ const connection = {
     port: 5432, // Port par défaut de PostgreSQL
   };
 
-console.log('Trying to access the db...');
+console.info('Trying to access the db...');
 // Connect the client to the server (optional starting in v4.7)
 const db = pgp(connection);
 
 // Utilisez la méthode connect pour vérifier la connexion
 db.connect()
   .then(obj => {
-    console.log('Connected successfully to server !');
+    console.info('Connected successfully to server !');
     obj.done(); // Libère le client pool
       })
     .catch(error => {

@@ -1,5 +1,5 @@
-import axios from "axios"
 import Cookies from 'js-cookie';
+import BoiteService from "../../services/BoiteService";
 
 export default {
     props: ['id_boite'],
@@ -9,19 +9,20 @@ export default {
         }
     },
     methods: {},
-    mounted(){
+    async mounted(){
+      try {
         const where = {
           where: this.id_boite
         }
-        axios
-        .post('http://localhost:3000/boite/ficheboite', where)
-        .then(response =>{          
-          this.boite = response.data;
-          console.log(this.boite);
-        })
-        .catch(error =>{
-          console.error("Il y a une erreur :", error);
-        });
+
+        const response = await BoiteService.getFicheBoite(where)
+
+        if (response) {
+          this.boite = response;
+        }
+      } catch (e) {
+        console.error("Il y a une erreur :", e);
+      }
     },
     computed: {
       // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean

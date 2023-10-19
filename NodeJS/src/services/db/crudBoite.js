@@ -13,19 +13,16 @@ async function findBoite(collectionName, donnee) {
   try {
     if (!isNaN(donnee.where)) {
         donnee.where = parseInt(donnee.where) + "%";
-        console.log(donnee.where);
         const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE CAST(annee_sortie_boi AS TEXT) LIKE $2 OR CAST(nbr_pieceboi AS TEXT) LIKE $2`;
         const boite = await db.any(query, [collectionName, donnee.where]);
-        console.log(boite);
         return boite;   
     } else {
         const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE LOWER(nom_boite) LIKE $2 OR LOWER(univers) LIKE $2`;
         const boite = await db.any(query, [collectionName, donnee.where]);
-        console.log(boite);
         return boite;
     }
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction findBoite : ${e}`);
+    console.error(`Il y a une erreur dans la fonction findBoite : ${e}`);
     throw e;
   }
 }
@@ -41,7 +38,7 @@ async function searchAllBts(collectionName) {
     const boite = await db.any(query, [collectionName]);
     return boite;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction findUsers : ${e}`);
+    console.error(`Il y a une erreur dans la fonction findUsers : ${e}`);
     throw e;
   }
 }
@@ -58,7 +55,7 @@ async function ficheBt(collectionName, donnee){
     const boite = await db.any(query, [collectionName, donnee.where]);
     return boite;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction ficheBt : ${e}`);
+    console.error(`Il y a une erreur dans la fonction ficheBt : ${e}`);
   }
 }
 
@@ -73,7 +70,7 @@ async function getNouveaute(collectionName){
     const nouveaute = await db.any(query, [collectionName]);
     return nouveaute;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction getNouveaute : ${e}`);
+    console.error(`Il y a une erreur dans la fonction getNouveaute : ${e}`);
   }
 }
 
@@ -89,7 +86,7 @@ async function deleteBts(collectionName, boite, id_collec){
     const result = await db.any(query, [collectionName, id_collec, boite]);
     return result;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction deleteBoite : ${e}`);
+    console.error(`Il y a une erreur dans la fonction deleteBoite : ${e}`);
   }
 }
 module.exports = {

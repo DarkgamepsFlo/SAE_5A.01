@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
-import axios from "axios"
 import AjoutBoiteService from '../../services/AjoutBoiteService';
 import RecupererInformationUser from '../../services/RecupererInformationUser';
+import BoiteService from '../../services/BoiteService';
   
   export default {
     props: ['id_boite'],
@@ -26,24 +26,20 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
       const where = {
         where: this.id_boite
       }
-      await axios
-      .post('http://localhost:3000/boite/ficheboite', where)
-      .then(response =>{  
-        console.log("Ce que je veux voir : ");
-        console.log(response.data);     
-        this.boite_base = response.data;
-        this.suggestion.nomBoite = response.data[0].nom_boite
-        this.suggestion.numBoite = response.data[0].numero_boi
-        this.num_boite_base = response.data[0].numero_boi
-        this.suggestion.univers = response.data[0].univers
-        this.suggestion.NbrPiece = response.data[0].nbr_pieceboi
-        this.suggestion.anneeSortie = response.data[0].annee_sortie_boi
-        this.suggestion.descriptif = response.data[0].descriptif_boi
-        this.image = response.data[0].lien_img_boi
-      })
-      .catch(error =>{
-        console.error("Il y a une erreur :", error);
-      });
+
+      const response = await BoiteService.getFicheBoite(where)
+
+      if (response) {
+        this.boite_base = response;
+        this.suggestion.nomBoite = response[0].nom_boite
+        this.suggestion.numBoite = response[0].numero_boi
+        this.num_boite_base = response[0].numero_boi
+        this.suggestion.univers = response[0].univers
+        this.suggestion.NbrPiece = response[0].nbr_pieceboi
+        this.suggestion.anneeSortie = response[0].annee_sortie_boi
+        this.suggestion.descriptif = response[0].descriptif_boi
+        this.image = response[0].lien_img_boi
+      }
     },
     computed: {
       // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
@@ -90,8 +86,6 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
         if (files.length > 0) {
           const selectedFile = files[0];
 
-          console.log(selectedFile.size)
-
           if (selectedFile.size <= 90000) { // 102400 représente 100 Ko (la limite de POST)
             const fileReader = new FileReader();
             fileReader.addEventListener('load', () => {
@@ -109,9 +103,6 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
       async submitSuggestion() {
 
         const resultToken = await RecupererInformationUser.getToken();
-
-        console.log(resultToken);
-        console.log("Id image : ", this.id_boite)
         
         const donneesSuggestion = {
           nomBoite: this.suggestion.nomBoite,
@@ -126,8 +117,6 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
           num_boite_base: this.num_boite_base,
           error: this.imageSizeError
         }
-
-        console.log(donneesSuggestion);
 
         const result = await AjoutBoiteService.ajoutBoiteAPI(donneesSuggestion);
             

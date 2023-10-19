@@ -7,8 +7,6 @@ class RecupererInformationUser {
     try {
       const cookieConnexion = Cookies.get('connexion');      
       const cookieData = JSON.parse(cookieConnexion);
-    
-      console.log("Voici mon token : ", cookieData.token);
 
       const token = {
         token: cookieData.token
@@ -16,7 +14,6 @@ class RecupererInformationUser {
 
       const response = await axios.post('http://localhost:3000/users/getinfouser', token);
 
-      console.log('Contenu du token décodé :', response);
       return response.data;
 
     } catch (error) {

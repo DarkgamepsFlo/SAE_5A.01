@@ -1,5 +1,5 @@
 const conf = require('../conf.json');
-const { insertSuggestion, findSuggestions, addSuggestions, removeSuggestions, updateSuggestions } = require("../services/db/crudSuggestion");
+const { insertSuggestion, findSuggestions, addSuggestions, removeSuggestions } = require("../services/db/crudSuggestion");
 
 //1//
 //Cette fonction permet de faire appel à la fonction insertSuggestion lorsqu'on se situe sur la bonne URL

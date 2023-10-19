@@ -69,7 +69,6 @@ export default {
       },
 
     acceptCode() {
-        console.log("AAAAAAAAAAAAAAAAAAAAA");
         if (this.utilisateur.codeBase === this.utilisateur.code){
           console.info('Votre code est validé');
 

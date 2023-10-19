@@ -1,7 +1,7 @@
 <template>
     <div id="blockContact">
         <h1 class="titreBlock">CONTACT</h1>
-        <form @submit.prevent="contact">
+        <form @submit.prevent="contact"> <!-- Changer le contact en un nom de fonction -->
         <div id="divSujet">
           <label for="sujet" id="labelSujet" class="labelForm">Sujet:</label>
           <!-- GARDE CA SINON PAS COIFFETON SHINY : v-model="utilisateur.sujet" required -->

@@ -1,4 +1,4 @@
-import axios from "axios"
+import BoiteService from "../../services/BoiteService";
 
 export default {
   data(){
@@ -7,15 +7,15 @@ export default {
     }
   },
   methods: {},
-  mounted(){
-    axios
-      .post('http://localhost:3000/boite/nouveaute')
-      .then(response =>{          
-        this.caroussel = response.data;
-        console.log(response);
-      })
-      .catch(error =>{
-        console.error("Il y a une erreur :", error);
-      });
+  async mounted(){
+    try {
+      const response = await BoiteService.getNouveaute()
+
+      if (response) {
+        this.caroussel = response;
+      }
+    } catch (e) {
+      console.error("Il y a une erreur :", e);
+    }
   }
 };

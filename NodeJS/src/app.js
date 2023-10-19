@@ -6,6 +6,6 @@ startServer()
 
 function startServer() {
   app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.info(`Example app listening on port ${port}`)
   })
 }

@@ -1,7 +1,6 @@
 import RecupererInformationUser from "../../services/RecupererInformationUser";
 import Cookies from 'js-cookie';
 import Collection from "../../components/Collection/Collection.collection.vue";
-import axios from "axios";
 
 export default {
     components: {
@@ -32,7 +31,6 @@ export default {
     created: async function(){
         if(this.isAlreadyRegistered){
             await this.getInformation();
-            console.log(this.collection_id);
         }
     }
 }

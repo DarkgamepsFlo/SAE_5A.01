@@ -1,5 +1,5 @@
 import ProfilUtilisateur from '../../components/ProfilUtilisateur/ProfilUtilisateur.profilutilisateur.vue';
-import axios from 'axios';
+import RechercheUserService from '../../services/RechercheUserService';
 
 export default {
   components: {
@@ -11,31 +11,35 @@ export default {
     
   }},
   methods: {
-    search: function(event){
-      const where = {
-        where: event.target.value.toLowerCase() + "%",
+    search: async function(event){
+      try {
+        const where = {
+          where: event.target.value.toLowerCase() + "%",
+        }
+  
+        const response = await RechercheUserService.getUser(where);
+
+        if (response) {
+          this.items = response;
+        }
+
+      } catch (e) {
+        console.error("Il y a une erreur :", e);
       }
-      console.log("test1");
-      axios
-        .post('http://localhost:3000/users/findUser', where)
-        .then(response =>{          
-          this.items = response.data;
-          console.log(response);
-        })
-        .catch(error =>{
-          console.error("Il y a une erreur :", error);
-        });
-  },},
-  mounted() {
-    axios
-      .post('http://localhost:3000/users/searchAllUsers')
-      .then(response =>{          
-        this.items = response.data;
-        console.log(this.items);
-      })
-      .catch(error =>{
-        console.error("Il y a une erreur :", error);
-      });
-   }
+    },
+  },
+  async mounted() {
+    try{
+
+      const response = await RechercheUserService.getAllUser();
+
+      if (response) {
+        this.items = response;
+      }
+
+    } catch (e) {
+      console.error("Il y a une erreur :", e);
+    }
+  }
 }
 

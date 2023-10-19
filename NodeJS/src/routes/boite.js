@@ -12,4 +12,5 @@ router.post("/ficheboite", ficheBoite);
 router.post("/nouveaute", nouveaute);
 // 5 //
 router.post("/delete", deleteBoites);
+
 module.exports = router;

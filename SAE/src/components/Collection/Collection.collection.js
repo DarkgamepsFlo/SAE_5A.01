@@ -1,5 +1,5 @@
 import ProfilBoite from "../ProfilBoite/ProfilBoite.profilboite.vue";
-import axios from "axios";
+import CollectionService from "../../services/CollectionService";
 
 export default {
     name: "Collection",
@@ -15,32 +15,29 @@ export default {
         }
     },
     methods: {
-        deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
-            console.log(id);
-            console.log(this.collection_id);
-            axios
-            .post('http://localhost:3000/boite/delete', {boite: id, id_collec: this.collection_id})
-            .then(response =>{
+        async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+
+            const donnee = {
+                boite: id, 
+                id_collec: this.collection_id
+            }
+
+            const result = await CollectionService.deleteBoite(donnee)
+
+            if (result) {
                 this.getCollection();
-            })
-            .catch(error =>{
-              console.error("Il y a une erreur :", error);
-            });
+            }
         },
         async getCollection(){
             const where = {
                 where: this.collection_id
             }
-            console.log(where.where);
-            axios
-            .post('http://localhost:3000/users/collection', where)
-            .then(response =>{
-              this.collection = response.data;
-              console.log(this.collection);
-            })
-            .catch(error =>{
-              console.error("Il y a une erreur :", error);
-            });
+
+            const response = await CollectionService.getCollection(where);
+
+            if (response){
+                this.collection = response;
+            }
         },
     },
     created: async function(){

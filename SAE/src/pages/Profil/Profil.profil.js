@@ -79,7 +79,6 @@ export default {
       
       if (!!this.new_mdp || !!this.conf_mdp) {
         if(this.new_mdp == this.conf_mdp) {
-          console.log("Le mot de passe correspond à ce que vous voulez modifier")
           
           const donnee = {
             adresse_mail_uti: this.adresse_mail_uti,
@@ -91,8 +90,6 @@ export default {
           }
 
           const response = await ChangerInformationService.changerInfoAvecMdp(donnee);
-
-          console.log('Info changé ? ', response.success);
 
           // !!! Si ça marche, modifier le token du cookie déjà présent avec celui qu'on vient d'amener de l'API
         }
@@ -106,8 +103,6 @@ export default {
         }
       }  
       else {
-        console.log("Pas besoin de modifier le mot de passe")
-
         const donnee = {
           adresse_mail_uti: this.adresse_mail_uti,
           pseudo_uti: this.pseudo_uti,
@@ -118,8 +113,6 @@ export default {
 
         const response = await ChangerInformationService.changerInfoSansMdp(donnee);
         
-        console.log('Info changé ? ', response.success);
-
         // !!! Si ça marche, modifier le token du cookie déjà présent avec celui qu'on vient d'amener de l'API
       }
     }

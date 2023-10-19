@@ -1,6 +1,8 @@
 import ProfilBoite from "../../components/ProfilBoite/ProfilBoite.profilboite.vue";
+import BoiteService from "../../services/BoiteService";
+import CollectionService from "../../services/CollectionService";
+import RechercheBoiteService from "../../services/RechercheBoiteService";
 import RecupererInformationUser from "../../services/RecupererInformationUser";
-import axios from 'axios';
 import Cookies from 'js-cookie';
 
 export default {
@@ -14,70 +16,73 @@ export default {
       collection_uti: []    
   }},
   methods: {
-    search: function(event){//Recherche par numéro, nombre de pièces, année
-      const inputValue = event.target.value;
-      if (!isNaN(inputValue)) {
-        const where = {
-          where: parseInt(inputValue), // Convertir en nombre
-        };
-        console.log(where);
-        axios
-          .post('http://localhost:3000/boite/search', where)
-          .then(response => {
-            this.items = response.data;
-            console.log(response);
-          })
-          .catch(error => {
-            console.error("Il y a une erreur :", error);
-          });
-      } else {
-        // Sinon, effectuez la recherche par nom de boite ou licence.
-        const where = {
-          where: inputValue.toLowerCase() + "%",
-        };
-        axios
-          .post('http://localhost:3000/boite/search', where)
-          .then(response => {
-            this.items = response.data;
-            console.log(response);
-          })
-          .catch(error => {
-            console.error("Il y a une erreur :", error);
-          });
+    search: async function(event){//Recherche par numéro, nombre de pièces, année
+      try{
+        const inputValue = event.target.value;
+        if (!isNaN(inputValue)) {
+          const where = {
+            where: parseInt(inputValue), // Convertir en nombre
+          };
+          
+          const response = await RechercheBoiteService.search(where);
+
+          if (response) {
+            this.items = response;
+          }
+
+        } else {
+          // Sinon, effectuez la recherche par nom de boite ou licence.
+          const where = {
+            where: inputValue.toLowerCase() + "%",
+          };
+
+          const response = await RechercheBoiteService.search(where);
+
+          if (response) {
+            this.items = response;
+          }
+        }
+      } catch (e) {
+        console.error("Il y a une erreur :", e);
       }
+      
   },
     async getInformation(){
       const infoUser = await RecupererInformationUser.getToken();
       this.collection_id = infoUser.info.collection_id;
     },
     async getCollection(){
-      const where = {
+
+      try {
+        const where = {
         where: this.collection_id
+        }
+
+        const response = await CollectionService.getCollection(where)
+
+        if (response) {
+          this.collection_uti = response;
+        }
+      } catch (e) {
+        console.error("Il y a une erreur :", e);
       }
-      console.log(where.where);
-      axios
-      .post('http://localhost:3000/users/collection', where)
-      .then(response =>{
-        this.collection_uti = response.data;
-        console.log(this.collection_uti);
-      })
-      .catch(error =>{
-        console.error("Il y a une erreur :", error);
-      });
     },
   },
   async mounted() {
-    axios
-      .post('http://localhost:3000/boite/searchAllBoite')
-      .then(response =>{          
-        this.items = response.data;
-        console.log(this.items);
-      })
-      .catch(error =>{
-        console.error("Il y a une erreur :", error);
-      });
+    try {
+
+      const response = await BoiteService.getAllBoite();
+      
+      if(response) {
+        this.items = response;
+      }
+
       await this.getInformation();
       await this.getCollection();
+
+    } catch (e) {
+      console.error("Il y a une erreur : ", e);
+    }
    },
    computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean

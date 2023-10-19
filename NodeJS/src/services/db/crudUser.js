@@ -17,18 +17,12 @@ async function findUsers(collectionName, donnee) {
     
     // Utilisez une requête imbriquée pour sélectionner tous les utilisateurs
     const query = `SELECT U.id_uti, pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti WHERE LOWER(pseudo_uti) LIKE $2`;
-    console.log("test3");
     const users = await db.any(query, [collectionName, donnee.where]);
-
-    // Utilisez les données des utilisateurs ici, par exemple, les afficher dans la console
-    
-    console.log(users);
-    console.log("test4");
 
     // Vous pouvez retourner les données des utilisateurs si vous en avez besoin
     return users;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction findUsers : ${e}`);
+    console.error(`Il y a une erreur dans la fonction findUsers : ${e}`);
     throw e;
   }
 }
@@ -86,8 +80,6 @@ async function inscriptionUser(collectionName, donnee) {
       const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE u.id_uti = $2`;
       const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, resultSelectIdUser[0].id_uti]);
 
-      console.log(resultSelectInfoUser);
-
       // On renvoie l'ensemble des informations qui vont être utiles
       return {
         success: true,
@@ -121,8 +113,6 @@ async function connexionUser(collectionName, donnee) {
     // On va regarder si l'utilisateur est bien existant dans la base de donées
     const queryInsertUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE pseudo_uti like $2`;
     const resultUser = await db.any(queryInsertUser, [collectionName, donnee.pseudo]);
-
-    console.log(resultUser);
 
     // On va ensuite décrypter le mot de passe puis on va vérifier si les deux mots de passe correspond
     // Si il n'y a pas d'utilisateur ayant le même pseudo, on va renvoyer une erreur à l'utilisateur
@@ -168,7 +158,7 @@ async function connexionUser(collectionName, donnee) {
       }
     });
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction connexionUser : ${e}`);
+    console.error(`Il y a une erreur dans la fonction connexionUser : ${e}`);
     throw e;
   }
 }
@@ -223,7 +213,7 @@ async function motdepasseUser(collectionName, donnee) {
       }
     });
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction motDePasseUser : ${e}`);
+    console.error(`Il y a une erreur dans la fonction motDePasseUser : ${e}`);
     // Rejeter la promesse en cas d'erreur
     throw e;
   }
@@ -242,7 +232,7 @@ async function changerpasswordUser(collectionName, donnee) {
       message: "Le mot de passe est bien modifié"
     };
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction inscriptionUser : ${e}`);
+    console.error(`Il y a une erreur dans la fonction inscriptionUser : ${e}`);
     throw e;
   }
 }
@@ -253,7 +243,7 @@ async function searchAllUsrs(collectionName) {
     const users = await db.any(query, [collectionName]);
     return users;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction findUsers : ${e}`);
+    console.error(`Il y a une erreur dans la fonction findUsers : ${e}`);
     throw e;
   }
 }
@@ -274,7 +264,7 @@ async function changerInfoAvecMdpUser(collectionName, donnee) {
     const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE id_uti = $2`;
     const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
 
-    console.log(resultSelectInfoUser);
+    console.error(resultSelectInfoUser);
 
     // On renvoie l'ensemble des informations qui vont être utiles
     return {
@@ -312,8 +302,6 @@ async function changerInfoSansMdpUser(collectionName, donnee) {
     const querySelectInfoUser = `SELECT u.*, c.public as public_c, w.public as public_w, pp.lien_img_pro as lien_img_pro_pp FROM $1:name u inner join wishlist w on u.id_uti = w.id_wishlist inner join collection c on u.id_uti = c.id_collec inner join photo_profil pp on u.id_uti = pp.id_uti WHERE u.id_uti = $2`;
     const resultSelectInfoUser = await db.any(querySelectInfoUser, [collectionName, donnee.id_uti]);
 
-    console.log(resultSelectInfoUser);
-
     // On renvoie l'ensemble des informations qui vont être utiles
     return {
       success: true,
@@ -342,7 +330,7 @@ async function profilUsr(collectionName, donnee) {
     const result = await db.any(query, [collectionName, donnee]);
     return result;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilUsr : ${e}`);
+    console.error(`Il y a une erreur dans la fonction profilUsr : ${e}`);
   }
 }
 
@@ -357,7 +345,7 @@ async function profilCollec(collectionName, donnee){
     const result = await db.any(query, [collectionName, donnee]);
     return result;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction profilCollec : ${e}`);
+    console.error(`Il y a une erreur dans la fonction profilCollec : ${e}`);
   }
 }
 
@@ -372,7 +360,7 @@ async function getCollection(donnee){
     const result = await db.any(query, [donnee]);
     return result;
   } catch (e) {
-    console.log(`Il y a une erreur dans la fonction getCollection : ${e}`);
+    console.errpr(`Il y a une erreur dans la fonction getCollection : ${e}`);
   }
 }
 module.exports = {
