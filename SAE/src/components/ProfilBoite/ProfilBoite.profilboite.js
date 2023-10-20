@@ -25,16 +25,11 @@ export default {
             const button = event.target;
             const boiteId = button.getAttribute("data-id");
             if(this.search){//Méthode d'action quand le composant est appelé dans RechercheBoite
-                const donnee = {
-                    boite: boiteId,
-                    id_collec : this.collection_id
-                }
                 if(this.collection_uti.some(boite => boite.id_boite === this.boite.id_boite)){
-                    CollectionService.deleteBoite(donnee);
+                    this.$emit('deleteBoite', boiteId);
                 } else {
-                    CollectionService.addBoite(donnee);
+                    this.$emit('addBoite', boiteId);
                 }
-                this.$emit('updateCollec');
             } else{//Méthode d'action quand le composant est appelé ailleurs
                 this.$emit('deleteBoite', boiteId);
             }

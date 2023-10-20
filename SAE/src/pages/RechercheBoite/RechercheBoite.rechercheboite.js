@@ -67,9 +67,32 @@ export default {
       }
     },
 
-    async updateCollec(){
-      this.getCollection();
-    }
+    async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+
+      const donnee = {
+        boite: id, 
+        id_collec: this.collection_id
+      }
+
+      const result = await CollectionService.deleteBoite(donnee)
+
+      if (result) {
+        this.getCollection();
+      }
+  },
+
+  async addBoite(id){
+    const donnee = {
+    boite: id, 
+    id_collec: this.collection_id
+  }
+
+  const result = await CollectionService.addBoite(donnee)
+
+  if (result) {
+    this.getCollection();
+  }
+  }
   },
 
   async mounted() {
