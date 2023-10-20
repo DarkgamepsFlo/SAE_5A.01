@@ -1,9 +1,9 @@
 {
     "NodeJS" : {
-        "user" : "postgres",
-        "database" : "collego",
-        "password": "DarkNess3",
-        "localhost": "localhost"
+        "user" : "",
+        "database" : "",
+        "password": "",
+        "localhost": ""
     },
     "Salt":{
         "salt": 10
