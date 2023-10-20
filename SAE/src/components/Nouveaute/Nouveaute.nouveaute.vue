@@ -2,7 +2,9 @@
     <div id="nouveaute">
         <h1>Voici les 10 dernières nouveautes</h1>
         <div id="caroussem">
-            <img class="nouveaute" v-for="item in caroussel" :key="item.id_boite" :src="item.lien_img_boi">
+            <button id="precedent" onclick="ChangeSlide(-1)"></button>
+            <img class="nouveaute" id="slide" :src="item.lien_img_boi">
+            <button id="suivant" onclick="ChangeSlide(1)"></button>
             <!-- item.nom_boite pour récupérer le nom-->
         </div>
     </div>
