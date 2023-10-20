@@ -68,7 +68,6 @@ async function deleteCollec(req, res, next){
 //Permet de récupérer la fonction addBts lorsqu'on est sur la bonne URL
 async function addCollec(req, res, next){
   try {
-    console.log("cc");
     const boite = req.body.boite;
     const id_collec = req.body.id_collec;
     const result = await addBts('lien_collection', boite, id_collec);
