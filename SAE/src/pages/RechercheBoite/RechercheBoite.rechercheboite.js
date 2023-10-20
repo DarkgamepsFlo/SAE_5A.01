@@ -16,10 +16,10 @@ export default {
       collection_uti: []    
   }},
   methods: {
-    search: async function(event){//Recherche par numéro, nombre de pièces, année
+    search: async function(event){
       try{
         const inputValue = event.target.value;
-        if (!isNaN(inputValue)) {
+        if (!isNaN(inputValue)){//Recherche par numéro, nombre de pièces, année
           const where = {
             where: parseInt(inputValue), // Convertir en nombre
           };
@@ -30,10 +30,9 @@ export default {
             this.items = response;
           }
 
-        } else {
-          // Sinon, effectuez la recherche par nom de boite ou licence.
+        } else {//Recherche par nom de boite ou de licence
           const where = {
-            where: inputValue.toLowerCase() + "%",
+            where: inputValue.toLowerCase(),
           };
 
           const response = await RechercheBoiteService.search(where);
@@ -44,15 +43,15 @@ export default {
         }
       } catch (e) {
         console.error("Il y a une erreur :", e);
-      }
-      
-  },
+      }      
+    },
+
     async getInformation(){
       const infoUser = await RecupererInformationUser.getToken();
       this.collection_id = infoUser.info.collection_id;
     },
-    async getCollection(){
 
+    async getCollection(){
       try {
         const where = {
         where: this.collection_id
@@ -67,7 +66,12 @@ export default {
         console.error("Il y a une erreur :", e);
       }
     },
+
+    async updateCollec(){
+      this.getCollection();
+    }
   },
+
   async mounted() {
     try {
 

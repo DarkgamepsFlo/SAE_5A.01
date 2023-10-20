@@ -4,7 +4,17 @@ class CollectionService {
   // Méthode pour inscrire un utilisateur
   async deleteBoite(donnee) {
     try {
-      const response = await axios.post('http://localhost:3000/boite/delete', donnee)
+      const response = await axios.post('http://localhost:3000/boite/deleteCollec', donnee);
+      return response.data;
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async addBoite(donnee){
+    try {
+      const response = await axios.post('http://localhost:3000/boite/addCollec', donnee);
       return response.data;
 
     } catch (error) {

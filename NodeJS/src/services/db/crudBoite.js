@@ -11,12 +11,17 @@ const db = require('../../services/db/connection'); // Assurez-vous que le chemi
  */
 async function findBoite(collectionName, donnee) {
   try {
+    if(donnee.where === null){//Si la recherche est vide
+      const boite = await searchAllBts('boite');
+      return boite;
+    }
     if (!isNaN(donnee.where)) {
         donnee.where = parseInt(donnee.where) + "%";
         const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE CAST(annee_sortie_boi AS TEXT) LIKE $2 OR CAST(nbr_pieceboi AS TEXT) LIKE $2`;
         const boite = await db.any(query, [collectionName, donnee.where]);
         return boite;   
     } else {
+        donnee.where = "%" + donnee.where + "%"
         const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite WHERE LOWER(nom_boite) LIKE $2 OR LOWER(univers) LIKE $2`;
         const boite = await db.any(query, [collectionName, donnee.where]);
         return boite;
@@ -89,10 +94,21 @@ async function deleteBts(collectionName, boite, id_collec){
     console.error(`Il y a une erreur dans la fonction deleteBoite : ${e}`);
   }
 }
+
+async function addBts(collectionName, boite, id_collec){
+  try {
+    const query = 'INSERT INTO $1:name VALUES ($2, $3)';
+    const result = await db.any(query, [collectionName, id_collec, boite]);
+    return result;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction addBts : ${e}`);
+  }
+}
 module.exports = {
   findBoite,
   searchAllBts,
   ficheBt,
   getNouveaute,
   deleteBts,
+  addBts,
 };

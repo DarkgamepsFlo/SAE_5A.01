@@ -1,7 +1,7 @@
 <template>
     <div id="nouveaute">
         <h1>Voici les 10 dernières nouveautes</h1>
-        <div id="caroussem">
+        <div id="caroussel">
             <button id="precedent" onclick="ChangeSlide(-1)"></button>
             <img class="nouveaute" id="slide" :src="item.lien_img_boi">
             <button id="suivant" onclick="ChangeSlide(1)"></button>

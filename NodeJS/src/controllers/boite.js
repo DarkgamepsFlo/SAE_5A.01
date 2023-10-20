@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts } = require("../services/db/crudBoite");
+const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts } = require("../services/db/crudBoite");
 
 
 // 1 //
@@ -53,14 +53,28 @@ async function nouveaute(req, res, next){
 
 // 5 //
 //Permet de récupérer la fonction deleteBts lorsqu'on est sur la bonne URL
-async function deleteBoites(req, res, next){
+async function deleteCollec(req, res, next){
   try {
     const boites = req.body.boite;
-    const id_collec = req.body.id_collec
+    const id_collec = req.body.id_collec;
     const result = await deleteBts('lien_collection', boites, id_collec);
     return res.send(result);
   } catch (e) {
     console.error(`Il y a une erreur dans la fonction deleteBoites : ${e}`);
+  }
+}
+
+// 6 //
+//Permet de récupérer la fonction addBts lorsqu'on est sur la bonne URL
+async function addCollec(req, res, next){
+  try {
+    console.log("cc");
+    const boite = req.body.boite;
+    const id_collec = req.body.id_collec;
+    const result = await addBts('lien_collection', boite, id_collec);
+    return res.send(result);
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction addCollec : ${e}`);
   }
 }
 
@@ -69,5 +83,6 @@ module.exports = {
   searchAllBoites,
   ficheBoite,
   nouveaute,
-  deleteBoites,
+  deleteCollec,
+  addCollec
 };

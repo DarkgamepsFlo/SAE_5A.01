@@ -22,7 +22,7 @@ export default {
 
 let numero = 0;
 
-let element = caroussel[numero]
+/*let element = caroussel[numero]
 
 function ChangeSlide(sens) {
     numero = numero + sens;
@@ -41,4 +41,4 @@ while(true){
     if (numero > caroussel.length - 1)
         numero = 0;
     element = caroussel[numero].lien_img_boi;
-}
+}*/
