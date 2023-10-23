@@ -5,6 +5,60 @@
   width: var(--taille-800-px);
 }
 
-#tab-container div{
+.divInlineBlockRecherche div{
   display: var(--display-ilb);
+}
+
+#boiteDivSugg {
+  display: flex;
+  align-items: center; /* Centre les éléments verticalement */
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("../../assets/img/backgroundRecherche.png");
+}
+
+#boiteProfilDiv .image {
+  max-width: 100%;
+}
+
+
+#divImgSugg{
+  height: 200px; 
+  width: 200px;
+  object-fit: contain;
+}
+
+#idImgSugg img{
+  height: 200px; 
+  width: 200px;
+  object-fit: contain;
+}
+
+#typeSuggP{ 
+  width: 10%;
+}
+
+#nomBoiteSugg{
+  width: 25%;
+}
+
+#numeroBoiteSugg{
+  width: 10%;
+}
+
+#universSugg{
+  width: 10%;
+}
+
+#nbrPieceSugg{
+  width: 10%;
+}
+
+#anneSortieSugg{
+  width: 10%;
+}
+
+#tab-container{
+  width: 70%;
 }

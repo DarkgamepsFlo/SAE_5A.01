@@ -1,9 +1,51 @@
 footer{
-    background-image: url("../../assets/img/footerImg.png");
+    background-image: url("../../assets/img/footer.png");
+    background-size: cover;
     height: 300px;
 }
 
 #texteFooter{
     padding-top: 100px;
     font-size: 20px;
+}
+
+@media (min-width: 400px){
+    footer{
+        background-image: url("../../assets/img/footer.png");
+        background-size: cover;
+        width: 100%;
+        height: 350px;
+    }
+    
+    #texteFooter{
+        padding-top: 100px;
+        font-size: 20px;
+        text-shadow: var(--font--border-w);
+    }
+    .textFooter{
+        margin-top: var(--taille-50-px);
+        text-shadow: var(--font--border-w);
+        text-align: var(--position-c);
+    }
+    .lien{
+        display: var(--display-b);
+        font-size: var(--taille-30-px);
+        text-align: var(--position-c);
+    }
+}
+
+@media (max-width: 400px){
+    footer{
+        background-image: url("../../assets/img/footer_Responsiv.png");
+        background-size:cover;
+        background-size: 200%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 230px;
+    }
+    
+    #texteFooter{
+        padding-top: 100px;
+        font-size: 20px;
+    }
 }

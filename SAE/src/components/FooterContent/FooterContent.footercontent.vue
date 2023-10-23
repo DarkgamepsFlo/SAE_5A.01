@@ -1,9 +1,10 @@
 <template>
   <footer>
     <div id="texteFooter">
-      C'est le footer
-      <router-link to="/politique">Cookie et politique de confidentialité</router-link>
-      <router-link to="/about">Mentions légales</router-link>
+      <p class="textFooter">Pour nous contacter!</p>
+      <router-link to = "/contact" class="lien">Contact</router-link>  
+      <router-link to="/politique" class="lien">Cookie et politique de confidentialité</router-link>
+      <router-link to="/about" class="lien">Mentions légales</router-link>
     </div>
     
   </footer>

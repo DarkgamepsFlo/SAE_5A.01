@@ -33,7 +33,9 @@
 //    height: 160px;
 // }
 
-.boite {
+
+@media (min-width: 400px){
+  .boite {
     display: flex;
     align-items: center; /* Centre les éléments verticalement */
     border: 1px solid #000;
@@ -42,43 +44,93 @@
     background-image: url("../../assets/img/backgroundRecherche.png");
   }
   
-#boiteProfilDiv .image {
-    max-width: 100%;
-}
   
-#boiteProfilDiv p {
-    font-size: 20px;
-    -webkit-text-stroke: 0.5px white;
+  
+  #boiteProfilDiv .image {
+    max-width: 100%;
+  }
+  
+  #boiteProfilDiv p {
+  color: #000;
+  font-size: var(--taille-28-px);
+  text-align: var(--position-c);
+  -webkit-text-stroke: 0.8px white;
+  }
+  
+  
+  #imageProfilBoite{
+    height: 180px; 
+    width: 180px;
+    object-fit: contain;
+  }
+  
+  #imageProfilBoite img{
+    height: 180px; 
+    width: 180px;
+    object-fit: contain;
+  }
+  
+  #nomProfilBoite{ 
+    width: 23%;
+  }
+  
+  #numeroProfilBoite{
+    width: 10%;
+  }
+  
+  #universProfilBoite{
+    width: 20%;
+  }
+  
+  #nombrePiecesProfilBoite{
+    width: 8%;
+  }
+  
+  #dateDeSortieProfilBoite{
+    width: 8%;
+  }
+  #divButtonAjoutDelete{
+    width: var(--taille-150-px)
+  }
+  
 }
 
-#imageProfilBoite{
-height: 200px; 
-width: 200px;
-object-fit: contain;
-}
-
-#imageProfilBoite img{
-height: 200px; 
-width: 200px;
-object-fit: contain;
-}
-
-#nomProfilBoite{ 
-width: 25%;
-}
-
-#numeroProfilBoite{
-width: 10%;
-}
-
-#universProfilBoite{
-width: 10%;
-}
-
-#nombrePiecesProfilBoite{
-width: 10%;
-}
-
-#dateDeSortieProfilBoite{
-width: 10%;
+@media (max-width: 400px){
+  .boite {
+    align-items: center; /* Centre les éléments verticalement */
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 10px;
+    background-image: url("../../assets/img/backgroundRecherche.png");
+  }
+  
+  
+  
+  #boiteProfilDiv .image {
+    max-width: 100%;
+    margin-left: var(--position-auto);
+    margin-right: var(--position-auto);
+  }
+  
+  #boiteProfilDiv p {
+  color:#000;
+  font-size: var(--taille-18-px);
+  text-align: var(--position-c);
+  -webkit-text-stroke: 0.5px black;
+  }
+  
+  
+  #imageProfilBoite{
+    height: 180px; 
+    width: 180px;
+    object-fit: contain;
+  }
+  
+  #imageProfilBoite img{
+    height: 180px; 
+    width: 180px;
+    object-fit: contain;
+  }
+  
+  
 }

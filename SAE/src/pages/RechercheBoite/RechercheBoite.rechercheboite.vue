@@ -3,8 +3,13 @@
         <h1>Rechercher une boite</h1>
         <input type="text" placeholder="Entrez le nom d'une boite, un numero, ou une licence..." id="search-bar" @input="search">
         <div id="tab-container">
-            <div id="divChangeInlineBlock"><div>Photo de la boite</div><div>Nom de la boite</div><div>Numéro de la boite</div><div>Nombre de pièces</div><div>Année de sortie de la boite</div></div>
-            <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" 
+            <div id="divChangeInlineBlock">
+                <p>Photo de la boite</p>
+                <p>Nom de la boite</p>
+                <p>Numéro de la boite</p>
+                <p>Nombre de pièces</p>
+                <p>Année de sortie de la boite</p>
+            </div>            <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" 
             :search="true" 
             :collection_uti="collection_uti"
             :wishlist_uti="wishlist_uti"

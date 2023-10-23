@@ -1,6 +1,8 @@
 @media (min-width: 800px){
     header{
-        background-image: url("../../assets/img/headerImg.png");
+        background-image: url("../../assets/img/header.png");
+        background-repeat: no-repeat;
+        background-size: cover;
         height: 220px;
         width: 100%;
         margin-left: 0px;
@@ -31,18 +33,19 @@
     }
     #divImgLogo{
         display: inline-block;
-        margin-left: 40%;
+        padding-left: 40%;
     }
 }
 
 @media (max-width: 400px){
     header{
         background-image: url("../../assets/img/headerImg.png");
-        height: 70px;
+        height: 100px;
         width: 100%;
         margin-left: 0px;
         margin-right: 0px;
         filter: opacity(80);
+        margin-bottom: 50px;
     }
 
     #imgProfil{
