@@ -3,42 +3,34 @@ import BoiteService from "../../services/BoiteService";
 export default {
   data(){
     return{
-      caroussel: []
+      caroussel: [],
+      caroussel_current: String,
+      numero: 0,
+      intervalId: null,
     }
   },
-  methods: {},
+  methods: {
+    changeSlide(sens) {
+      this.numero = this.numero + sens;
+      if (this.numero < 0)
+          this.numero = this.caroussel.length - 1;
+      if (this.numero > this.caroussel.length - 1)
+          this.numero = 0;
+      this.caroussel_current = this.caroussel[this.numero].lien_img_boi;
+    }
+  },
   async mounted(){
     try {
       const response = await BoiteService.getNouveaute()
-
       if (response) {
         this.caroussel = response;
+        this.caroussel_current = this.caroussel[this.numero].lien_img_boi;
+        this.intervalId = setInterval(() => {
+          this.changeSlide(1);
+        }, 5000);
       }
     } catch (e) {
       console.error("Il y a une erreur :", e);
     }
   }
 };
-
-let numero = 0;
-
-/*let element = caroussel[numero]
-
-function ChangeSlide(sens) {
-    numero = numero + sens;
-    if (numero < 0)
-        numero = caroussel.length - 1;
-    if (numero > caroussel.length - 1)
-        numero = 0;
-    element = caroussel[numero].lien_img_boi;
-}
-
-while(true){
-  await setTimeout(5000);
-  numero = numero + sens;
-    if (numero < 0)
-        numero = caroussel.length - 1;
-    if (numero > caroussel.length - 1)
-        numero = 0;
-    element = caroussel[numero].lien_img_boi;
-}*/
