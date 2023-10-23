@@ -1,5 +1,5 @@
 <template>
-    <h1>Politique et Cookie (au chocolat)</h1>
+    <h1>Politique de confidentialité</h1>
 </template>
 
 <script src="./Politique.politique.js"></script>

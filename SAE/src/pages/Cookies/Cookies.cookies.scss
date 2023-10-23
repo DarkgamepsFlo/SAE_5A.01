@@ -1,0 +1,45 @@
+
+/* Il représente la version modifiée de la checkbox */
+input[type="checkbox"]#switch_1{
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1.5em;
+    height: 0.8em;
+    border: solid 2px #00abd2;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Permet de changer le fond d'écran lorsqu'on le bouton est checked */
+input[type="checkbox"]#switch_1:checked{
+    background: #00abd2;
+}
+
+/* Permet de changer les paramètres du rond */
+input[type="checkbox"]#switch_1:after{
+    position: absolute;
+    content: "";
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 .25em rgba(0,0,0,.3);
+    transform: scale(.7);
+    left: 0;
+    transition: all .2s ease-in-out;
+}
+
+/* Permet de faire déplacer le rond de droite à gauche une fois qu'on a checked le bouton */
+/* Permet de changer la rapidité du déplacement */
+input[type="checkbox"]#switch_1:checked:after{
+    left: calc(100% - 0.7em);
+}

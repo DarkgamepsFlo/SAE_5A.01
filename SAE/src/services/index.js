@@ -23,7 +23,8 @@ import FirstPage from '../pages/FirstPage/FirstPage.firstpage.vue'
 import Inscription from '../pages/Inscription/Inscription.inscription.vue'
 import Connexion from '../pages/Connexion/Connexion.connexion.vue'
 import Password from '../pages/Password/Password.password.vue'
-import Politique from '../components/Politique/Politique.politique.vue'
+import Politique from '../pages/Politique/Politique.politique.vue'
+import Cookies from '../pages/Cookies/Cookies.cookies.vue'
 import Contact from '../pages/Contact/Contact.contact.vue'
 import RechercherUtilisateur from '../pages/RechercheUtilisateur/RechercheUtilisateur.rechercheutilisateur.vue'
 import RechercheBoite from '../pages/RechercheBoite/RechercheBoite.rechercheboite.vue'
@@ -70,6 +71,10 @@ const router = createRouter({
     {
       path: '/politique',
       component: Politique
+    },
+    {
+      path: '/cookies',
+      component: Cookies
     },
     {
       path: '/rechercheUser',

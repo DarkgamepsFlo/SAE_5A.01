@@ -4,6 +4,7 @@ import HeaderContent from './components/HeaderContent/HeaderContent.headerconten
 import FooterContent from './components/FooterContent/FooterContent.footercontent.vue'
 import MenuDeroulantGauche from './components/MenuGauche/MenuGauche.menugauche.vue'
 import MenuDeroulantDroit from './components/MenuDroit/MenuDroit.menudroit.vue'
+import Banniere from './components/Banniere/Banniere.banniere.vue'
 
 // import MainPage from './components/MainPage.vue'
 // import HeaderContent from './components/HeaderContent.vue'
@@ -35,36 +36,35 @@ import MenuDeroulantDroit from './components/MenuDroit/MenuDroit.menudroit.vue'
   <MainPage />
 
   <FooterContent />
+  <Banniere />
 </template>
 
 <script>
 import Cookies from 'js-cookie';
 
-  export default {
-    data() {
-      return {
-        // message: "",
-        isMenuGaucheVisible: false,
-        isMenuDroitVisible: false,
-        cookieList: [],
-      };
-    },
-    methods: {
+export default {
+  data() {
+    return {
+      isMenuGaucheVisible: false,
+      isMenuDroitVisible: false,
+      cookieList: [],
+    };
+  },
+  methods: {
       // updateMessage(newMessage) {
       //   // Mettez à jour la propriété message avec le nouveau message
       //   this.message = newMessage;
       // },
-      toggleMenuGauche() {
+    toggleMenuGauche() {
         // Inversez la valeur de isMenuVisible pour afficher ou masquer MenuDeroulant
         this.isMenuGaucheVisible = !this.isMenuGaucheVisible;
-      },
-      toggleMenuDroit() {
+    },
+    toggleMenuDroit() {
         // Inversez la valeur de isMenuVisible pour afficher ou masquer MenuDeroulant
         this.isMenuDroitVisible = !this.isMenuDroitVisible;
-      },
-
+    },
       // Cette fonction permet juste de regarder l'ensemble des cookies, elle permet de tester, elle ne va pas rester définitive
-      listAllCookies() {
+    listAllCookies() {
         // Réinitialiser la liste des cookies
         this.cookieList = [];
 
@@ -77,17 +77,15 @@ import Cookies from 'js-cookie';
             this.cookieList.push({ name: cookieName, value: cookieValue });
           }
         }
-      },
-
-      deleteCookie(cookieName) {
-        // Supprimer le cookie spécifique par son nom
-        Cookies.remove(cookieName);
-        
-        // Mettre à jour la liste des cookies après la suppression
-        this.listAllCookies();
-      },
-    }
-  };
+    },
+    deleteCookie(cookieName) {
+      // Supprimer le cookie spécifique par son nom
+      Cookies.remove(cookieName);
+      // Mettre à jour la liste des cookies après la suppression
+      this.listAllCookies();
+    },
+  }
+};
 
 </script>
 

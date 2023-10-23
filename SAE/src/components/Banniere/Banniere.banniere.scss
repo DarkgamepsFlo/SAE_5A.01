@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'LegoThick';
+    src: url("../../assets/font/Legothick.ttf");
+}
+@font-face {
+    font-family: 'Acme';
+    src: url("../../assets/font/Acme-Regular.ttf");
+}
+  
+.banniere-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #17005c;
+}

@@ -73,7 +73,7 @@ async function addSuggestion(req, res, next){
       const body = req.body
 
       const result = await addSuggestions(body);
-      console.errpr("RESULT : ", result);
+      console.error("RESULT : ", result);
 
       if (result.success) {
         return res.send({
