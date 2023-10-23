@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts } = require("../services/db/crudBoite");
+const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts, addWlh, deleteWlh } = require("../services/db/crudBoite");
 
 
 // 1 //
@@ -77,11 +77,39 @@ async function addCollec(req, res, next){
   }
 }
 
+// 7 //
+//Permet de récupérer la fonction addWhl lorsqu'on est sur la bonne URL
+async function addWishlist(req, res, next){
+  try {
+    const boite = req.body.boite;
+    const id_wishlist = req.body.id_wishlist;
+    const result = await addWlh('lien_wishlist', boite, id_wishlist);
+    return res.send(result);
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction addWishlist : ${e}`);
+  }
+}
+
+// 8 //
+//Permet de récupérer la fonction addWhl lorsqu'on est sur la bonne URL
+async function deleteWishlist(req, res, next){
+  try {
+    const boite = req.body.boite;
+    const id_wishlist = req.body.id_wishlist;
+    const result = await deleteWlh('lien_wishlist', boite, id_wishlist);
+    return res.send(result);
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction deleteWishlist : ${e}`);
+  }
+}
+
 module.exports = {
   search,
   searchAllBoites,
   ficheBoite,
   nouveaute,
   deleteCollec,
-  addCollec
+  addCollec,
+  addWishlist,
+  deleteWishlist
 };

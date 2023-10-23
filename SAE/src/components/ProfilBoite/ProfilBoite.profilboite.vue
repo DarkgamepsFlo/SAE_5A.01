@@ -8,13 +8,14 @@
             <div class="nombrePieces" id="nombrePiecesProfilBoite"><p>{{ boite.nbr_pieceboi }}</p></div>
             <div class="dateDeSortie" id="dateDeSortieProfilBoite"><p>{{ boite.annee_sortie_boi }}</p></div>
             <div v-if="search">
-                <input type="button" id="buttonCollectionProfilBoite" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="action" v-if="isBoiteInCollection">
-                <input type="button" id="buttonCollectionProfilBoite" value="Ajouter à la collection" :data-id="boite.id_boite" @click.stop="action" v-else>
+                <input type="button" id="buttonCollectionProfilBoite" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="collection" v-if="isBoiteInCollection">
+                <input type="button" id="buttonCollectionProfilBoite" value="Ajouter à la collection" :data-id="boite.id_boite" @click.stop="collection" v-else>
 
-                <input type="button" id="buttonWishlistProfilBoite" value="Ajouter à la wishlist" @click.stop="action">
+                <input type="button" id="buttonWishlistProfilBoite" value="Supprimer de la wishlist" :data-id="boite.id_boite" @click.stop="wishlist" v-if="isBoiteInWishlist">
+                <input type="button" id="buttonWishlistProfilBoite" value="Ajouter à la wishlist" :data-id="boite.id_boite" @click.stop="wishlist" v-else>
             </div>
             <div v-else>
-                <input type="button" id="buttonDeleteCollection" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="action">
+                <input type="button" id="buttonDeleteCollection" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="collection">
             </div>
         </div>
     </router-link>

@@ -360,7 +360,22 @@ async function getCollection(donnee){
     const result = await db.any(query, [donnee]);
     return result;
   } catch (e) {
-    console.errpr(`Il y a une erreur dans la fonction getCollection : ${e}`);
+    console.error(`Il y a une erreur dans la fonction getCollection : ${e}`);
+  }
+}
+
+// 14 //
+//Cette méthode permet de retourner la wishlist de l'utilisateur
+async function getWishlist(donnee){
+  try {
+    const query = `SELECT B.id_boite, B.nom_boite, B.numero_boi, univers, B.nbr_pieceboi, B.annee_sortie_boi, PB.lien_img_boi FROM lien_wishlist AS LW 
+                                                                                                                              INNER JOIN boite as B ON LW.id_boite = B.id_boite 
+                                                                                                                              INNER JOIN photo_boite AS PB ON B.id_boite = PB.id_boite
+                                                                                                                              WHERE LW.id_wishlist = $1`;
+    const result = await db.any(query, [donnee]);
+    return result;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction : ${e}`);
   }
 }
 module.exports = {
@@ -375,4 +390,5 @@ module.exports = {
   profilUsr,
   profilCollec,
   getCollection,
+  getWishlist
 };

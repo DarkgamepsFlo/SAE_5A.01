@@ -104,6 +104,27 @@ async function addBts(collectionName, boite, id_collec){
     console.error(`Il y a une erreur dans la fonction addBts : ${e}`);
   }
 }
+
+async function addWlh(collectionName, boite, id_wishlist){
+  try {
+    const query = 'INSERT INTO $1:name VALUES ($2, $3)';
+    const result = await db.any(query, [collectionName, id_wishlist, boite]);
+    return result;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction addWlh : ${e}`);
+  }
+}
+
+async function deleteWlh(collectionName, boite, id_wishlist){
+  try {
+    const query = 'DELETE FROM $1:name VALUES WHERE id_wishlist = $2 AND id_boite = $3';
+    const result = await db.any(query, [collectionName, id_wishlist, boite]);
+    return result;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction deleteWlh : ${e}`);
+  }
+}
+
 module.exports = {
   findBoite,
   searchAllBts,
@@ -111,4 +132,6 @@ module.exports = {
   getNouveaute,
   deleteBts,
   addBts,
+  addWlh,
+  deleteWlh
 };

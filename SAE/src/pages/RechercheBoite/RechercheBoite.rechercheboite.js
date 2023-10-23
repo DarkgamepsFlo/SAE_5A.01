@@ -3,6 +3,7 @@ import BoiteService from "../../services/BoiteService";
 import CollectionService from "../../services/CollectionService";
 import RechercheBoiteService from "../../services/RechercheBoiteService";
 import RecupererInformationUser from "../../services/RecupererInformationUser";
+import WishlistService from "../../services/WishlistService";
 import Cookies from 'js-cookie';
 
 export default {
@@ -13,10 +14,12 @@ export default {
     return{
       items: [],
       collection_id: 0,
-      collection_uti: []    
+      collection_uti: [],
+      wishlist_id: 0,
+      wishlist_uti: []
   }},
   methods: {
-    search: async function(event){
+    async search(event){//Fonction de recherche
       try{
         const inputValue = event.target.value;
         if (!isNaN(inputValue)){//Recherche par numéro, nombre de pièces, année
@@ -46,15 +49,16 @@ export default {
       }      
     },
 
-    async getInformation(){
+    async getInformation(){//Récupérer les informations de l'utilisateur
       const infoUser = await RecupererInformationUser.getToken();
       this.collection_id = infoUser.info.collection_id;
+      this.wishlist_id = infoUser.info.wishlist_id;
     },
 
-    async getCollection(){
+    async getCollection(){//Récupérer la collection de l'utilisateur
       try {
         const where = {
-        where: this.collection_id
+          where: this.collection_id
         }
 
         const response = await CollectionService.getCollection(where)
@@ -67,32 +71,72 @@ export default {
       }
     },
 
-    async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+    async getWishlist(){//Récupère la wishlist de l'utilisateur
+      try {
+        const where = {
+          where: this.wishlist_id
+        }
 
+        const response = await WishlistService.getWishlist(where);
+
+        if(response){
+          this.wishlist_uti = response;
+        }
+      } catch (e) {
+        console.error("Il y a une erreur : ", e)
+      }
+    },
+
+    async deleteBoiteCollection(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
       const donnee = {
         boite: id, 
         id_collec: this.collection_id
       }
 
-      const result = await CollectionService.deleteBoite(donnee)
+      const result = await CollectionService.deleteBoite(donnee);
 
       if (result) {
         this.getCollection();
       }
-  },
+    },
 
-  async addBoite(id){
-    const donnee = {
-    boite: id, 
-    id_collec: this.collection_id
-  }
+    async addBoiteCollection(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+      const donnee = {
+        boite: id, 
+        id_collec: this.collection_id
+      }
 
-  const result = await CollectionService.addBoite(donnee)
+      const result = await CollectionService.addBoite(donnee);
 
-  if (result) {
-    this.getCollection();
-  }
-  }
+      if (result){
+        this.getCollection();
+      }
+    },
+
+    async deleteBoiteWishlist(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+      const donnee = {
+        boite: id, 
+        id_wishlist: this.wishlist_id
+      }
+
+      const result = await WishlistService.deleteBoite(donnee);
+
+      if (result) {
+        this.getWishlist();
+      }
+    },
+
+    async addBoiteWishlist(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+      const donnee = {
+        boite: id, 
+        id_wishlist: this.wishlist_id
+      }
+      const result = await WishlistService.addBoite(donnee);
+
+      if (result){
+        this.getWishlist();
+      }
+    }
   },
 
   async mounted() {
@@ -106,6 +150,7 @@ export default {
 
       await this.getInformation();
       await this.getCollection();
+      await this.getWishlist();
 
     } catch (e) {
       console.error("Il y a une erreur : ", e);
