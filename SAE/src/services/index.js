@@ -28,9 +28,8 @@ import Cookies from '../pages/Cookies/Cookies.cookies.vue'
 import Contact from '../pages/Contact/Contact.contact.vue'
 import RechercherUtilisateur from '../pages/RechercheUtilisateur/RechercheUtilisateur.rechercheutilisateur.vue'
 import RechercheBoite from '../pages/RechercheBoite/RechercheBoite.rechercheboite.vue'
-import Collection from '../components/Collection/Collection.collection.vue'
 import Profil from '../pages/Profil/Profil.profil.vue'
-import WichList from '../pages/WichList/WichList.wichlist.vue'
+import MaWishlist from '../pages/MaWishlist/MaWishlist.mawishlist.vue'
 import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
 import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
 import Boite from '../pages/Boite/Boite.boite.vue'
@@ -93,8 +92,8 @@ const router = createRouter({
       component: MaCollection
     },
     {
-      path: '/wichlist',
-      component: WichList
+      path: '/wishlist',
+      component: MaWishlist
     },
     {
       path: '/profil',
