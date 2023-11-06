@@ -4,5 +4,5 @@
     </div>
 </template>
     
-<script src="./WichList.wichlist.js"></script>
-<style src="./WichList.wichlist.scss"></style>
+<script src="./MaWishlist.mawishlist.js"></script>
+<style src="./MaWishList.mawishlist.scss"></style>
