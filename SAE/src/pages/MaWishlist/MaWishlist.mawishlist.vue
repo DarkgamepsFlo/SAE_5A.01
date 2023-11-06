@@ -1,6 +1,7 @@
 <template>
     <div>
-      <h1>C'est la "Liste avec ce que j'ai envie d'avoir dans ma liste d'envie" !!!</h1>
+      <h1>Ma wishlist</h1>
+      <Wishlist v-if="wishlist_id !== -1" :wishlist_id="wishlist_id"></Wishlist>
     </div>
 </template>
     
