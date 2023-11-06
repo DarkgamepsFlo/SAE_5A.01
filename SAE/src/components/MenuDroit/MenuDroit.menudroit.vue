@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>C'est le menu de Droite !!!</h1>
+      <h1>MENU</h1>
       <div v-if="isAlreadyRegistered">
         <!-- Contneu lorsque l'utilisateur est connecté -->
         <button @click="deconnexion">Déconnexion</button>

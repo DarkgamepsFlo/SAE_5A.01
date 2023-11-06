@@ -11,8 +11,24 @@
   }
 
   #boutonInscription{
-      text-align: var(--position-c);
+    text-align: var(--position-c);
   }
+
+  #divImgBoutonCentral{ 
+    margin-left: var(--position-auto);
+    margin-right: var(--position-auto);
+    background-image: var(--img-background-b-central);
+    width: var(--taille-400-px);
+    height: var(--taille-100-px);
+    background-size: var(--img--type-contain);
+  }
+
+  #spanFirstPage{
+    font-family: var(--font--text);
+    font-size: var(--taille-50-px);
+    text-shadow:var(--font--border-w)
+  }
+
   #titreAventure{
     font-size: var(--taille-96-px);
   }

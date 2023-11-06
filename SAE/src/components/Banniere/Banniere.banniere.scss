@@ -9,8 +9,35 @@
   
 .banniere-fixed {
     position: fixed;
+    height: 250px;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #17005c;
+    background-image: url("../../assets/img/baniere.png");
+    background-size: contain;
+    font-family: 'Acme';
+    text-shadow:var(--font--border-w);
+}
+
+.banniere-fixed h3{
+    font-size: 40px;
+}
+
+.banniere-fixed p {
+    font-size: 20px;
+}
+
+.butonBaniere {
+    margin-top: var(--taille-50-px);
+    width: 200px;
+    height: var(--taille-50-px);
+    background-image: var(--img-background-b-central);
+    background-size: var(--img--type-contain);
+    margin-bottom: var(--taille-50-px);
+    border-color: var(--color-transparent);
+    margin-left: 20px;
+    margin-top: 10px;
+    font-family: var(--font--text);
+    font-size: var(--taille-30-px);
+    text-shadow:var(--font--border-w)
 }

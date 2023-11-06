@@ -21,8 +21,11 @@
         </form>
         </div>
       </div>
-    <router-link to="/mdp"><h2>Mot de passe oublié</h2></router-link>
-    <router-link to="/inscription"><h2>Pas encore de compte ?</h2></router-link>
+      <div id="otherLink">
+        <router-link to="/mdp"><h2>Mot de passe oublié</h2></router-link>
+        <router-link to="/inscription"><h2>Pas encore de compte ?</h2></router-link>
+      </div>
+    
 </template>
 
 <style src="./Connexion.connexion.scss"></style>

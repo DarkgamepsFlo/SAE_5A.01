@@ -5,8 +5,53 @@ h1 {
   top: -10px;
 }
 
+#nouveaute{
+  height: 400px;
+  text-align: center;
+}
+
+#divImageCaroussel{
+  display: inline-block;
+  width: 500px;
+  height: 400px;
+  background-color: black;
+}
+
 #nouveaute img{
   background-color: white;
-  width: 160px;
-  height: 160px;
+  height: 300px;
+  margin-top: 10%;
+}
+
+
+#imageFlecheDroit{
+  display: inline-block;
+}
+
+#precedent{
+  
+  background-image: url("../../assets/img/flecheGauche.jpg");
+  background-size: contain;
+  border: transparent;
+  height: 145px;
+  width: 185px;
+  background-color: transparent;
+}
+#suivant{
+  background-image: url("../../assets/img/flecheDroit.png");
+  background-size: contain;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: transparent;
+  height: 145px;
+  width: 185px;
+  background-color: transparent;
+}
+
+#imageFlecheGauche{
+  display: inline-block;
+}
+
+#nouveaute{
+  margin-bottom: 200px;
 }

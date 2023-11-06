@@ -11,7 +11,7 @@
       <!-- <button @click="toggleMenuGauche">Afficher/Masquer Menu Gauche</button>
       <router-link to="/accueil">Accueil</router-link>
       <router-link to="/connexion">Connectez-vous</router-link>-->
-      <router-link to="/cookie">COOKIE TEST</router-link> 
+      <!-- <router-link to="/cookie">COOKIE TEST</router-link>  -->
       <!-- <router-link to="/bddTest">BDD TEST</router-link> -->
       <!-- <button @click="toggleMenuDroit">Afficher/Masquer Menu Droit</button> -->
     </header>

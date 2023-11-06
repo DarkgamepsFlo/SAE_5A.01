@@ -5,7 +5,19 @@
           border: var(--taille-1-px) var(--type-solid);
           width: var(--taille-700-px);
           margin-top: var(--taille-100-px);
-          margin-bottom: var(--taille-100-px);
+          margin-bottom: var(--taille-50-px);
+        }
+        #otherLink{
+          margin-top: - 10px;
+          text-align: var(--position-c);
+          
+        }
+
+        #otherLink h2{
+          font-family: var(--font--text);
+          display: inline;
+          margin-left: 10px;
+          text-decoration: underline;
         }
       }
       @media (max-width: 400px){

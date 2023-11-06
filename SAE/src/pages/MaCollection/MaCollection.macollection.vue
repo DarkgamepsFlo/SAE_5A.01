@@ -1,6 +1,6 @@
 <template>
     <div id="collec">
-        <h1>Ma collection</h1>
+        <h1>MA COLLECTION</h1>
         <Collection v-if="collection_id !== -1" :collection_id="collection_id"></Collection>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
-    <h1>Accueil</h1>
-    <Nouveaute />
+    <h1 id="titreCentral">ACCUEIL</h1>
+    <Nouveaute/>
 </template>
 
 <script  src="./Accueil.accueil.js"></script>

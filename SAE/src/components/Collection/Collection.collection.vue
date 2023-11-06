@@ -1,7 +1,15 @@
 <template>
     <div>
         <div id="tab-container">
-            <div><div>Photo de la boite</div><div>Nom de la boite</div><div>Numéro de la boite</div><div>Nombre de pièces</div><div>Année de sortie de la boite</div><div>Action</div></div>
+            <div id="divInlineBlock">
+                <p>Photo de la boite</p>
+                <p>Nom de la boite</p>
+                <p>Numéro de la boite</p>
+                <p>Nombre de pièces</p>
+                <p>Année de sortie de la boite</p>
+                <p>Action</p>
+            </div>
+            <div><div>Action</div></div>
             <div v-for="item in collection" :key="item.id_boite">
                 <ProfilBoite :boite="item" :search="false" @deleteBoite="deleteBoite"></ProfilBoite>
             </div>
