@@ -39,7 +39,7 @@ async function findBoite(collectionName, donnee) {
  */
 async function searchAllBts(collectionName) {
   try {
-    const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite`;
+    const query = `SELECT B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers, numero_boi FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite`;
     const boite = await db.any(query, [collectionName]);
     return boite;
   } catch (e) {
