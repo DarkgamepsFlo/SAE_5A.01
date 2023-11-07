@@ -1,57 +1,113 @@
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-#nouveaute{
-  height: 400px;
-  text-align: center;
-}
-
-#divImageCaroussel{
-  display: inline-block;
-  width: 500px;
-  height: 400px;
-  background-color: black;
-}
-
-#nouveaute img{
-  background-color: white;
-  height: 300px;
-  margin-top: 10%;
-}
 
 
-#imageFlecheDroit{
-  display: inline-block;
-}
-
-#precedent{
+@media (min-width: 400px){
   
-  background-image: url("../../assets/img/flecheGauche.jpg");
-  background-size: contain;
-  border: transparent;
-  height: 145px;
-  width: 185px;
-  background-color: transparent;
-}
-#suivant{
-  background-image: url("../../assets/img/flecheDroit.png");
-  background-size: contain;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  border: transparent;
-  height: 145px;
-  width: 185px;
-  background-color: transparent;
+  #nouveaute{
+    height: 400px;
+    text-align: center;
+  }
+  
+  #divImageCaroussel{
+    display: inline-block;
+    width: 500px;
+    height: 400px;
+    background-color: black;
+  }
+  
+  #nouveaute img{
+    background-color: white;
+    height: 300px;
+    margin-top: 10%;
+  }
+  
+  
+  #imageFlecheDroit{
+    display: inline-block;
+  }
+  
+  #precedent{
+    
+    background-image: url("../../assets/img/flecheGauche.jpg");
+    background-size: contain;
+    border: transparent;
+    height: 145px;
+    width: 185px;
+    background-color: transparent;
+  }
+  #suivant{
+    background-image: url("../../assets/img/flecheDroit.png");
+    background-size: contain;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: transparent;
+    height: 145px;
+    width: 185px;
+    background-color: transparent;
+  }
+  
+  #imageFlecheGauche{
+    display: inline-block;
+  }
+  
+  #nouveaute{
+    margin-bottom: 200px;
+  }
 }
 
-#imageFlecheGauche{
-  display: inline-block;
-}
-
-#nouveaute{
-  margin-bottom: 200px;
+@media (max-width: 400px){
+  #nouveaute{
+    height: 150px;
+    text-align: center;
+  }
+  
+  #divImageCaroussel{
+    display: inline-block;
+    width: 300px;
+    height: 200px;
+    background-color: black;
+  }
+  
+  #nouveaute img{
+    background-color: white;
+    height: 150px;
+    margin-top: 10%;
+  }
+  
+  
+  #imageFlecheDroit{
+    display: inline-block;
+  }
+  
+  #precedent{
+    position: absolute;
+    background-image: url("../../assets/img/flecheGauche.jpg");
+    background-size: contain;
+    border: transparent;
+    height: 70px;
+    width: 90px;
+    left: 45px;
+    margin-top: 20px;
+    background-color: transparent;
+  }
+  #suivant{
+    position: absolute;
+    background-image: url("../../assets/img/flecheDroit.png");
+    background-size: contain;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: transparent;
+    height: 70px;
+    width: 90px;
+    right: 45px;
+    margin-top: 20px;
+    background-color: transparent;
+  }
+  
+  #imageFlecheGauche{
+    display: inline-block;
+  }
+  
+  #nouveaute{
+    margin-bottom: 300px;
+  }
 }

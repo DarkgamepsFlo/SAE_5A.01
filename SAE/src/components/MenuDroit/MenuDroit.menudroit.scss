@@ -1,0 +1,61 @@
+.boutonMenuDroit{
+    margin-top: 5px;
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+#titreMenuDroit{
+    font-size: 64px;
+    margin-left: 10px;
+}
+
+@media (min-width: 400px){
+    .boutonMenuDroit{
+        margin-bottom: 5px;
+        margin-left: 20px;
+        font-size: 24px;
+    }
+    
+    #titreMenuDroit{
+        margin-bottom: 5px;
+        font-size: 64px;
+        margin-left: 10px;
+    }
+    #blockMenuDroit{
+        text-align: center;
+        width: 50%;
+        border: var(--taille-1-px) var(--type-solid);
+        margin-top: 20px;
+    }
+
+    #boutonDeco{
+        margin-top: 10px;
+        margin-left: 20px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 400px){
+    .boutonMenuDroit{
+        margin-bottom: 5px;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    
+    #titreMenuDroit{
+        margin-bottom: 5px;
+        font-size: 42px;
+        margin-left: 10px;
+    }
+
+    #blockMenuDroit{
+        text-align: center;
+        width: 100%;
+        border: var(--taille-1-px) var(--type-solid);
+    }
+    #boutonDeco{
+        margin-bottom: 5px;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,45 @@
+
+
+  @media (min-width: 400px){
+    #blockMonProfil{
+      margin-left: var(--position-auto);
+      margin-right: var(--position-auto);
+      border: var(--taille-1-px) var(--type-solid);
+      width: var(--taille-700-px);
+      margin-top: var(--taille-100-px);
+      margin-bottom: var(--taille-50-px);
+    }
+
+    #titreMonProfil{
+        text-align: center;
+        font-size: 64px;
+    }
+    #textProfil{
+        margin-left: 15px;
+        font-size: 24px;
+    }
+
+    #titreGererCompte{
+        font-size: 44px;
+        margin-left: 15px;
+    }
+
+    .radioProfil{
+        margin-left: 90px;
+    }
+
+    #estAdmin{
+        font-size: 44px;
+        margin-left: 15px;
+    }
+  }
+  @media (max-width: 400px){
+    #blockMonProfil{
+      margin-left: var(--position-auto);
+      margin-right: var(--position-auto);
+      border: var(--taille-1-px) var(--type-solid);
+      width: var(--taille-300-px);
+      margin-top: var(--taille-100-px);
+      margin-bottom: var(--taille-100-px);
+    }
+  }

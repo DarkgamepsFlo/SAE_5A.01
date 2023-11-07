@@ -1,0 +1,39 @@
+@media (min-width: 400px){
+    .boutonMenuGauche{
+        margin-bottom: 5px;
+        margin-left: 20px;
+        font-size: 24px;
+    }
+    
+    #titreMenuGauche{
+        margin-bottom: 5px;
+        font-size: 64px;
+        margin-left: 10px;
+    }
+    #blockMenuGauche{
+        text-align: center;
+        width: 50%;
+        border: var(--taille-1-px) var(--type-solid);
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 400px){
+    .boutonMenuGauche{
+        margin-bottom: 5px;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    
+    #titreMenuGauche{
+        margin-bottom: 5px;
+        font-size: 42px;
+        margin-left: 10px;
+    }
+
+    #blockMenuGauche{
+        text-align: center;
+        width: 100%;
+        border: var(--taille-1-px) var(--type-solid);
+    }
+}
