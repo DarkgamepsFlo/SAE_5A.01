@@ -15,7 +15,8 @@
                 <input type="button" id="buttonWishlistProfilBoite" value="Ajouter à la wishlist" :data-id="boite.id_boite" @click.stop="wishlist" v-else>
             </div>
             <div v-else>
-                <input type="button" id="buttonDeleteCollection" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="collection">
+                <input type="button" id="buttonDeleteCollection" value="Supprimer de la collection" :data-id="boite.id_boite" @click.stop="collection" v-if="collection_uti && collection_uti.length > 0">
+                <input type="button" id="buttonDeleteCollection" value="Supprimer de la wishlist" :data-id="boite.id_boite" @click.stop="wishlist" v-else>
             </div>
         </div>
     </router-link>

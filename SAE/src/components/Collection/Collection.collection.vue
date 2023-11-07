@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="tab-container">
-            <div id="divInlineBlock">
+            <div id="divInlineBlock" v-if="collection.length > 0">
                 <p>Photo de la boite</p>
                 <p>Nom de la boite</p>
                 <p>Numéro de la boite</p>
@@ -11,7 +11,7 @@
             </div>
             <div><div>Action</div></div>
             <div v-for="item in collection" :key="item.id_boite">
-                <ProfilBoite :boite="item" :search="false" @deleteBoite="deleteBoite"></ProfilBoite>
+                <ProfilBoite :boite="item" :search="false" :collection_uti="collection" @deleteBoite="deleteBoite"></ProfilBoite>
             </div>
         </div>
     </div>

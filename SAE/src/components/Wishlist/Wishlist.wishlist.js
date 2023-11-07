@@ -16,16 +16,16 @@ export default {
     },
     methods: {
         async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
-
+            console.log("ok");
             const donnee = {
                 boite: id, 
-                id_collec: this.wishlist_id
+                id_wishlist: this.wishlist_id
             }
 
             const result = await WishlistService.deleteBoite(donnee)
 
             if (result) {
-                this.getCollection();
+                this.getWishlist();
             }
         },
         async getWishlist(){
