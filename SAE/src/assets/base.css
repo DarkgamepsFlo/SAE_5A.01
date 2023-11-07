@@ -213,6 +213,13 @@ body {
     display: var(--display-b);
     margin-left: var(--taille-70-px);
   }
+  .searchBar{
+    margin-left: 25%;
+    width: 50%;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 15px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -252,5 +259,11 @@ body {
     font-size: var(--taille-20-px);
     display: var(--display-b);
     margin-left: var(--taille-40-px);
+  }
+  .searchBar{
+    margin-left: 5%;
+    width: 90%;
+    height: 40px;
+    border-radius: 15px;
   }
 }

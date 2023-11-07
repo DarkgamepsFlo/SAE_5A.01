@@ -4,7 +4,7 @@
     </div>
     <div id="blockMonProfil" v-else>
       <div>
-        <h1 id="titreMonProfil">MON COMPTE</h1>
+        <h1 id="titreMonProfil" class="titreBlock">MON COMPTE</h1>
       </div>
       <p id="textProfil">Bonjour {{pseudo_uti}}, Bienvenue sur votre compte !</p>
       <img id="imageCompte" :src="lien_img_pro_pp">

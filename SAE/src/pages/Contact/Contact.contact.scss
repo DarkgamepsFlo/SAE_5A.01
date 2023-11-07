@@ -7,6 +7,14 @@
       margin-top: var(--taille-100-px);
       margin-bottom: var(--taille-100-px);
     }
+
+    #message{
+      height: 150px;
+    }
+
+    #titreContact{
+      font-size: 64px;
+    }
   }
   @media (max-width: 400px){
     #blockContact{
@@ -16,5 +24,8 @@
       width: var(--taille-300-px);
       margin-top: var(--taille-100-px);
       margin-bottom: var(--taille-100-px);
+    }
+    #message{
+      height: 150px;
     }
   }

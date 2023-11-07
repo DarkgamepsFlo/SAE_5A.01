@@ -9,9 +9,11 @@
       margin-top: var(--taille-100-px);
       margin-bottom: var(--taille-50-px);
     }
+    #imageCompte{
+      margin-left: 5%;
+    }
 
     #titreMonProfil{
-        text-align: center;
         font-size: 64px;
     }
     #textProfil{
@@ -42,4 +44,27 @@
       margin-top: var(--taille-100-px);
       margin-bottom: var(--taille-100-px);
     }
+
+    #imageCompte{
+      width: 250px;
+      margin-left: 25px;
+    }
+    #titreMonProfil{
+      font-size: 44px;
+    }
+    #textProfil{
+      margin-left: 15px;
+      font-size: 15px;
+    }
+    #titreGererCompte{
+      font-size: 32px;
+      margin-left: 15px;
+    }
+    .radioProfil{
+      margin-left: 40px;
+    }
+    #estAdmin{
+      font-size: 32px;
+      margin-left: 15px;
+  }
   }

@@ -1,11 +1,11 @@
 <template>
     <div id="blockAjout" v-if="isAlreadyRegistered">
-      <h1>AJOUTER UNE BOITE</h1>
+      <h1 id="titreAjout" class="titreBlock">AJOUTER UNE BOITE</h1>
       <form @submit.prevent="submitSuggestion">
         <label id="labelInputFile">
             <input type="file" style="display: none" ref="fileInput" id="imageBoiteProposition" name="imageBoiteProposition" accept="image/png, image/jpeg" @change="onFilePicked"/>
-            <img v-if="!image" src="../../assets/img/inputFile.png" id="imgInputFile">
-            <img v-else :src="image" alt="Image sélectionnée" />
+            <img v-if="!image" class="imgInputAjout" src="../../assets/img/inputFile.png" id="imgInputFile">
+            <img v-else :src="image" class="imgInputAjout" alt="Image sélectionnée" />
             <h2 v-if="imageSizeError">{{ imageSizeError }}</h2>
             <button class="btn btn-info" @click="onPickFile">Upload profile picture</button>
         </label>
@@ -31,7 +31,7 @@
         </div>  
         <div id="divDescriptif">
             <label for="descriptif" id="labelDescriptif" class="labelForm">Descriptif</label>
-            <input type="text" id="descriptif" class="inputForm" v-model="suggestion.descriptif" required />
+            <textarea id="descriptif" class="inputForm" v-model="suggestion.descriptif" required></textarea>
         </div>  
         <div id="divBoutonEnvoie" class="divBoutonPrincipal"><button type="submit" id="boutonEnvoie" class="boutonPrincipal"><span id="spanEnvoie" class="spanBoutonPrincipal">Envoyer</span> </button></div>
       </form>

@@ -1,6 +1,6 @@
 <template>
     <div id="blockContact">
-        <h1 class="titreBlock">CONTACT</h1>
+        <h1 class="titreBlock" id="titreContact">CONTACT</h1>
         <form @submit.prevent="contact"> <!-- Changer le contact en un nom de fonction -->
         <div id="divSujet">
           <label for="sujet" id="labelSujet" class="labelForm">Sujet:</label>
@@ -9,7 +9,8 @@
         </div>
         <div id="divMessage">
           <label for="message" id="labelMessage" class="labelForm">Message:</label>
-          <input type="text" id="message" class="inputForm" v-model="contact.message" required />
+          <textarea id="message" class="inputForm" v-model="contact.message" required></textarea>
+          <!-- <input type="text" id="message" class="inputForm" v-model="contact.message" required /> -->
         </div>
         <div id="divBoutonContact" class="divBoutonPrincipal"><button type="submit" id="boutonContact" class="boutonPrincipal"><span id="spanContact" class="spanBoutonPrincipal">Envoyer</span> </button></div>
       </form>
