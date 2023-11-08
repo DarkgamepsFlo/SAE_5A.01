@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist, contactUser } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -433,6 +433,25 @@ async function wishlist(req, res, next){
   }
 }
 
+// 17 //
+// Cette fonction permet d'appeler la fonction connexionUser lorsqu'on se situe sur la bonne URL
+async function contact (req, res, next) {
+  try{
+    const donnee = req.body;
+
+    console.log(donnee);
+
+    const result = await contactUser('utilisateur', donnee);
+
+    return res.send({
+      success: result.success,
+      message: result.message,
+    });
+  } catch(e) {
+    console.error(`Il y a une erreur dans la fonction contact : ${e}`)
+  }
+}
+
 module.exports = {
   findAllUsers,
   inscription,
@@ -450,4 +469,5 @@ module.exports = {
   profilCollection,
   collection,
   wishlist,
+  contact,
 };

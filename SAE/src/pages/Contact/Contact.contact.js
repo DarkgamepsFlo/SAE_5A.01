@@ -3,6 +3,8 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import RecupererInformationUser from '../../services/RecupererInformationUser';
+import ContactService from '../../services/ContactService';
 
 export default {
   data() {
@@ -21,61 +23,85 @@ export default {
       if (cookieValue) {
         return true
       }
+      Swal.fire({
+        title: 'Erreur',
+        text: 'Vous devez être connecté pour accéder à cette page',
+        icon: 'error',
+        allowOutsideClick: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        customClass: {
+          container: 'custom-sweetalert-container',
+          title: 'custom-sweetalert-title',
+          content: 'custom-sweetalert-text',
+        },
+        background: 'var(--color-background)',
+      }).then((result) => {
+        if (result.isConfirmed) {
+        window.location.href = '../Connexion';
+        return false
+        }
+      });
       return false
     }
   },
-  // methods: {
-  //   inscrireUtilisateur() {
-  //     // Validez les données du formulaire ici
-  //     if (this.utilisateur.motDePasse !== this.confirmationMotDePasse) {
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Erreur',
-  //         text: 'Les mots de passe ne correspondent pas.',
-  //       });
-  //       return;
-  //     }
+  methods: {
+    async envoyerMessage() {
+      // Validez les données du formulaire ici
 
-  //     const donneesInscription = {
-  //       pseudo: this.utilisateur.pseudo,
-  //       motDePasse: this.utilisateur.motDePasse,
-  //       email: this.utilisateur.email,
-  //     };
+      const tokenDecoded = await RecupererInformationUser.getToken();
 
-  //     axios
-  //       .post('http://localhost:3000/users/inscription', donneesInscription)
-  //       .then(response => {
-  //         // Réinitialisez le formulaire
-  //         this.utilisateur = {
-  //           pseudo: '',
-  //           motDePasse: '',
-  //           email: '',
-  //         };
-  //         this.confirmationMotDePasse = '';
+      console.log(tokenDecoded);
 
-  //         if (response.data.success === true) {
-  //           this.confirmationMotDePasse = '';
-  //           Cookies.set("connexion", JSON.stringify(response.data), { expires: 1 });
-  //           // Redirigez l'utilisateur vers la page d'accueil
-  //           window.location.href = "http://127.0.0.1:5173/accueil";
-  //         } else {
-  //           Swal.fire({
-  //             icon: 'error',
-  //             title: 'Erreur',
-  //             text: response.data.message,
-  //             customClass: {
-  //               container: 'custom-sweetalert-container',
-  //               title: 'custom-sweetalert-title',
-  //               content: 'custom-sweetalert-text',
-  //             },
-  //             background: 'var(--color-background)',
-  //           });
-  //           console.error(response.data.message);
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error("Il y a une erreur :", error);
-  //       });
-  //   },
-  // },
+      const donneesMessage = {
+        sujet: this.contact.sujet,
+        message: this.contact.message,
+        email: tokenDecoded.info.adresse_mail_uti,
+        pseudo: tokenDecoded.info.pseudo_uti
+      };
+
+      console.log(donneesMessage);
+
+      const result = await ContactService.contact(donneesMessage);
+
+      console.log(result);
+
+      if (result.success === true){
+
+        Swal.fire({
+          title: result.message,
+          icon: 'success',
+          allowOutsideClick: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Accueil',
+          customClass: {
+            container: 'custom-sweetalert-container',
+            title: 'custom-sweetalert-title',
+            content: 'custom-sweetalert-text',
+          },
+          background: 'var(--color-background)',
+
+        }).then((result) => {
+
+        if (result.isConfirmed) {
+
+          this.contact = {
+            sujet: '',
+            message: '',
+          };
+          this.image = null
+          
+          window.location.href = '../accueil';
+          return;
+        }});
+      } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: result.message
+          });
+          console.error(result.message);
+      }
+    },
+  },
 };

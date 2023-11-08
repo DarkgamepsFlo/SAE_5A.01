@@ -378,6 +378,42 @@ async function getWishlist(donnee){
     console.error(`Il y a une erreur dans la fonction : ${e}`);
   }
 }
+
+// 15 //
+async function contactUser(collectionName, donnee) {
+  try {
+    var transport = nodemailer.createTransport({
+      service: conf.Auth.host,
+      auth: {
+        user: conf.Auth.user,
+        pass: conf.Auth.pass,
+      },
+    });
+    console.log("Je suis dans le crud et voici les données : ");
+    console.log(donnee);
+    
+    const mailOptions = {
+      from: conf.Auth.user, // Adresse e-mail de l'expéditeur
+      to: conf.Auth.user, // Adresse e-mail du destinataire
+      cc: conf.Auth.user,
+      subject: donnee.sujet,
+      text: donnee.message + '\nCe message est de ' + donnee.pseudo + '. \nVeuillez lui répondre par mail sur : ' + donnee.email,
+    };
+
+    transport.sendMail(mailOptions);
+
+    return {
+      success: true,
+      message: 'Votre message est bien envoyé à l\'adminsitrateur'
+    }
+    
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction contactUser : ${e}`);
+    // Rejeter la promesse en cas d'erreur
+    throw e;
+  }
+}
+
 module.exports = {
   findUsers,
   searchAllUsrs,
@@ -390,5 +426,6 @@ module.exports = {
   profilUsr,
   profilCollec,
   getCollection,
-  getWishlist
+  getWishlist,
+  contactUser,
 };
