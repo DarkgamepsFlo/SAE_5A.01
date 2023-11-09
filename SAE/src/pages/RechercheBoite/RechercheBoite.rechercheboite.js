@@ -22,27 +22,14 @@ export default {
     async search(event){//Fonction de recherche
       try{
         const inputValue = event.target.value;
-        if (!isNaN(inputValue)){//Recherche par numéro, nombre de pièces, année
-          const where = {
-            where: parseInt(inputValue), // Convertir en nombre
-          };
-          
-          const response = await RechercheBoiteService.search(where);
+        const where = {
+          where: inputValue.toLowerCase(),
+        };
 
-          if (response) {
-            this.items = response;
-          }
+        const response = await RechercheBoiteService.search(where);
 
-        } else {//Recherche par nom de boite ou de licence
-          const where = {
-            where: inputValue.toLowerCase(),
-          };
-
-          const response = await RechercheBoiteService.search(where);
-
-          if (response) {
-            this.items = response;
-          }
+        if (response) {
+          this.items = response;
         }
       } catch (e) {
         console.error("Il y a une erreur :", e);

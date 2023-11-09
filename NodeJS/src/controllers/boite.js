@@ -10,7 +10,7 @@ const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts, addWl
 async function search(req, res, next) {
   try{
     const body = req.body;
-    const result = await findBoite("boite", body);
+    const result = await findBoite(body);
     return res.send(result);
   }catch(e){
     console.error(`Il y a une erreur dans la fonction search : ${e}`)
