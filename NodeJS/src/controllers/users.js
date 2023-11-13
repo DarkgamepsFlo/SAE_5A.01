@@ -22,7 +22,7 @@ async function inscription(req, res, next) {
     const body = req.body;
 
     const shema = Joi.object({
-      pseudo: Joi.string().min(8).required(),
+      pseudo: Joi.string().min(3).required(),
       motDePasse: Joi.string().min(8).required(),
       email: Joi.string().email().required(),
     });
@@ -80,7 +80,7 @@ async function connexion (req, res, next) {
     const donnee = req.body;
     
     const shema = Joi.object({
-      pseudo: Joi.string().min(8).required(),
+      pseudo: Joi.string().min(3).required(),
       motDePasse: Joi.string().min(8).required(),
     })
 
@@ -245,7 +245,7 @@ async function changerInfoAvecMdp(req, res, next) {
 
     const shema = Joi.object({
       pseudo_uti: Joi.string().min(3).required(),
-      new_mdp: Joi.string().min(3).required(),
+      new_mdp: Joi.string().min(8).required(),
       adresse_mail_uti: Joi.string().email().required(),
       public_c: Joi.boolean().required(),
       public_w: Joi.boolean().required(),
