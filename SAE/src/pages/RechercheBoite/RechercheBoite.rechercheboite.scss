@@ -1,68 +1,115 @@
-#tab-container{
-  margin: var(--position-auto);
-  display: var(--display-b);
-  padding: var(--taille-10-px);
-  width: var(--taille-800-px);
+@media (min-width: 400px){
+  #tab-container{
+    margin: var(--position-auto);
+    display: var(--display-b);
+    padding: var(--taille-10-px);
+    width: var(--taille-650-px);
+  }
+  
+  .divInlineBlockRecherche div{
+    display: var(--display-il);
+  }
+
+  #divChangeInlineBlock{
+    display: var(--display-f);
+    align-items: var(--position-c); 
+    padding: var(--taille-10-px);
+    margin: var(--taille-10-px);
+    background-size: var(--img--type-contain);
+    height: var(--taille-176-px);
+  }
+
+  #divChangeInlineBlock div{
+    text-align: var(--position-c);
+  }
+
+  .photoLabel{
+    width: var(--taille-15-p);
+  }
+
+  .nomLabel{
+    width: var(--taille-20-p);
+  }
+
+  .numBoiteLabel{
+    width: var(--taille-13-p);
+  }
+
+  .universLabel{
+    width: var(--taille-17-p);
+  }
+
+  .nbrPieceLabel{
+    width: var(--taille-8-p);
+  }
+
+  .anneeBoiteLabel{
+    width: var(--taille-8-p);
+  }
+
+  .actionLabel{
+    width: var(--taille-16-p);
+  }
+  
+  #boiteDivSugg {
+    display: var(--display-f);
+    align-items: var(--position-c); /* Centre les éléments verticalement */
+    border: var(--taille-1-px) var(--type-solid) var(--color-black);
+    padding: var(--taille-10-px);
+    margin: var(--taille-10-px);
+    background-image: var(--img-background-recherche);
+  }
+  
+  #boiteProfilDiv .image {
+    max-width: var(--taille-100-p);
+  }
+  
+  
+  #divImgSugg{
+    height: var(--taille-200-px); 
+    width: var(--taille-200-px);
+    object-fit: var(--img--type-contain);
+  }
+  
+  #idImgSugg img{
+    height: var(--taille-200-px); 
+    width: var(--taille-200-px);
+    object-fit: var(--img--type-contain);
+  }
+  
+  #typeSuggP{ 
+    width: var(--taille-10-p);
+  }
+  
+  #nomBoiteSugg{
+    width: var(--taille-25-p);
+  }
+  
+  #numeroBoiteSugg{
+    width: var(--taille-10-p);
+  }
+  
+  #universSugg{
+    width: var(--taille-10-p);
+  }
+  
+  #nbrPieceSugg{
+    width: var(--taille-10-p);
+  }
+  
+  #anneSortieSugg{
+    width: var(--taille-10-p);
+  }
+  
+  #tab-container{
+    width: var(--taille-1200-px);
+  }
+  
+  #titreRecherche{
+    font-size: var(--taille-96-px);
+  }
 }
 
-.divInlineBlockRecherche div{
-  display: var(--display-ilb);
-}
+@media (max-width: 400px){
 
-#boiteDivSugg {
-  display: flex;
-  align-items: center; /* Centre les éléments verticalement */
-  border: 1px solid #000;
-  padding: 10px;
-  margin: 10px;
-  background-image: url("../../assets/img/backgroundRecherche.png");
-}
-
-#boiteProfilDiv .image {
-  max-width: 100%;
-}
-
-
-#divImgSugg{
-  height: 200px; 
-  width: 200px;
-  object-fit: contain;
-}
-
-#idImgSugg img{
-  height: 200px; 
-  width: 200px;
-  object-fit: contain;
-}
-
-#typeSuggP{ 
-  width: 10%;
-}
-
-#nomBoiteSugg{
-  width: 25%;
-}
-
-#numeroBoiteSugg{
-  width: 10%;
-}
-
-#universSugg{
-  width: 10%;
-}
-
-#nbrPieceSugg{
-  width: 10%;
-}
-
-#anneSortieSugg{
-  width: 10%;
-}
-
-#tab-container{
-  width: 70%;
-}
-
-#titreRecherche{
-  font-size: 96px;
 }

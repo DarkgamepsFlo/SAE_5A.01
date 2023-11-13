@@ -9,11 +9,11 @@
     }
 
     #message{
-      height: 150px;
+      height: var(--taille-150-px);
     }
 
     #titreContact{
-      font-size: 64px;
+      font-size: var(--taille-64-px);
     }
   }
   @media (max-width: 400px){
@@ -26,6 +26,6 @@
       margin-bottom: var(--taille-100-px);
     }
     #message{
-      height: 150px;
+      height: var(--taille-150-px);
     }
   }

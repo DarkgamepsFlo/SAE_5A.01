@@ -1,42 +1,33 @@
-@font-face {
-    font-family: 'LegoThick';
-    src: url("../../assets/font/Legothick.ttf");
-}
-@font-face {
-    font-family: 'Acme';
-    src: url("../../assets/font/Acme-Regular.ttf");
-}
-  
 .banniere-fixed {
-    position: fixed;
-    height: 250px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: url("../../assets/img/baniere.png");
-    background-size: contain;
-    font-family: 'Acme';
+    position: var(--position-f);
+    height: var(--taille-250-px);
+    bottom: var(--taille-0-px);
+    left: var(--taille-0-px);
+    right: var(--taille-0-px);
+    background-image: var(--img-background-baniere);
+    background-size: var(--img--type-contain);
+    font-family: var(--font--text);
     text-shadow:var(--font--border-w);
 }
 
 .banniere-fixed h3{
-    font-size: 40px;
+    font-size: var(--taille-40-px);
 }
 
 .banniere-fixed p {
-    font-size: 20px;
+    font-size: var(--taille-20-px);
 }
 
 .butonBaniere {
     margin-top: var(--taille-50-px);
-    width: 200px;
+    width: var(--taille-200-px);
     height: var(--taille-50-px);
     background-image: var(--img-background-b-central);
     background-size: var(--img--type-contain);
     margin-bottom: var(--taille-50-px);
     border-color: var(--color-transparent);
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-left: var(--taille-20-px);
+    margin-top: var(--taille-10-px);
     font-family: var(--font--text);
     font-size: var(--taille-30-px);
     text-shadow:var(--font--border-w)

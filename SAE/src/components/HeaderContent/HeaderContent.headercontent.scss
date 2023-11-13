@@ -1,80 +1,80 @@
 @media (min-width: 800px){
     header{
-        background-image: url("../../assets/img/header.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 220px;
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
+        background-image: var(--img-background-header);
+        background-repeat: var(--img--type-no-repeat);
+        background-size: var(--img--type-cover);
+        height: var(--taille-220-px);
+        width: var(--taille-100-p);
+        margin-left: var(--taille-0-px);
+        margin-right: var(--taille-0-px);
     }
 
     #imgProfil{
-        float: right;
+        float: var(--position-r);
     }
     
     #boutonProfil{
-        background-color: white;
-        border-color: transparent;
-        float: right;
-        margin-top: 50px;
+        background-color: var(--vt-c-white);
+        border-color: var(--color-transparent);
+        float: var(--position-r);
+        margin-top: var(--taille-50-px);
     }
     
     #boutonMenu{
-        background: transparent;
-        border-color: transparent;
+        background: var(--color-transparent);
+        border-color: var(--color-transparent);
     }
     #imgBoutonMenu{
-        height: 100px;
-        margin-bottom: 50px;
+        height: var(--taille-100-px);
+        margin-bottom: var(--taille-50-px);
     }
     #imgLogo{
-        height: 220px;
+        height: var(--taille-220-px);
     }
     #divImgLogo{
-        display: inline-block;
-        margin-left: 40%;
-        background-color: white;
+        display: var(--display-ilb);
+        margin-left: var(--taille-40-p);
+        background-color: var(--vt-c-white);
     }
 }
 
 @media (max-width: 400px){
     header{
-        background-image: url("../../assets/img/headerImg.png");
-        height: 100px;
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
-        filter: opacity(80);
-        margin-bottom: 50px;
+        background-image: var(--img-background-header);
+        height: var(--taille-100-px);
+        width: var(--taille-100-p);
+        margin-left: var(--taille-0-px);
+        margin-right: var(--taille-0-px);
+        filter: var(--opacity-80);
+        margin-bottom: var(--taille-50-px);
     }
 
     #imgProfil{
-        float: right;
+        float: var(--position-r);
         height: var(--taille-70-px);
     }
     
     #boutonProfil{
-        background: transparent;
-        border-color: transparent;
-        float: right;
-        margin-left: 20px;
+        background: var(--color-transparent);
+        border-color: var(--color-transparent);
+        float: var(--position-r);
+        margin-left: var(--taille-20-px);
         height: var(--taille-20-p);
     }
     
     #boutonMenu{
-        background: transparent;
-        border-color: transparent;
+        background: var(--color-transparent);
+        border-color: var(--color-transparent);
     }
     #imgBoutonMenu{
-        height: 60px;
+        height: var(--taille-60-px);
     }
     #imgLogo{
-        height: 70px;
+        height: var(--taille-70-px);
     }
     #divImgLogo{
-        display: inline-block;
-        margin-left: 20%;
+        display: var(--display-ilb);
+        margin-left: var(--taille-20-p);
     }
 }
 

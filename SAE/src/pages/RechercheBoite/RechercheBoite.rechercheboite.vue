@@ -4,12 +4,15 @@
         <input type="text" placeholder="Entrez le nom d'une boite, un numero, ou une licence..." id="searchBarBoite" class="searchBar" @input="search">
         <div id="tab-container">
             <div id="divChangeInlineBlock">
-                <p>Photo de la boite</p>
-                <p>Nom de la boite</p>
-                <p>Numéro de la boite</p>
-                <p>Nombre de pièces</p>
-                <p>Année de sortie de la boite</p>
-            </div>            <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" 
+                <div class="photoLabel"><p >Photo de la boite</p></div>
+                <div class="nomLabel"><p >Nom de la boite</p></div>
+                <div class="numBoiteLabel"><p >Numéro de la boite</p></div>
+                <div class="universLabel"><p >Univers</p></div>
+                <div class="nbrPieceLabel"><p >Nombre de pièces</p></div>
+                <div class="anneeBoiteLabel"><p >Année de sortie de la boite</p></div>
+                <div class="actionLabel"><p >Action</p></div>
+            </div>            
+            <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" 
             :search="true" 
             :collection_uti="collection_uti"
             :wishlist_uti="wishlist_uti"

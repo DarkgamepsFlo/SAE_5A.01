@@ -1,39 +1,39 @@
 @media (min-width: 400px){
     .boutonMenuGauche{
-        margin-bottom: 5px;
-        margin-left: 20px;
-        font-size: 24px;
+        margin-bottom: var(--taille-5-px);
+        margin-left: var(--taille-20-px);
+        font-size: var(--taille-24-px);
     }
     
     #titreMenuGauche{
-        margin-bottom: 5px;
-        font-size: 64px;
-        margin-left: 10px;
+        margin-bottom: var(--taille-5-px);
+        font-size: var(--taille-64-px);
+        margin-left: var(--taille-10-px);
     }
     #blockMenuGauche{
-        text-align: center;
-        width: 50%;
+        text-align: var(--position-c);
+        width: var(--taille-50-p);
         border: var(--taille-1-px) var(--type-solid);
-        margin-top: 20px;
+        margin-top: var(--taille-20-px);
     }
 }
 
 @media (max-width: 400px){
     .boutonMenuGauche{
-        margin-bottom: 5px;
-        margin-left: 20px;
-        font-size: 20px;
+        margin-bottom: var(--taille-5-px);
+        margin-left: var(--taille-20-px);
+        font-size: var(--taille-20-px);
     }
     
     #titreMenuGauche{
-        margin-bottom: 5px;
-        font-size: 42px;
-        margin-left: 10px;
+        margin-bottom: var(--taille-5-px);
+        font-size: var(--taille-42-px);
+        margin-left: var(--taille-10-px);
     }
 
     #blockMenuGauche{
-        text-align: center;
-        width: 100%;
+        text-align: var(--position-c);
+        width: var(--taille-100-p);
         border: var(--taille-1-px) var(--type-solid);
     }
 }

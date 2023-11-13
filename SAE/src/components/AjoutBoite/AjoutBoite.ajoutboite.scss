@@ -1,5 +1,5 @@
 #descriptif{
-    height: 150px;
+    height: var(--taille-150-px);
   }
 
   @media (min-width: 400px){
@@ -12,11 +12,11 @@
       margin-bottom: var(--taille-50-px);
     }
     #titreAjout{
-        font-size: 64px;
+        font-size: var(--taille-64-px);
     }
     .imgInputAjout{
-        margin-left: 25%;
-        width: 350px;
+        margin-left: var(--taille-25-p);
+        width: var(--taille-350-px);
     }
   }
   @media (max-width: 400px){
@@ -29,7 +29,7 @@
       margin-bottom: var(--taille-100-px);
     }
     .imgInputAjout{
-        margin-left: 25%;
-        width: 150px;
+        margin-left: var(--taille-25-p);
+        width: var(--taille-150-px);
     }
   }

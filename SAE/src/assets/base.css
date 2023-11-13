@@ -60,47 +60,88 @@
   0px -1px 0px white,
   0px 1px 0px white;
   --background--size-central-button: contain;
+
+  --opacity-80 : opacity(80);
 }
 
 :root{
   --img-background-b-central : url("../assets/img/boutonCentral.png");
   --img-background-header : url("../../assets/img/headerImg.png");
   --img-background-footer : url("../../assets/img/footerImg.png");
+  --img-background-responsible-footer : url("../../assets/img/footer_Responsiv.png");
+  --img-background-baniere : url("../../assets/img/baniere.png");
+  --img-background-recherche: url("../../assets/img/backgroundRecherche.png");
+  --img-background-profilBoite: url("../../assets/img/background.png");
+  --img-background-profilBoite-responsive: url("../../assets/img/backgroundResponsive.png");
+  --img-fleche-gauche: url("../../assets/img/flecheGauche.jpg");
+  --img-fleche-droit: url("../../assets/img/flecheDroit.png");
 }
 
 :root{
   --taille-0 : 0;
   --taille-0-1 : 0.1;
   --taille-0-px : 0px;
+  --taille-0-8-px : 0.8px;
   --taille-1-px : 1px;
   --taille-2-px : 2px;
+  --taille-5-px : 5px;
   --taille-8-px : 8px;
+  --taille-10-px : 10px;
   --taille-15-px : 15px;
   --taille-16-px : 16px;
   --taille-18-px : 18px;
   --taille-20-px : 20px;
+  --taille-22-px : 22px;
+  --taille-24-px : 24px;
   --taille-25-px : 25px;
   --taille-28-px : 28px;
   --taille-30-px : 30px;
   --taille-32-px : 32px;
   --taille-35-px : 35px;
   --taille-40-px : 40px;
+  --taille-42-px : 42px;
+  --taille-44-px : 44px;
+  --taille-45-px : 45px;
   --taille-50-px : 50px;
+  --taille-56-px : 56px;
+  --taille-64-px : 64px;
   --taille-70-px : 70px;
   --taille-90-px : 90px;
   --taille-96-px : 96px;
   --taille-100-px : 100px;
+  --taille-130-px : 130px;
+  --taille-145-px : 145px;
   --taille-150-px : 150px;
   --taille-160-px : 160px;
+  --taille-170-px : 170px;
+  --taille-176-px : 176px;
+  --taille-185-px : 185px;
   --taille-200-px : 200px;
   --taille-220-px : 220px;
+  --taille-230-px : 230px;
+  --taille-250-px : 250px;
   --taille-300-px : 300px;
+  --taille-320-px : 320px;
+  --taille-350-px : 350px;
+  --taille-390-px : 390px;
   --taille-400-px : 400px;
+  --taille-438-px : 438px;
   --taille-500-px : 500px;
   --taille-600-px : 600px;
+  --taille-650-px : 650px;
   --taille-700-px : 700px;
   --taille-800-px : 800px;
+  --taille-1200-px : 1200px;
+  --taille-5-p : 5%;
+  --taille-8-p : 8%;
+  --taille-10-p : 10%;
+  --taille-13-p : 13%;
+  --taille-15-p : 15%;
+  --taille-16-p : 16%;
+  --taille-17-p : 17%;
   --taille-20-p : 20%;
+  --taille-23-p : 23%;
+  --taille-25-p : 25%;
   --taille-30-p : 30%;
   --taille-40-p : 40%;
   --taille-50-p : 50%;
@@ -109,6 +150,7 @@
   --taille-80-p : 80%;
   --taille-90-p : 90%;
   --taille-100-p : 100%;
+  --taille-200-p : 200%;
 }
 
 :root{
@@ -118,17 +160,24 @@
   --position-a: absolute; 
   --position-re: relative;
   --position-auto: auto;
+  --position-f: fixed;
 
   --display-il: inline;
   --display-b: block;
   --display-ilb: inline-block;
   --display-g: grid;
+  --display-f: flex;
 
   --type-solid : solid;
 
   --type-fit-c : fit-content;
 
   --img--type-contain: contain;
+  --img--type-cover: cover;
+  --img--type-no-repeat: no-repeat;
+
+  --text-decoration-under: underline;
+
 }
 
 @media (prefers-color-scheme: dark) {

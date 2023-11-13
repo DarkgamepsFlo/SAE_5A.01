@@ -3,111 +3,111 @@
 @media (min-width: 400px){
   
   #nouveaute{
-    height: 400px;
-    text-align: center;
+    height: var(--taille-400-px);
+    text-align: var(--position-c);
   }
   
   #divImageCaroussel{
-    display: inline-block;
-    width: 500px;
-    height: 400px;
+    display: var(--display-ilb);
+    width: var(--taille-500-px);
+    height: var(--taille-400-px);
     background-color: black;
   }
   
   #nouveaute img{
-    background-color: white;
-    height: 300px;
-    margin-top: 10%;
+    background-color: var(--vt-c-white);
+    height: var(--taille-300-px);
+    margin-top: var(--taille-10-p);
   }
   
   
   #imageFlecheDroit{
-    display: inline-block;
+    display: var(--display-ilb);
   }
   
   #precedent{
     
-    background-image: url("../../assets/img/flecheGauche.jpg");
-    background-size: contain;
-    border: transparent;
-    height: 145px;
-    width: 185px;
-    background-color: transparent;
+    background-image: var(--img-fleche-gauche);
+    background-size: var(--img--type-contain);
+    border: var(--color-transparent);
+    height: var(--taille-145-px);
+    width: var(--taille-185-px);
+    background-color: var(--color-transparent);
   }
   #suivant{
-    background-image: url("../../assets/img/flecheDroit.png");
-    background-size: contain;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border: transparent;
-    height: 145px;
-    width: 185px;
-    background-color: transparent;
+    background-image: var(--img-fleche-droit);
+    background-size: var(--img--type-contain);
+    margin-top: var(--taille-0-px);
+    margin-bottom: var(--taille-0-px);
+    border: var(--color-transparent);
+    height: var(--taille-145-px);
+    width: var(--taille-185-px);
+    background-color: var(--color-transparent);
   }
   
   #imageFlecheGauche{
-    display: inline-block;
+    display: var(--display-ilb);
   }
   
   #nouveaute{
-    margin-bottom: 200px;
+    margin-bottom: var(--taille-200-px);
   }
 }
 
 @media (max-width: 400px){
   #nouveaute{
-    height: 150px;
-    text-align: center;
+    height: var(--taille-150-px);
+    text-align: var(--position-c);
   }
   
   #divImageCaroussel{
-    display: inline-block;
-    width: 300px;
-    height: 200px;
+    display: var(--display-ilb);
+    width: var(--taille-300-px);
+    height: var(--taille-200-px);
     background-color: black;
   }
   
   #nouveaute img{
-    background-color: white;
-    height: 150px;
-    margin-top: 10%;
+    background-color: var(--vt-c-white);
+    height: var(--taille-150-px);
+    margin-top: var(--taille-10-p);
   }
   
   
   #imageFlecheDroit{
-    display: inline-block;
+    display: var(--display-ilb);
   }
   
   #precedent{
     position: absolute;
-    background-image: url("../../assets/img/flecheGauche.jpg");
-    background-size: contain;
-    border: transparent;
-    height: 70px;
-    width: 90px;
-    left: 45px;
-    margin-top: 20px;
-    background-color: transparent;
+    background-image: var(--img-fleche-gauche);
+    background-size: var(--img--type-contain);
+    border: var(--color-transparent);
+    height: var(--taille-70-px);
+    width: var(--taille-90-px);
+    left: var(--taille-45-px);
+    margin-top: var(--taille-20-px);
+    background-color: var(--color-transparent);
   }
   #suivant{
     position: absolute;
-    background-image: url("../../assets/img/flecheDroit.png");
-    background-size: contain;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border: transparent;
-    height: 70px;
-    width: 90px;
-    right: 45px;
-    margin-top: 20px;
-    background-color: transparent;
+    background-image: var(--img-fleche-droit);
+    background-size: var(--img--type-contain);
+    margin-top: var(--taille-0-px);
+    margin-bottom: var(--taille-0-px);
+    border: var(--color-transparent);
+    height: var(--taille-70-px);
+    width: var(--taille-90-px);
+    right: var(--taille-45-px);
+    margin-top: var(--taille-20-px);
+    background-color: var(--color-transparent);
   }
   
   #imageFlecheGauche{
-    display: inline-block;
+    display: var(--display-ilb);
   }
   
   #nouveaute{
-    margin-bottom: 300px;
+    margin-bottom: var(--taille-300-px);
   }
 }

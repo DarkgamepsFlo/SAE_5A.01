@@ -10,29 +10,29 @@
       margin-bottom: var(--taille-50-px);
     }
     #imageCompte{
-      margin-left: 5%;
+      margin-left: var(--taille-5-p);
     }
 
     #titreMonProfil{
-        font-size: 64px;
+        font-size: var(--taille-64-px);
     }
     #textProfil{
-        margin-left: 15px;
-        font-size: 24px;
+        margin-left: var(--taille-15-px);
+        font-size: var(--taille-24-px);
     }
 
     #titreGererCompte{
-        font-size: 44px;
-        margin-left: 15px;
+        font-size: var(--taille-44-px);
+        margin-left: var(--taille-15-px);
     }
 
     .radioProfil{
-        margin-left: 90px;
+        margin-left: var(--taille-90-px);
     }
 
     #estAdmin{
-        font-size: 44px;
-        margin-left: 15px;
+        font-size: var(--taille-44-px);
+        margin-left: var(--taille-15-px);
     }
   }
   @media (max-width: 400px){
@@ -46,25 +46,25 @@
     }
 
     #imageCompte{
-      width: 250px;
-      margin-left: 25px;
+      width: var(--taille-250-px);
+      margin-left: var(--taille-25-px);
     }
     #titreMonProfil{
-      font-size: 44px;
+      font-size: var(--taille-44-px);
     }
     #textProfil{
-      margin-left: 15px;
-      font-size: 15px;
+      margin-left: var(--taille-15-px);
+      font-size: var(--taille-15-px);
     }
     #titreGererCompte{
-      font-size: 32px;
-      margin-left: 15px;
+      font-size: var(--taille-32-px);
+      margin-left: var(--taille-15-px);
     }
     .radioProfil{
-      margin-left: 40px;
+      margin-left: var(--taille-40-px);
     }
     #estAdmin{
-      font-size: 32px;
-      margin-left: 15px;
+      font-size: var(--taille-32-px);
+      margin-left: var(--taille-15-px);
   }
   }

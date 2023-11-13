@@ -1,113 +1,86 @@
-// #imageProfilBoite{
-//   height: 200px; 
-//   width: 200px;
-//   margin-bottom: -100px;
-//   object-fit: contain;
-// }
-// .boite{
-//   display: block;
-//   background-color: aquamarine;
-//   border: solid 1px #000000;
-//   height: 200px;
-//   width: 100%;
-//   position: relative;
-// }
-
-// .boite div{
-//   border: solid 1px black;
-//   color: black;
-//   top: 0px;
-// }
-
-// // .boite img{
-// //   width: 160px;
-// //   height: 160px;
-// //   object-fit: contain;
-// //   background-color: white;
-// // }
-
-// .nom{
-//   display: flex;
-//   align-items: center;
-//   height: 100vh;
-//    height: 160px;
-// }
 
 
 @media (min-width: 400px){
   .boite {
-    display: flex;
-    align-items: center; /* Centre les éléments verticalement */
-    border: 1px solid #000;
-    padding: 10px;
-    margin: 10px;
-    background-image: url("../../assets/img/backgroundRecherche.png");
+    display: var(--display-f);
+    align-items: var(--position-c); /* Centre les éléments verticalement */
+    border: var(--taille-1-px) var(--type-solid) var(--color-black);
+    padding: var(--taille-10-px);
+    margin: var(--taille-10-px);
+    background-image: var(--img-background-profilBoite);
+    background-size: var(--img--type-contain);
+    height: var(--taille-176-px);
   }
   
   
   
   #boiteProfilDiv .image {
-    max-width: 100%;
+    max-width: var(--taille-100-p);
   }
   
   #boiteProfilDiv p {
-  color: #000;
+  color: var(--color-black);
   font-size: var(--taille-28-px);
   text-align: var(--position-c);
-  -webkit-text-stroke: 0.8px white;
+  -webkit-text-stroke: var(--taille-0-8-px ) var(--vt-c-white);
   }
   
   
   #imageProfilBoite{
-    height: 180px; 
-    width: 180px;
-    object-fit: contain;
+    margin-left: var(--taille-20-px);
+    height: var(--taille-130-px); 
+    width: var(--taille-130-px);
+    object-fit: var(--img--type-contain);
   }
   
   #imageProfilBoite img{
-    height: 180px; 
-    width: 180px;
-    object-fit: contain;
+    height: var(--taille-130-px); 
+    width: var(--taille-130-px);
+    object-fit: var(--img--type-contain);
   }
   
   #nomProfilBoite{ 
-    width: 23%;
+    width: var(--taille-23-p);
   }
   
   #numeroProfilBoite{
-    width: 10%;
+    width: var(--taille-10-p);
   }
   
   #universProfilBoite{
-    width: 20%;
+    width: var(--taille-20-p);
   }
   
   #nombrePiecesProfilBoite{
-    width: 8%;
+    width: var(--taille-8-p);
   }
   
   #dateDeSortieProfilBoite{
-    width: 8%;
+    width: var(--taille-8-p);
   }
-  #divButtonAjoutDelete{
-    width: var(--taille-150-px)
+  #boutonBoite{
+    width: var(--taille-170-px);
+    text-align: var(--position-c);
   }
   
 }
 
 @media (max-width: 400px){
   .boite {
-    align-items: center; /* Centre les éléments verticalement */
-    border: 1px solid #000;
-    padding: 10px;
-    margin: 10px;
-    background-image: url("../../assets/img/backgroundRecherche.png");
+    align-items: var(--position-c); /* Centre les éléments verticalement */
+    border: var(--taille-1-px) var(--type-solid) var(--color-black);
+    padding: var(--taille-10-px);
+    margin: var(--taille-10-px);
+    width: var(--taille-390-px);
+    height: var(--taille-438-px);
+    background-image: var(--img-background-profilBoite-responsive);
+    background-size: var(--img--type-contain);
   }
   
   
   
   #boiteProfilDiv .image {
-    max-width: 100%;
+    max-width: var(--taille-100-p);
     margin-left: var(--position-auto);
     margin-right: var(--position-auto);
   }
@@ -121,16 +94,45 @@
   
   
   #imageProfilBoite{
-    height: 180px; 
-    width: 180px;
-    object-fit: contain;
+    height: var(--taille-170-px); 
+    width: var(--taille-170-px);
+    object-fit: var(--img--type-contain);
+    margin-top: var(--taille-22-px);
   }
   
   #imageProfilBoite img{
-    height: 180px; 
-    width: 180px;
-    object-fit: contain;
+    height: var(--taille-170-px); 
+    width: var(--taille-170-px);
+    object-fit: var(--img--type-contain);
   }
   
+  .nom{
+    width: var(--taille-320-px);
+    margin-left: var(--taille-20-px);
+  }
+  .numero{
+    width: var(--taille-320-px);
+    margin-left: var(--taille-20-px);
+  }
+
+  .univers{
+    width: var(--taille-320-px);
+    margin-left: var(--taille-20-px);
+  }
+
+  .nombrePieces{
+    width: var(--taille-320-px);
+    margin-left: var(--taille-20-px);
+  }
+
+  .dateDeSortie{
+    width: var(--taille-320-px);
+    margin-left: var(--taille-20-px);
+  }
+
+  #boutonBoite{
+    text-align: var(--position-c);
+    margin-right: var(--taille-10-px);
+  }
   
 }

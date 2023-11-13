@@ -1,12 +1,12 @@
 @media (min-width: 400px){
   #titreCentral{
-    font-size: 96px;
+    font-size: var(--taille-96-px);
   }
 }
 
 @media (max-width: 400px){
   #titreCentral{
-    font-size: 56px;
-    text-align: center;
+    font-size: var(--taille-56-px);
+    text-align: var(--position-c);
   }
 }

@@ -15,9 +15,9 @@
 
         #otherLink h2{
           font-family: var(--font--text);
-          display: inline;
-          margin-left: 10px;
-          text-decoration: underline;
+          display: var(--display-il);
+          margin-left: var(--taille-10-px);
+          text-decoration: var(--text-decoration-under);
         }
       }
       @media (max-width: 400px){
