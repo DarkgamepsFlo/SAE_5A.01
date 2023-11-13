@@ -65,16 +65,16 @@
 }
 
 :root{
-  --img-background-b-central : url("../assets/img/boutonCentral.png");
-  --img-background-header : url("../../assets/img/headerImg.png");
-  --img-background-footer : url("../../assets/img/footerImg.png");
-  --img-background-responsible-footer : url("../../assets/img/footer_Responsiv.png");
-  --img-background-baniere : url("../../assets/img/baniere.png");
-  --img-background-recherche: url("../../assets/img/backgroundRecherche.png");
-  --img-background-profilBoite: url("../../assets/img/background.png");
-  --img-background-profilBoite-responsive: url("../../assets/img/backgroundResponsive.png");
-  --img-fleche-gauche: url("../../assets/img/flecheGauche.jpg");
-  --img-fleche-droit: url("../../assets/img/flecheDroit.png");
+  --img-background-b-central : url("./img/boutonCentral.png");
+  --img-background-header : url("./img/headerImg.png");
+  --img-background-footer : url("./img/footerImg.png");
+  --img-background-responsible-footer : url("./img/footer_Responsiv.png");
+  --img-background-baniere : url("./img/baniere.png");
+  --img-background-recherche: url("./img/backgroundRecherche.png");
+  --img-background-profilBoite: url("./img/background.png");
+  --img-background-profilBoite-responsive: url("./img/backgroundResponsive.png");
+  --img-fleche-gauche: url("./img/flecheGauche.jpg");
+  --img-fleche-droit: url("./img/flecheDroit.png");
 }
 
 :root{
