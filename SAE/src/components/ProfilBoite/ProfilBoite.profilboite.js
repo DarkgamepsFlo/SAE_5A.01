@@ -1,6 +1,9 @@
+import Cookies from 'js-cookie';
+
 export default {
     props: {
         boite: Object, //Objet qui contient les données de la boite
+        presentation: Boolean,
         search: Boolean, //Si true = Utilisé dans RechercheBoite, false ailleurs
         collection_uti: Object, //Objet qui contient la collection de l'utilisateur
         wishlist_uti: Object //Objet qui contient la wishlist de l'utilisateur
@@ -18,7 +21,15 @@ export default {
         isBoiteInWishlist(){
             //Vérifie si la boite est présente dans la wishlist de l'utilisateur
             return this.wishlist_uti.some(boite => boite.id_boite === this.boite.id_boite);
-        }
+        },
+        isAlreadyRegistered() {
+            // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+            const cookieValue = Cookies.get('connexion');
+            if (cookieValue) {
+              return true
+            }
+            return false
+        },
     },
     methods: {
         collection(event){

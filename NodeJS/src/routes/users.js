@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { findAllUsers, inscription, connexion, motdepasse, changerpassword, search, searchAllUsers, getInformation, changerInfoSansMdp, changerInfoAvecMdp, profilUser, profilCollection, collection, wishlist, contact } = require("../controllers/users");
+const { findAllUsers, inscription, connexion, motdepasse, changerpassword, search, searchAllUsers, getInformation, changerInfoSansMdp, changerInfoAvecMdp, profilUser, profilCollection, collection, wishlist, contact, searchBestUsers } = require("../controllers/users");
 
 // 1 //
 router.get("/findUser", findAllUsers);
@@ -32,5 +32,7 @@ router.post("/collection", collection);
 router.post("/wishlist", wishlist);
 // 15 //
 router.post("/contact", contact);
+// 16 //
+router.post("/searchBestUsers", searchBestUsers);
 
 module.exports = router;

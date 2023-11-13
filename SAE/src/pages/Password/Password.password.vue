@@ -1,5 +1,5 @@
 <template>
-  <div class="block" id="blockPassword">
+  <div class="block" id="blockPassword" v-if="!isAlreadyRegistered">
     <h1 class="titreBlock">MOT DE PASSE OUBLIE</h1>
     <div v-if="codeCorrect">
       <form @submit.prevent="changerPassword">
@@ -27,19 +27,14 @@
         </form>
       </div>
       <div v-else>
-        <div v-if="isAlreadyRegistered">
-          Vous êtes déjà connecté.
-        </div>
-        <div v-else>
-          <form @submit.prevent="demandeMotDePasse">
+        <form @submit.prevent="demandeMotDePasse">
           <div>
             <label for="email" class="labelForm">Adresse e-mail:</label>
             <input type="email" id="email" class="inputForm" v-model="utilisateur.email" required />
           </div>
           <div id="divBoutonEnvoieMail" class="divBoutonPrincipal"><button type="submit" id="boutonEnvoieMail" class="boutonPrincipal"><span id="spanEnvoieMail" class="spanBoutonPrincipal">Envoyer un mail</span> </button></div>
           <p v-if="isAlreadyPressed">Veuillez patienter, votre demande de code est envoyé</p>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   </div>

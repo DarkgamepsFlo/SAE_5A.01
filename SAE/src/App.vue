@@ -17,7 +17,7 @@ import Banniere from './components/Banniere/Banniere.banniere.vue'
   <HeaderContent @toggle-menu-gauche="toggleMenuGauche" @toggle-menu-droit="toggleMenuDroit" />
 
   <!-- Cette partie permet uniquement de lister l'ensemble des cookies -->
-  <button @click="listAllCookies">Lister tous les cookies</button>
+  <!-- <button @click="listAllCookies">Lister tous les cookies</button>
     <div v-if="cookieList.length">
       <h2>Liste de tous les cookies :</h2>
       <ul>
@@ -26,7 +26,7 @@ import Banniere from './components/Banniere/Banniere.banniere.vue'
           <button @click="deleteCookie(cookie.name)">Supprimer</button>
         </li>
       </ul>
-    </div>
+    </div> -->
 
   <div class="menu-container">
     <MenuDeroulantGauche v-if="isMenuGaucheVisible" />

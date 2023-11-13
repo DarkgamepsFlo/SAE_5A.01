@@ -5,7 +5,6 @@ class ContactService {
   async contact(message) {
     try {
       const response = await axios.post('http://localhost:3000/users/contact', message);
-      console.log(response.data)
       return response.data;
     } catch (error) {
       throw error;

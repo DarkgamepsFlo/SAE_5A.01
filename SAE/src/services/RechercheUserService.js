@@ -21,6 +21,16 @@ class RechercheUserService {
       throw error;
     }
   }
+
+  async getBestUser() {
+    try {
+      const response = await axios.post('http://localhost:3000/users/searchBestUsers');
+      return response.data;
+
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 // Exportez une instance de votre service pour pouvoir l'utiliser dans vos composants

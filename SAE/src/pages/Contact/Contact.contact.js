@@ -51,8 +51,6 @@ export default {
 
       const tokenDecoded = await RecupererInformationUser.getToken();
 
-      console.log(tokenDecoded);
-
       const donneesMessage = {
         sujet: this.contact.sujet,
         message: this.contact.message,
@@ -60,12 +58,8 @@ export default {
         pseudo: tokenDecoded.info.pseudo_uti
       };
 
-      console.log(donneesMessage);
-
       const result = await ContactService.contact(donneesMessage);
-
-      console.log(result);
-
+      
       if (result.success === true){
 
         Swal.fire({

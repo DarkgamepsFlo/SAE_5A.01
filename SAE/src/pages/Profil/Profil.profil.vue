@@ -1,8 +1,5 @@
 <template>
-    <div v-if="!isAlreadyRegistered">
-      Vous devez être connecté !
-    </div>
-    <div id="blockMonProfil" v-else>
+    <div id="blockMonProfil" v-if="isAlreadyRegistered">
       <div>
         <h1 id="titreMonProfil" class="titreBlock">MON COMPTE</h1>
       </div>

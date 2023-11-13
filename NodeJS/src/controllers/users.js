@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist, contactUser } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist, contactUser, searchBestUsrs } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -22,8 +22,8 @@ async function inscription(req, res, next) {
     const body = req.body;
 
     const shema = Joi.object({
-      pseudo: Joi.string().min(3).required(),
-      motDePasse: Joi.string().min(3).required(),
+      pseudo: Joi.string().min(8).required(),
+      motDePasse: Joi.string().min(8).required(),
       email: Joi.string().email().required(),
     });
 
@@ -80,8 +80,8 @@ async function connexion (req, res, next) {
     const donnee = req.body;
     
     const shema = Joi.object({
-      pseudo: Joi.string().required(),
-      motDePasse: Joi.string().required(),
+      pseudo: Joi.string().min(8).required(),
+      motDePasse: Joi.string().min(8).required(),
     })
 
     const { error, value } = shema.validate(donnee);
@@ -140,7 +140,6 @@ async function motdepasse (req, res, next) {
       });
     }
     else {
-
       const result = await motdepasseUser('utilisateur', donnee);
 
       return res.send({
@@ -162,7 +161,7 @@ async function changerpassword (req, res, next) {
 
     const shema = Joi.object({
       email: Joi.string().email().required(),
-      mdp: Joi.string().required()
+      mdp: Joi.string().min(8).required()
     })
 
     const { error, value } = shema.validate(body);
@@ -438,9 +437,6 @@ async function wishlist(req, res, next){
 async function contact (req, res, next) {
   try{
     const donnee = req.body;
-
-    console.log(donnee);
-
     const result = await contactUser('utilisateur', donnee);
 
     return res.send({
@@ -449,6 +445,16 @@ async function contact (req, res, next) {
     });
   } catch(e) {
     console.error(`Il y a une erreur dans la fonction contact : ${e}`)
+  }
+}
+
+// 18 //
+async function searchBestUsers(req, res, next) {
+  try{
+    const result = await searchBestUsrs("utilisateur");
+    return res.send(result);
+  }catch(e){
+    console.error(`Il y a une erreur dans la fonction findAllUsers : ${e}`)
   }
 }
 
@@ -470,4 +476,5 @@ module.exports = {
   collection,
   wishlist,
   contact,
+  searchBestUsers
 };

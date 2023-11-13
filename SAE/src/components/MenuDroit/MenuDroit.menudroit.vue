@@ -9,6 +9,7 @@
         <button @click="deconnexion" id="boutonDeco">Déconnexion</button>
       </div>
       <div v-else>
+        <div class="boutonMenuDroit"><router-link to="/inscription">S'inscrire</router-link></div>
         <div class="boutonMenuDroit"><router-link to="/connexion">Se connecter</router-link></div>
         <div class="boutonMenuDroit"><router-link to="/mdp">Mot de passe oublié</router-link> </div>
       </div>

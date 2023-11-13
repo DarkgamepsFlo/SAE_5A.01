@@ -1,5 +1,5 @@
 <template>
-    <h1>Politique de confidentialité</h1>
+    <h1>POLITIQUE DE CONFIDENTIALITE</h1>
 
     <main>
         <section>

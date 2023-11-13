@@ -23,6 +23,23 @@ export default {
         // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
         const cookieValue = Cookies.get('connexion');
         if (cookieValue) {
+          Swal.fire({
+            title: 'Vous êtes déjà connecté !',
+            icon: 'error',
+            allowOutsideClick: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            customClass: {
+              container: 'custom-sweetalert-container',
+              title: 'custom-sweetalert-title',
+              content: 'custom-sweetalert-text',
+            },
+            background: 'var(--color-background)',
+          }).then((result) => {
+            if (result.isConfirmed) {
+            window.location.href = '../accueil';
+            }
+          });
           return true
         }
         return false

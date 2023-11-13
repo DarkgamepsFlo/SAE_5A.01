@@ -135,9 +135,11 @@ export default {
         this.items = response;
       }
 
-      await this.getInformation();
-      await this.getCollection();
-      await this.getWishlist();
+      if( this.isAlreadyRegistered) {
+        await this.getInformation();
+        await this.getCollection();
+        await this.getWishlist();
+      }
 
     } catch (e) {
       console.error("Il y a une erreur : ", e);

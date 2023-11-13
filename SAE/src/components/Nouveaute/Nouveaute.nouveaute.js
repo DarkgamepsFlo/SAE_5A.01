@@ -6,6 +6,7 @@ export default {
       caroussel: [],
       caroussel_current: String,
       numero: 0,
+      id: 0,
       intervalId: null,
     }
   },
@@ -17,6 +18,7 @@ export default {
       if (this.numero > this.caroussel.length - 1)
           this.numero = 0;
       this.caroussel_current = this.caroussel[this.numero].lien_img_boi;
+      this.id = this.caroussel[this.numero].id_boite;
     }
   },
   async mounted(){
@@ -25,6 +27,7 @@ export default {
       if (response) {
         this.caroussel = response;
         this.caroussel_current = this.caroussel[this.numero].lien_img_boi;
+        this.id = this.caroussel[this.numero].id_boite;
         this.intervalId = setInterval(() => {
           this.changeSlide(1);
         }, 5000);

@@ -40,6 +40,23 @@ export default {
       if (cookieValue) {
         return true
       }
+      Swal.fire({
+        title: 'Tu dois déjà être connecté !',
+        icon: 'error',
+        allowOutsideClick: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        customClass: {
+          container: 'custom-sweetalert-container',
+          title: 'custom-sweetalert-title',
+          content: 'custom-sweetalert-text',
+        },
+        background: 'var(--color-background)',
+      }).then((result) => {
+        if (result.isConfirmed) {
+        window.location.href = '../connexion';
+        }
+      });
       return false
     }
   },
@@ -63,6 +80,13 @@ export default {
         console.error('Erreur lors de la récupération des informations utilisateur :', error);
       }
     },
+
+    deconnexion() {
+      Cookies.remove("connexion");
+
+      // Redirigez l'utilisateur vers la page d'accueil
+      window.location.href = "http://127.0.0.1:5173/connexion";
+    }, 
 
     async searchSuggestion(){
       try{
@@ -91,7 +115,46 @@ export default {
 
           const response = await ChangerInformationService.changerInfoAvecMdp(donnee);
 
-          // !!! Si ça marche, modifier le token du cookie déjà présent avec celui qu'on vient d'amener de l'API
+          if (response.success === true){
+
+            Swal.fire({
+              title: 'L\'ensemble de vos informations sont enregistrés. Veuillez vous reconnecter',
+              icon: 'success',
+              allowOutsideClick: false,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Super !',
+              customClass: {
+                container: 'custom-sweetalert-container',
+                title: 'custom-sweetalert-title',
+                content: 'custom-sweetalert-text',
+              },
+              background: 'var(--color-background)',
+  
+            }).then((result) => {
+  
+            if (result.isConfirmed) {
+  
+              this.suggestion = {
+                nomBoite: '',
+                numBoite: '',
+                univers: '',
+                NbrPiece: '',
+                anneeSortie: '',
+                descriptif: '',
+              };
+              this.image = null
+              
+              this.deconnexion()
+              return;
+            }});
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: 'Il y a eu un problème lors du changement de vos informations',
+            });
+            return;
+          }
         }
         else {
           Swal.fire({
@@ -112,8 +175,47 @@ export default {
         }
 
         const response = await ChangerInformationService.changerInfoSansMdp(donnee);
-        
-        // !!! Si ça marche, modifier le token du cookie déjà présent avec celui qu'on vient d'amener de l'API
+
+        if (response.success === true){
+
+          Swal.fire({
+            title: 'L\'ensemble de vos informations sont enregistrés. Veuillez vous reconnecter',
+            icon: 'success',
+            allowOutsideClick: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Super !',
+            customClass: {
+              container: 'custom-sweetalert-container',
+              title: 'custom-sweetalert-title',
+              content: 'custom-sweetalert-text',
+            },
+            background: 'var(--color-background)',
+
+          }).then((result) => {
+
+          if (result.isConfirmed) {
+
+            this.suggestion = {
+              nomBoite: '',
+              numBoite: '',
+              univers: '',
+              NbrPiece: '',
+              anneeSortie: '',
+              descriptif: '',
+            };
+            this.image = null
+            
+            this.deconnexion()
+            return;
+          }});
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Il y a eu un problème lors du changement de vos informations',
+          });
+          return;
+        }
       }
     }
   },

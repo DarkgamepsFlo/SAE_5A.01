@@ -10,6 +10,7 @@ export default {
             Swal.fire({
                 title: 'Voulez-vous valider cette suggestion ?',
                 showDenyButton: true,
+                allowOutsideClick: false,
                 confirmButtonText: 'Oui',
                 denyButtonText: `Non`,
                 allowOutsideClick: false,

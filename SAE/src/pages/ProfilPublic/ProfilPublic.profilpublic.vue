@@ -5,12 +5,13 @@
             <p>Pseudo : {{ item.pseudo_uti }}</p>
             <img :src="item.lien_img_pro">
             <p>Public : {{ item.public }}</p>
+            <router-link v-if="isUser" to="/profil">C'est ton profil ! Vas directement dessus</router-link>
             <!--L'id de l'utilisateur est aussi disponible-->
         </div>
         <div id="collection" v-if="ifPublic">
             <div class="boite" v-for="item in collection" :key="item.nom_boi">
                 <img :src="item.lien_img_boi">
-                <p>Nom de la boite : {{ item.nom_boite }}</p>
+                <p>Nom de la boite : {{ item.nom_boite }}</p> 
             </div>
         </div>
         <div v-else>

@@ -16,7 +16,6 @@ export default {
     },
     methods: {
         async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
-            console.log("ok");
             const donnee = {
                 boite: id, 
                 id_wishlist: this.wishlist_id

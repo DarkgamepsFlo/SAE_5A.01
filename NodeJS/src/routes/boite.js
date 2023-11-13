@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { search, searchAllBoites, ficheBoite, nouveaute, deleteCollec, addCollec, addWishlist, deleteWishlist } = require("../controllers/boite");
+const { search, searchAllBoites, ficheBoite, nouveaute, deleteCollec, addCollec, addWishlist, deleteWishlist, searchBestBoites } = require("../controllers/boite");
 
 // 1 //
 router.post("/search", search);
@@ -18,4 +18,7 @@ router.post("/addCollec", addCollec);
 router.post("/addWishlist", addWishlist);
 // 8 //
 router.post("/deleteWishlist", deleteWishlist)
+// 9 //
+router.post("/searchBestBoite", searchBestBoites);
+
 module.exports = router;

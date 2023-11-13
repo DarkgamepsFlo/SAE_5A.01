@@ -389,8 +389,6 @@ async function contactUser(collectionName, donnee) {
         pass: conf.Auth.pass,
       },
     });
-    console.log("Je suis dans le crud et voici les données : ");
-    console.log(donnee);
     
     const mailOptions = {
       from: conf.Auth.user, // Adresse e-mail de l'expéditeur
@@ -414,6 +412,17 @@ async function contactUser(collectionName, donnee) {
   }
 }
 
+async function searchBestUsrs(collectionName) {
+  try {
+    const query = `SELECT U.id_uti, U.pseudo_uti, lien_img_pro FROM $1:name AS U INNER JOIN photo_profil AS P ON U.id_uti = P.id_uti INNER JOIN collection AS C ON C.id_collec = U.id_collec WHERE C.public = true GROUP BY U.id_uti, U.pseudo_uti, p.lien_img_pro ORDER BY max(C.id_collec) DESC LIMIT 5`;
+    const users = await db.any(query, [collectionName]);
+    return users;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction searchBestUsrsUsers : ${e}`);
+    throw e;
+  }
+}
+
 module.exports = {
   findUsers,
   searchAllUsrs,
@@ -428,4 +437,5 @@ module.exports = {
   getCollection,
   getWishlist,
   contactUser,
+  searchBestUsrs,
 };

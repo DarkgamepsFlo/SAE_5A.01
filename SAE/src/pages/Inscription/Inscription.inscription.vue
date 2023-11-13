@@ -1,11 +1,7 @@
 <template>
-    <div id="blockInscription">
+    <div id="blockInscription" v-if="!isAlreadyRegistered">
       <h1 class="titreBlock">INSCRIPTION</h1>
-      <!-- Vérification de la présence du cookie "connexion" et de sa valeur -->
-      <div v-if="isAlreadyRegistered">
-        Vous êtes déjà connecté.
-      </div>
-      <div v-else>
+      <div>
         <form @submit.prevent="inscrireUtilisateur">
         <div id="divUtilisateur">
           <label for="utilisateur" id="labelUtilisateur" class="labelForm">Pseudo:</label>

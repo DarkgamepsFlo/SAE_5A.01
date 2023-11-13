@@ -1,4 +1,6 @@
 import ProfilService from "../../services/ProfilService";
+import RecupererInformationUser from "../../services/RecupererInformationUser";
+import Cookies from "js-cookie";
 
 export default {
   props: ['id_uti'],
@@ -7,9 +9,26 @@ export default {
       user: [],
       collection: [],
       ifPublic: false,
+      isUser: false
     }
   },
-  methods: {},
+  methods: {
+    async isUserFonc(){
+      const token = await RecupererInformationUser.getToken();
+
+      if (token.info.id_uti === this.user[0].id_uti){
+        return true;
+      }
+      return false;
+    },
+    isAlreadyRegistered() {
+      // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+      const cookieValue = Cookies.get('connexion');
+      if (cookieValue) {
+        return true
+      }
+    }
+  },
   async mounted(){
 
     try{
@@ -29,6 +48,10 @@ export default {
 
       if (responseCollec){
         this.collection = responseCollec
+      }
+
+      if (this.isAlreadyRegistered()){
+        this.isUser = await this.isUserFonc();
       }
 
     } catch (e) {

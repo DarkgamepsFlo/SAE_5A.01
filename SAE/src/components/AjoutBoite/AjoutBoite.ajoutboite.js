@@ -42,7 +42,7 @@ import RecupererInformationUser from '../../services/RecupererInformationUser';
           background: 'var(--color-background)',
         }).then((result) => {
           if (result.isConfirmed) {
-          window.location.href = '../Connexion';
+          window.location.href = '../connexion';
           return false
           }
         });

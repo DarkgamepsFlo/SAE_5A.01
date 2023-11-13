@@ -21,7 +21,6 @@ export default {
   // Cette fonction permet juste de regarder l'ensemble des cookies, elle permet de tester, elle ne va pas rester définitive
     deconnexion() {
       Cookies.remove("connexion");
-
       // Redirigez l'utilisateur vers la page d'accueil
       window.location.href = "http://127.0.0.1:5173/";
     },      

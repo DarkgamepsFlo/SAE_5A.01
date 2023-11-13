@@ -4,7 +4,9 @@
         <div id="caroussel">
             <div id="imageFlecheGauche"><button id="precedent" @click="changeSlide(-1)"></button></div>
             <div id="divImageCaroussel">
-                <img class="nouveaute" id="slide" :src="caroussel_current">
+                <router-link :to="{ name: 'boite', params: { id_boite: id } }">
+                    <img class="nouveaute" id="slide" :src="caroussel_current">
+                </router-link>
             </div>            
             <div id="imageFlecheDroit"><button id="suivant" @click="changeSlide(1)"></button></div>
             <!-- item.nom_boite pour récupérer le nom-->

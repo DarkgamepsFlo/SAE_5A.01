@@ -10,10 +10,11 @@
                 <div class="universLabel"><p >Univers</p></div>
                 <div class="nbrPieceLabel"><p >Nombre de pièces</p></div>
                 <div class="anneeBoiteLabel"><p >Année de sortie de la boite</p></div>
-                <div class="actionLabel"><p >Action</p></div>
-            </div>            
+                <div class="actionLabel"><p>Action</p></div>
+            </div>             
             <ProfilBoite v-for="boite in items" :key="boite.nom_boi" :boite="boite" 
             :search="true" 
+            :presentation="false"
             :collection_uti="collection_uti"
             :wishlist_uti="wishlist_uti"
             @deleteBoiteCollection="deleteBoiteCollection" 

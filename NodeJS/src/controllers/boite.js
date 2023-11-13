@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts, addWlh, deleteWlh } = require("../services/db/crudBoite");
+const { findBoite, searchAllBts, ficheBt, getNouveaute, deleteBts, addBts, addWlh, deleteWlh, searchBestBts } = require("../services/db/crudBoite");
 
 
 // 1 //
@@ -103,6 +103,17 @@ async function deleteWishlist(req, res, next){
   }
 }
 
+// 9 //
+//Permet de récupérer toutes les boites pour la recherche de boite
+async function searchBestBoites(req, res, next) {
+  try{
+    const result = await searchBestBts("boite");
+    return res.send(result);
+  }catch(e){
+    console.error(`Il y a une erreur dans la fonction searchBestBoites : ${e}`)
+  }
+}
+
 module.exports = {
   search,
   searchAllBoites,
@@ -111,5 +122,6 @@ module.exports = {
   deleteCollec,
   addCollec,
   addWishlist,
-  deleteWishlist
+  deleteWishlist,
+  searchBestBoites,
 };

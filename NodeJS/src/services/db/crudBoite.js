@@ -187,6 +187,9 @@ async function getNouveaute(collectionName){
  */
 async function deleteBts(collectionName, boite, id_collec){
   try {
+    const queryAjout = 'UPDATE boite SET ajout = ajout - 1 WHERE id_boite = $1'
+    await db.any(queryAjout, [boite]);
+    
     const query = 'DELETE FROM $1:name WHERE id_collec = $2 AND id_boite = $3';
     const result = await db.any(query, [collectionName, id_collec, boite]);
     return result;
@@ -225,6 +228,22 @@ async function deleteWlh(collectionName, boite, id_wishlist){
   }
 }
 
+/**
+ * Cette fonction va permettre de récupérer toutes les boites
+ * @param {*} collectionName Nom de la collection
+ * @returns Le résultat de la requête
+ */
+async function searchBestBts(collectionName) {
+  try {
+    const query = `SELECT B.ajout, B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers, numero_boi FROM $1:name AS B INNER JOIN photo_boite AS P ON B.id_boite = P.id_boite GROUP BY B.id_boite, nom_boite, lien_img_boi, annee_sortie_boi, nbr_pieceboi, univers, numero_boi ORDER BY max(B.ajout) DESC LIMIT 5`;
+    const boite = await db.any(query, [collectionName]);
+    return boite;
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction findUsers : ${e}`);
+    throw e;
+  }
+}
+
 module.exports = {
   findBoite,
   searchAllBts,
@@ -233,5 +252,6 @@ module.exports = {
   deleteBts,
   addBts,
   addWlh,
-  deleteWlh
+  deleteWlh,
+  searchBestBts
 };

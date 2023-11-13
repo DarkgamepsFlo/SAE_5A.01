@@ -9,6 +9,15 @@
             <p>{{ item.annee_sortie_boi }}</p>
             <p>{{ item.nbr_pieceboi }}</p>
             <p>{{ item.descriptif_boi }}</p>
+            <div v-if="isAlreadyRegistered">
+                <input type="button" id="buttonCollectionProfilBoite" value="Supprimer de la collection" @click.stop="collection" v-if="isBoiteInCollection">
+                <input type="button" id="buttonCollectionProfilBoite" value="Ajouter à la collection" @click.stop="collection" v-else>
+
+                <input type="button" id="buttonWishlistProfilBoite" value="Supprimer de la wishlist" @click.stop="wishlist" v-if="isBoiteInWishlist">
+                <input type="button" id="buttonWishlistProfilBoite" value="Ajouter à la wishlist" @click.stop="wishlist" v-else>
+            </div>
+            
+
             <router-link v-if="isAlreadyRegistered" :to="{ name: 'modifboite', params: { id_boite: item.id_boite } }">Cette boite n'est pas à jour ? Modifie là !</router-link>
         </div>
     </div>

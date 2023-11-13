@@ -1,32 +1,18 @@
+// import système de route
 import { createRouter, createWebHistory } from 'vue-router'
 
-// import Accueil from '../components/HelloWorld.vue'
-// import Error from '../components/Error.vue'
-// import About from '../components/About.vue'
-// import FirstPage from '../components/FirstPage.vue'
-// import Inscription from '../components/Inscription.vue'
-// import Connexion from '../components/Connexion.vue'
-// import Password from '../components/Password.vue'
-// import Politique from '../components/Politique.vue'
-// import Contact from '../components/Contact.vue'
-// import RechercherUtilisateur from '../components/RechercheUtilisateur.vue'
-// import RechercheBoite from '../components/RechercheBoite.vue'
-// import Collection from '../components/Collection.vue'
-// import Profil from '../components/Profil.vue'
-// import WichList from '../components/WichList.vue'
-// import AjoutBoite from '../components/AjoutBoite.vue'
-
-import Accueil from '../pages/Accueil/Accueil.accueil.vue'
-import MentionLegale from '../pages/MentionLegale/MentionLegale.mentionlegale.vue'
-import Error from "../pages/Error/Error.error.vue"
+// import l'ensemble des pages
 import FirstPage from '../pages/FirstPage/FirstPage.firstpage.vue'
+import Accueil from '../pages/Accueil/Accueil.accueil.vue'
 import Inscription from '../pages/Inscription/Inscription.inscription.vue'
 import Connexion from '../pages/Connexion/Connexion.connexion.vue'
 import Password from '../pages/Password/Password.password.vue'
+import MentionLegale from '../pages/MentionLegale/MentionLegale.mentionlegale.vue'
 import Politique from '../pages/Politique/Politique.politique.vue'
 import Cookies from '../pages/Cookies/Cookies.cookies.vue'
-import Contact from '../pages/Contact/Contact.contact.vue'
 import RechercherUtilisateur from '../pages/RechercheUtilisateur/RechercheUtilisateur.rechercheutilisateur.vue'
+import Error from "../pages/Error/Error.error.vue"
+import Contact from '../pages/Contact/Contact.contact.vue'
 import RechercheBoite from '../pages/RechercheBoite/RechercheBoite.rechercheboite.vue'
 import Profil from '../pages/Profil/Profil.profil.vue'
 import MaWishlist from '../pages/MaWishlist/MaWishlist.mawishlist.vue'
@@ -37,8 +23,6 @@ import MaCollection from '../pages/MaCollection/MaCollection.macollection.vue'
 import ModifBoite from '../components/ModifBoite/ModifBoite.modifboite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
-import TestBDD from '../components/TestBDD.vue'
-import TestUploadFile from '../components/TestUploadFile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -132,14 +116,6 @@ const router = createRouter({
       path: '/cookie',
       component: TestCookie
     },
-    {
-      path: '/bddTest',
-      component: TestBDD
-    },
-    {
-      path: '/fileTest',
-      component: TestUploadFile
-    }
   ]
 })
 
