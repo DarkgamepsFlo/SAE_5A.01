@@ -67,7 +67,7 @@
 :root{
   --img-background-b-central : url("./img/boutonCentral.png");
   --img-background-header : url("./img/headerImg.png");
-  --img-background-footer : url("./img/footerImg.png");
+  --img-background-footer : url("./img/footer.png");
   --img-background-responsible-footer : url("./img/footer_Responsiv.png");
   --img-background-baniere : url("./img/baniere.png");
   --img-background-recherche: url("./img/backgroundRecherche.png");
@@ -104,6 +104,7 @@
   --taille-45-px : 45px;
   --taille-50-px : 50px;
   --taille-56-px : 56px;
+  --taille-60-px : 60px;
   --taille-64-px : 64px;
   --taille-70-px : 70px;
   --taille-90-px : 90px;
