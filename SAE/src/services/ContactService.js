@@ -1,7 +1,9 @@
+// import
 import axios from 'axios';
 
+// Cette classe permet de s'occuper de l'ensemble des services lorsqu'un utilisateur va contacter l'équipe de Collego
 class ContactService {
-  // Méthode pour inscrire un utilisateur
+  // Cette méthode permet à un utilisateur d'envoyer un message à l'équipe de Collego
   async contact(message) {
     try {
       const response = await axios.post('http://localhost:3000/users/contact', message);
@@ -12,5 +14,4 @@ class ContactService {
   }
 }
 
-// Exportez une instance de votre service pour pouvoir l'utiliser dans vos composants
 export default new ContactService();

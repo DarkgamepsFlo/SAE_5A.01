@@ -15,6 +15,7 @@ export default {
         }
     },
     methods: {
+        // Permet de supprimer une boite de la wishList
         async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
             const donnee = {
                 boite: id, 
@@ -27,6 +28,7 @@ export default {
                 this.getWishlist();
             }
         },
+        // Permet de récupérer la wishlist de l'utilisateur
         async getWishlist(){
             const where = {
                 where: this.wishlist_id
@@ -39,6 +41,7 @@ export default {
             }
         },
     },
+    // Permet de récupérer la wishlist dès qu'on arrive sur la page
     created: async function(){
         await this.getWishlist();
     }

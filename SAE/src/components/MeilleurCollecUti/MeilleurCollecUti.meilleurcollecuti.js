@@ -7,12 +7,12 @@ export default {
   },
   data() {
     return{
-    items: [],
+    items: [], // Liste contenant l'ensemble des utilisateurs ayant une plus grande collection
     
   }},
+  // Permet de récupérer l'ensemble des utilisateurs dès qu'on arrive sur la page
   async mounted() {
     try{
-
       const response = await RechercheUserService.getBestUser();
 
       if (response) {

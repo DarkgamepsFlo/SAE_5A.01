@@ -1,7 +1,9 @@
+// import
 import axios from 'axios';
 
+// Cette classe permet de s'occuper de l'ensemble des services lorsqu'un utilisateur va essayer de se connecter
 class ConnexionService {
-  // Méthode pour inscrire un utilisateur
+  // Cette méthode permet de connecter un utilisateur
   async connexionUtilisateur(utilisateur) {
     try {
       const response = await axios.post('http://localhost:3000/users/connexion', utilisateur);
@@ -12,5 +14,4 @@ class ConnexionService {
   }
 }
 
-// Exportez une instance de votre service pour pouvoir l'utiliser dans vos composants
 export default new ConnexionService();

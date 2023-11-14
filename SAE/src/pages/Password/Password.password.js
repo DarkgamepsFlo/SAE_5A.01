@@ -44,17 +44,21 @@ export default {
         }
         return false
       },
+      // Cette fonction permet de savoir si on a valider son adresse mail
       isAlreadyPressed() {
         return this.boutonPressed;
       },
+      // Cette fonction permet d'afficher le formulaire pour valider le code
       codeRecive() {
         return this.afficherForm;
       },
+      // Cette fonction permet d'afficher le changement du mot de passe
       codeCorrect() {
         return this.afficherNewPassword;
       }
     },
     methods: {
+      // Cette fonction permet de demander un code à partir d'une adresse mail
       async demandeMotDePasse() {
 
         this.boutonPressed = true;
@@ -65,6 +69,7 @@ export default {
 
         const response = await DemandeMotDePasseService.demandeMotDePasse(donneesMotDePasse)
   
+        // Si ça marche, on va modifier la page pour afficher le formulaire permettant de valider le code
         if (response.success) {
             console.info("Mail envoyé avec succès")
               
@@ -73,6 +78,7 @@ export default {
             this.boutonPressed = false;
         }
 
+        // Sinon on précise qu'il y a un problème au niveau de l'envoie et en refresh la page
         else{
           console.error('Problème au niveau de l\'envoie du mail');
           // Réinitialisez le formulaire
@@ -85,6 +91,7 @@ export default {
         }
       },
 
+    // Cette fonction permet de vérifier si le code correspond avec celui par mail.
     acceptCode() {
         if (this.utilisateur.codeBase === this.utilisateur.code){
           console.info('Votre code est validé');
@@ -102,8 +109,10 @@ export default {
         }
       },
 
+      // Cette fonction permet de changer le mot de passe de l'utilisateur
       async changerPassword() {
 
+        // On va vérifier si les deux mots de passe sont identiques
         if (this.utilisateur.motDePasse !== this.confirmationMotDePasse) {
           Swal.fire({
             icon: 'error',
@@ -120,16 +129,16 @@ export default {
 
         const response = await DemandeMotDePasseService.changerMotDePasse(donneeschangerPassword);
 
-            if (response.success) {
-              window.location.href = "http://127.0.0.1:5173/connexion";
-            }
-
-            else{
-              console.error('Problème au niveau du changement du mot de passe');
-              // Réinitialisez le formulaire
-              this.utilisateur.motDePasse = '';
-              this.utilisateur.confirmationMotDePasse = '';
-            }
+        if (response.success) {
+          window.location.href = "http://127.0.0.1:5173/connexion";
+        }
+        
+        else{
+          console.error('Problème au niveau du changement du mot de passe');
+          // Réinitialisez le formulaire
+          this.utilisateur.motDePasse = '';
+          this.utilisateur.confirmationMotDePasse = '';
+        }
       }
     },
   };

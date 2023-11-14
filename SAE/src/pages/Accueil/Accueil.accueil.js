@@ -4,9 +4,9 @@ import MeilleurBoite from '../../components/MeilleureBoite/MeilleurBoite.meilleu
 
 export default {
     components: {
-      Nouveaute,
-      MeilleurCollecUti,
-      MeilleurBoite
+      Nouveaute, // Composant de la liste de nouveauté
+      MeilleurCollecUti, // Composant des meilleurs utilisateurs
+      MeilleurBoite // Composant des boites les plus populaires
     },
   };
 

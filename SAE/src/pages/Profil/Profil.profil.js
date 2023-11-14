@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 export default {
   components: {
-    SuggestionBoite,
+    SuggestionBoite, // Composant permettant d'afficher les boites suggérés par les utilisateurs
   },
   data() {
     return {
@@ -27,6 +27,7 @@ export default {
       suggestions: [],
     };
   },
+  // Permet de récupérer les informations de l'utilisateur et la liste de suggestion 
   created() {
     if(this.isAlreadyRegistered)
       this.getInformation();
@@ -34,12 +35,13 @@ export default {
   },
   computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
-    isAlreadyRegistered() {
+      isAlreadyRegistered() {
       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
       const cookieValue = Cookies.get('connexion');
       if (cookieValue) {
         return true
       }
+      // Si l'utilisateur n'est pas connecté on va l'informer avec une pop-up qui va le rediriger vers la page de connexion
       Swal.fire({
         title: 'Tu dois déjà être connecté !',
         icon: 'error',
@@ -61,6 +63,7 @@ export default {
     }
   },
   methods: {
+    // Cette fonction permet de récupérer l'ensemble des informations de l'utilisateur
     async getInformation() {        
       try {
         const infoUser = await RecupererInformationUser.getToken()
@@ -81,13 +84,14 @@ export default {
       }
     },
 
+    // Cette focntion permet de déconnecter l'utilisateur
     deconnexion() {
       Cookies.remove("connexion");
-
       // Redirigez l'utilisateur vers la page d'accueil
       window.location.href = "http://127.0.0.1:5173/connexion";
     }, 
 
+    // Cette fonction permet de récupérer l'ensemble des suggestions utilisateurs
     async searchSuggestion(){
       try{
         const result = await SuggestionService.getSuggestion();
@@ -98,9 +102,10 @@ export default {
         console.error("Erreur lors de la récupération des suggestions", error)
       }
     },
-
+    // Cette fonction permet de modifier l'ensemble des informations de l'utilisateur
     async modifierInformationUser() {
       
+      // Il faut que les deux mots de passes correspondent
       if (!!this.new_mdp || !!this.conf_mdp) {
         if(this.new_mdp == this.conf_mdp) {
           
@@ -117,6 +122,7 @@ export default {
 
           if (response.success === true){
 
+            // Si ça fonctionne, on va préciser à l'utilisateur que l'ensemble des ces informations sont mis à jours et on va l'inviter à se déconnecter pour pouvoir mettre à jour
             Swal.fire({
               title: 'L\'ensemble de vos informations sont enregistrés. Veuillez vous reconnecter',
               icon: 'success',

@@ -2,10 +2,8 @@ import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import AjoutBoiteService from '../../services/AjoutBoiteService';
 import RecupererInformationUser from '../../services/RecupererInformationUser';
-import BoiteService from '../../services/BoiteService';
   
   export default {
-    props: ['id_boite'],
     data() {
       return {
         suggestion: {
@@ -16,40 +14,19 @@ import BoiteService from '../../services/BoiteService';
           anneeSortie: '',
           descriptif: '',
         },
-        boite_base: [],
-        num_boite_base: 0,
         image: null,
         imageSizeError: null
       };
     },
-    async mounted(){
-      const where = {
-        where: this.id_boite
-      }
-
-      const response = await BoiteService.getFicheBoite(where)
-
-      if (response) {
-        this.boite_base = response;
-        this.suggestion.nomBoite = response[0].nom_boite
-        this.suggestion.numBoite = response[0].numero_boi
-        this.num_boite_base = response[0].numero_boi
-        this.suggestion.univers = response[0].univers
-        this.suggestion.NbrPiece = response[0].nbr_pieceboi
-        this.suggestion.anneeSortie = response[0].annee_sortie_boi
-        this.suggestion.descriptif = response[0].descriptif_boi
-        this.image = response[0].lien_img_boi
-      }
-    },
     computed: {
       // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
       isAlreadyRegistered() {
-        // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
         const cookieValue = Cookies.get('connexion');
         if (cookieValue) {
           return true
         }
 
+        // Sinon on affiche un pop-up pour préciser que l'utilisateur doit être connecté
         Swal.fire({
           title: 'Erreur',
           text: 'Vous devez être connecté pour accéder à cette page',
@@ -65,7 +42,7 @@ import BoiteService from '../../services/BoiteService';
           background: 'var(--color-background)',
         }).then((result) => {
           if (result.isConfirmed) {
-          window.location.href = '../Connexion';
+          window.location.href = '../connexion';
           return false
           }
         });
@@ -100,6 +77,7 @@ import BoiteService from '../../services/BoiteService';
           }
         }
       },
+      // Permet de valider l'ajout de la boite
       async submitSuggestion() {
 
         const resultToken = await RecupererInformationUser.getToken();
@@ -112,10 +90,7 @@ import BoiteService from '../../services/BoiteService';
           anneeSortie: this.suggestion.anneeSortie,
           descriptif: this.suggestion.descriptif,
           imgBoite: this.image,
-          id_boite: this.id_boite,
-          id_uti: resultToken.info.id_uti,
-          num_boite_base: this.num_boite_base,
-          error: this.imageSizeError
+          id_uti: resultToken.info.id_uti
         }
 
         const result = await AjoutBoiteService.ajoutBoiteAPI(donneesSuggestion);
@@ -153,11 +128,12 @@ import BoiteService from '../../services/BoiteService';
             return;
           }});
         } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: result.message
-              });
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: result.message
+          });
+          console.error(result.message);
         }
       },
     },
