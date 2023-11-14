@@ -9,10 +9,15 @@
             <!--L'id de l'utilisateur est aussi disponible-->
         </div>
         <div id="collection" v-if="ifPublic">
-            <div class="boite" v-for="item in collection" :key="item.nom_boi">
-                <img :src="item.lien_img_boi">
-                <p>Nom de la boite : {{ item.nom_boite }}</p> 
-            </div>
+            <ProfilBoite v-for="item in collection" :key="item.nom_boi" :boite="item" 
+            :search="true" 
+            :presentation="false"
+            :collection_uti="collection_uti"
+            :wishlist_uti="wishlist_uti"
+            @deleteBoiteCollection="deleteBoiteCollection" 
+            @addBoiteCollection="addBoiteCollection" 
+            @addBoiteWishlist="addBoiteWishlist" 
+            @deleteBoiteWishlist="deleteBoiteWishlist"/>
         </div>
         <div v-else>
             <h1>La collection de cet utilisateur est privée</h1>
