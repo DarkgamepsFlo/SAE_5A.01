@@ -6,6 +6,9 @@
         padding: var(--taille-10-px);
         margin: var(--taille-10-px);
         background-image: var(--img-background-profilBoite);
+        background-size: contain;
+        height: 175px; 
+        width: 1160px;
       }
     #divImgSugg{
         height: var(--taille-160-px); 
