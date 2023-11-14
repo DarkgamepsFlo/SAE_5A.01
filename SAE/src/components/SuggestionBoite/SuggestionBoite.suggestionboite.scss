@@ -1,0 +1,46 @@
+@media (min-width: 400px){
+    #boiteDivSugg {
+        display: var(--display-f);
+        align-items: var(--position-c); /* Centre les éléments verticalement */
+        border: var(--taille-1-px) var(--type-solid) var(--color-black);
+        padding: var(--taille-10-px);
+        margin: var(--taille-10-px);
+        background-image: var(--img-background-profilBoite);
+      }
+    #divImgSugg{
+        height: var(--taille-160-px); 
+        width: var(--taille-160-px);
+        object-fit: var(--img--type-contain);
+      }
+      
+    #idImgSugg{
+        height: var(--taille-160-px); 
+        width: var(--taille-160-px);
+        object-fit: var(--img--type-contain);
+        background-color: white;
+      }
+      
+      #typeSuggP{ 
+        width: var(--taille-10-p);
+      }
+      
+      #nomBoiteSugg{
+        width: var(--taille-25-p);
+      }
+      
+      #numeroBoiteSugg{
+        width: var(--taille-10-p);
+      }
+      
+      #universSugg{
+        width: var(--taille-10-p);
+      }
+      
+      #nbrPieceSugg{
+        width: var(--taille-10-p);
+      }
+      
+      #anneSortieSugg{
+        width: var(--taille-10-p);
+      }
+}

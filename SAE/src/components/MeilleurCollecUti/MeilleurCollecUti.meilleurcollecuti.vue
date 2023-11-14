@@ -1,6 +1,6 @@
 <template>
     <div id="utilisateur">
-        <h1>VOICI LES 5 UTILISATEURS AYANT LE PLUS DE LEGO</h1>
+        <h1 id="titreTopUti">VOICI LES 5 UTILISATEURS AYANT LE PLUS DE LEGO</h1>
         <div id="grid-containers-list">
             <ProfilUtilisateur v-for="user in items" :key="user.pseudo_uti" :user="user" />
         </div>

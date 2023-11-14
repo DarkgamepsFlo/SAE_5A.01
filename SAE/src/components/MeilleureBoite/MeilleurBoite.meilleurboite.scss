@@ -1,5 +1,5 @@
 @media (min-width: 400px){
-  #grid-container-list{
+  #grid-container-list2 {
     margin: var(--position-auto);
     display: var(--display-g);
     grid-template-columns: var(--position-auto) var(--position-auto) var(--position-auto) var(--position-auto) var(--position-auto);
@@ -52,8 +52,8 @@
     border-bottom-right-radius: var(--taille-20-px);
   }
   
-  #titreRechercherUti{
-    font-size: 64px;
+  #titreTopBoite{
+    font-size: 44px;
   }
 }
 

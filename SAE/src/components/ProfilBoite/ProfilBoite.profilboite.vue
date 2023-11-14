@@ -2,10 +2,10 @@
 <template>
     <router-link :to="{ name: 'boite', params: { id_boite: boite.id_boite } }">
         <div>
-            <div v-if="presentation">
-                <div class="image" id="imageProfilBoite"><img :src="boite.lien_img_boi"></div>
-                <div class="nom" id="nomProfilBoite"><p>{{ boite.nom_boite }}</p></div>
-                <div class="ajout" id="ajout"><p>{{ boite.ajout }}</p></div>
+            <div class = "boitePresentation" v-if="presentation">
+                <div class="image" id="imageProfilBoitePresentation"><img id= "imgPresentation" :src="boite.lien_img_boi"></div>
+                <div class="nom" id="nomProfilBoitePresentation"><p>{{ boite.nom_boite }}</p></div>
+                <div class="ajout" id="ajoutPresentation"><p>{{ boite.ajout }}</p></div>
             </div>
             <div v-else class="boite" id="boiteProfilDiv">
                 <div class="image" id="imageProfilBoite"><img :src="boite.lien_img_boi"></div>

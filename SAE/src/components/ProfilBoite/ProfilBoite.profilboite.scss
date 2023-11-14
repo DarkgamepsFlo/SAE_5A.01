@@ -62,7 +62,25 @@
     width: var(--taille-170-px);
     text-align: var(--position-c);
   }
+
+  #imageProfilBoitePresentation{
+    height: var(--taille-130-px); 
+    width: var(--taille-130-px);
+    object-fit: var(--img--type-contain);
+  }
+  #imgPresentation{
+    height: var(--taille-170-px); 
+    width: var(--taille-170-px);
+    object-fit: var(--img--type-contain);
+  }
+
+  .boitePresentation{
+    width: var(--taille-200-px);
+  }
   
+  #nomProfilBoitePresentation{
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 400px){
@@ -135,4 +153,10 @@
     margin-right: var(--taille-10-px);
   }
   
+
+  #imgPresentation{
+    height: var(--taille-170-px); 
+    width: var(--taille-170-px);
+    object-fit: var(--img--type-contain);
+  }
 }

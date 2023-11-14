@@ -51,55 +51,11 @@
     width: var(--taille-16-p);
   }
   
-  #boiteDivSugg {
-    display: var(--display-f);
-    align-items: var(--position-c); /* Centre les éléments verticalement */
-    border: var(--taille-1-px) var(--type-solid) var(--color-black);
-    padding: var(--taille-10-px);
-    margin: var(--taille-10-px);
-    background-image: var(--img-background-recherche);
-  }
-  
   #boiteProfilDiv .image {
     max-width: var(--taille-100-p);
   }
+
   
-  
-  #divImgSugg{
-    height: var(--taille-200-px); 
-    width: var(--taille-200-px);
-    object-fit: var(--img--type-contain);
-  }
-  
-  #idImgSugg img{
-    height: var(--taille-200-px); 
-    width: var(--taille-200-px);
-    object-fit: var(--img--type-contain);
-  }
-  
-  #typeSuggP{ 
-    width: var(--taille-10-p);
-  }
-  
-  #nomBoiteSugg{
-    width: var(--taille-25-p);
-  }
-  
-  #numeroBoiteSugg{
-    width: var(--taille-10-p);
-  }
-  
-  #universSugg{
-    width: var(--taille-10-p);
-  }
-  
-  #nbrPieceSugg{
-    width: var(--taille-10-p);
-  }
-  
-  #anneSortieSugg{
-    width: var(--taille-10-p);
-  }
   
   #tab-container{
     width: var(--taille-1200-px);

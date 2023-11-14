@@ -6,7 +6,6 @@
     grid-gap: var(--taille-10-px);
     padding: var(--taille-10-px);
     width: var(--type-fit-c);
-    height: var(--taille-800-p);
   }
   
   .utilisateur{
@@ -51,16 +50,16 @@
     border-bottom-left-radius: var(--taille-20-px);
     border-bottom-right-radius: var(--taille-20-px);
   }
-  
-  #titreRechercherUti{
-    font-size: 64px;
+
+  #titreTopUti{
+    font-size: 44px;
   }
 }
 
 
 
 @media (max-width: 400px){
-  #grid-container{
+  #grid-containers-list{
     margin: var(--position-auto);
     display: var(--display-g);
     grid-template-columns: var(--position-auto) var(--position-auto);
@@ -111,5 +110,10 @@
     background: rgba($color: var(--color-black), $alpha: var(--taille-0-1));
     border-bottom-left-radius: var(--taille-20-px);
     border-bottom-right-radius: var(--taille-20-px);
+  }
+  
+  #titreRechercherUti{
+    text-align: var(--position-c);
+    font-size: var(--taille-44-px);
   }
 }

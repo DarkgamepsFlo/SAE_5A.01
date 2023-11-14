@@ -1,6 +1,6 @@
 <template>
     <div id="nouveaute">
-        <h1>VOICI LES 10 DERNIERES NOUVEAUTES DU SITE</h1>
+        <h1 id="titreNouveaute">VOICI LES 10 DERNIERES NOUVEAUTES DU SITE</h1>
         <div id="caroussel">
             <div id="imageFlecheGauche"><button id="precedent" @click="changeSlide(-1)"></button></div>
             <div id="divImageCaroussel">
