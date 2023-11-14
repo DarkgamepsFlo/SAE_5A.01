@@ -16,14 +16,15 @@ import Contact from '../pages/Contact/Contact.contact.vue'
 import RechercheBoite from '../pages/RechercheBoite/RechercheBoite.rechercheboite.vue'
 import Profil from '../pages/Profil/Profil.profil.vue'
 import MaWishlist from '../pages/MaWishlist/MaWishlist.mawishlist.vue'
-import AjoutBoite from '../components/AjoutBoite/AjoutBoite.ajoutboite.vue'
+import AjoutBoite from '../pages/AjoutBoite/AjoutBoite.ajoutboite.vue'
 import ProfilPublic from '../pages/ProfilPublic/ProfilPublic.profilpublic.vue'
 import Boite from '../pages/Boite/Boite.boite.vue'
 import MaCollection from '../pages/MaCollection/MaCollection.macollection.vue'
-import ModifBoite from '../components/ModifBoite/ModifBoite.modifboite.vue'
+import ModifBoite from '../pages/ModifBoite/ModifBoite.modifboite.vue'
 
 import TestCookie from '../components/TestCookie.vue'
 
+// Permet de gérer l'ensemble des pages du site
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
-    isAlreadyRegistered() {
+      isAlreadyRegistered() {
       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
       const cookieValue = Cookies.get('connexion');
       if (cookieValue) {
@@ -73,24 +73,33 @@ export default {
         };
         this.confirmationMotDePasse = '';
 
-        if (response.success === true) {
-          this.confirmationMotDePasse = '';
-          Cookies.set("connexion", JSON.stringify(response), { expires: 1/24 });
-          // Redirigez l'utilisateur vers la page d'accueil
-          window.location.href = "http://127.0.0.1:5173/accueil";
-        } else {
+        if (response.status == 400) {
           Swal.fire({
             icon: 'error',
-            title: 'Erreur',
-            text: response?.message,
-            customClass: {
-              container: 'custom-sweetalert-container',
-              title: 'custom-sweetalert-title',
-              content: 'custom-sweetalert-text',
-            },
-            background: 'var(--color-background)',
+            title: 'Error 400',
+            text: response.message
           });
-          console.error(response?.message);
+        }
+        else {
+          if (response.success === true) {
+            this.confirmationMotDePasse = '';
+            Cookies.set("connexion", JSON.stringify(response), { expires: 1/24 });
+            // Redirigez l'utilisateur vers la page d'accueil
+            window.location.href = "http://127.0.0.1:5173/accueil";
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: response?.message,
+              customClass: {
+                container: 'custom-sweetalert-container',
+                title: 'custom-sweetalert-title',
+                content: 'custom-sweetalert-text',
+              },
+              background: 'var(--color-background)',
+            });
+            console.error(response?.message);
+          }
         }
       } else {
         Swal.fire({
@@ -118,13 +127,22 @@ export default {
         })
       }
     },
+    // Cette méthode permet de vérifier si l'utilisateur a déjà accepté les cookies
     isAlreadyAcceptCookie() {
-      // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
-      const cookieValue = Cookies.get('acceptCookie');
-      if (cookieValue != undefined && cookieValue == "true") {
-        return true
+      try{
+        const cookieValue = Cookies.get('acceptCookie');
+        if (cookieValue != undefined && cookieValue == "true") {
+          return true
+        }
+        return false
+      } catch(e) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error 400',
+          text: 'Une erreur interne du serveur s\'est produite lors de la vérification des cookies acceptés. Veuillez réessayer plus tard.'
+        });
+        console.error(e);
       }
-      return false
     }
   },
 };

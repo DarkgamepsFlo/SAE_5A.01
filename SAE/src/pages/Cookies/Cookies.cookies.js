@@ -61,7 +61,8 @@ export default {
     pageConfid(){
       window.location.href = "http://127.0.0.1:5173/politique";
     },
-    isAlreadyRegistered() {
+    // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
+      isAlreadyRegistered() {
       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
       const cookieValue = Cookies.get('connexion');
       if (cookieValue) {

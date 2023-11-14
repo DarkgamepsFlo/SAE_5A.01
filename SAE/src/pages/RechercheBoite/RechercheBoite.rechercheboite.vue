@@ -2,7 +2,7 @@
     <div id="search-page">
         <h1 id="titreRecherche">RECHERCHE UNE BOITE</h1>
         <input type="text" placeholder="Entrez le nom d'une boite, un numero, ou une licence..." id="searchBarBoite" class="searchBar" @input="search">
-        <div id="tab-container">
+        <div id="tab-container" v-if="items.length > 0">
             <div id="divChangeInlineBlock">
                 <div class="photoLabel"><p >Photo de la boite</p></div>
                 <div class="nomLabel"><p >Nom de la boite</p></div>
@@ -21,6 +21,9 @@
             @addBoiteCollection="addBoiteCollection" 
             @addBoiteWishlist="addBoiteWishlist" 
             @deleteBoiteWishlist="deleteBoiteWishlist"/>
+        </div>
+        <div v-else>
+            <h1>VOTRE RECHERCHE NE DONNE AUCUN RESULTAT</h1>
         </div>
     </div>
     <router-link v-if="isAlreadyRegistered" to="/ajoutBoite">Boite pas présente ? Ajoute là !</router-link>

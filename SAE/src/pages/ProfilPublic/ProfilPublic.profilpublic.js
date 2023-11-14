@@ -6,13 +6,14 @@ export default {
   props: ['id_uti'],
   data(){
     return{
-      user: [],
-      collection: [],
-      ifPublic: false,
-      isUser: false
+      user: [], // Contient la liste des utilisateurs
+      collection: [], // Contient les collections des utilisateurs 
+      ifPublic: false, // Contient si l'utilisateur veut partager sa collection ou non
+      isUser: false // Contient si l'utilisateur est propriétaire de ce profil
     }
   },
   methods: {
+    // Cette fonction permet de vérifier si la page utilisateur est celle de l'utilisateur qui est en train de la consulter
     async isUserFonc(){
       const token = await RecupererInformationUser.getToken();
 
@@ -21,14 +22,15 @@ export default {
       }
       return false;
     },
-    isAlreadyRegistered() {
-      // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
+    // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
+      isAlreadyRegistered() {
       const cookieValue = Cookies.get('connexion');
       if (cookieValue) {
         return true
       }
     }
   },
+  // Permet de récupérer l'ensemble des informations utiles lorsqu'on arrive sur la page
   async mounted(){
 
     try{
@@ -50,6 +52,7 @@ export default {
         this.collection = responseCollec
       }
 
+      // On va vérifier si l'utilisateur est connecté pour pouvoir essayer de voir s'il est sur son profil
       if (this.isAlreadyRegistered()){
         this.isUser = await this.isUserFonc();
       }

@@ -7,15 +7,16 @@ export default {
         ProfilBoite,
     },
     props: {
-        collection_id: Number,
+        collection_id: Number, // id de la collection (correspondant à celui de l'utilisateur)
     },
     data(){
         return{
-            collection: []
+            collection: [] // Collection de l'utilisateur
         }
     },
     methods: {
-        async deleteBoite(id){//Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
+        // Permet de supprimer une boite de la collection
+        async deleteBoite(id){ //Récupère l'id de la ProfilBoite grâce à l'event émis par cette dernière
 
             const donnee = {
                 boite: id, 
@@ -28,6 +29,7 @@ export default {
                 this.getCollection();
             }
         },
+        // Permet de récupérer l'ensemble de la collection d'un utilisateur
         async getCollection(){
             const where = {
                 where: this.collection_id
@@ -40,6 +42,7 @@ export default {
             }
         },
     },
+    // Permet de récupérer la collection dès qu'on arrive sur la page concernant la collection
     created: async function(){
         await this.getCollection();
     }

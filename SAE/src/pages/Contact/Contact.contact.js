@@ -17,7 +17,8 @@ export default {
   },
   computed: {
     // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
-    isAlreadyRegistered() {
+    // Cette fonction permet de retrouver si un cookie existe et qu'il possède bien la valeur en returnant un boolean
+      isAlreadyRegistered() {
       // Vérifiez si le cookie "connexion" existe et a la valeur "Y"
       const cookieValue = Cookies.get('connexion');
       if (cookieValue) {

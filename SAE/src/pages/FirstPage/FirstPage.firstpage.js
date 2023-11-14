@@ -1,4 +1,4 @@
 export default {
-    // Votre logique JavaScript ici
+    // La logique JavaScript
   }
 
