@@ -6,7 +6,7 @@ div{
 .utilisateur img{
   width: var(--taille-160-px);
   height: var(--taille-160-px);
-  object-fit: var(--img--type-contain);
+  object-fit: var(--img--type-cover);
   border-radius: var(--taille-20-px);
 }
 
@@ -33,7 +33,7 @@ div{
   bottom: var(--taille-0-px);
   right: var(--taille-0-px);
   width: var(--taille-100-p);
-  background: rgba($color: var(--color-black), $alpha: var--taille-0-1);
+  background: rgba(255,255,255,0.7);
   border-bottom-left-radius: var(--taille-20-px);
   border-bottom-right-radius: var(--taille-20-px);
 }
@@ -47,7 +47,7 @@ div{
   .utilisateur img{
     width: var(--taille-160-px);
     height: var(--taille-160-px);
-    object-fit: var(--img--type-contain);
+    object-fit: var(--img--type-cover);
     border-radius: var(--taille-20-px);
   }
   
@@ -74,7 +74,7 @@ div{
     bottom: var(--taille-0-px);
     right: var(--taille-0-px);
     width: var(--taille-100-p);
-    background: rgba($color: var(--color-black), $alpha: var--taille-0-1);
+    background: rgba($color: var(--color-white), $alpha: var--taille-0-1);
     border-bottom-left-radius: var(--taille-20-px);
     border-bottom-right-radius: var(--taille-20-px);
   }

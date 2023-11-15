@@ -67,6 +67,8 @@ CREATE TABLE IF NOT EXISTS public.lien_wishlist
         ON DELETE NO ACTION
 );
 
+ALTER TABLE public.lien_wishlist ADD PRIMARY KEY (id_wishlist, id_boite);
+
 
 --Création de la table collection
 CREATE TABLE IF NOT EXISTS public.collection
@@ -91,6 +93,8 @@ CREATE TABLE IF NOT EXISTS public.lien_collection
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
+
+ALTER TABLE public.lien_collection ADD PRIMARY KEY (id_collec, id_boite);
 
 
 --Création de la table utilisateur
@@ -246,14 +250,14 @@ INSERT INTO collection(public) VALUES (true);
 INSERT INTO wishlist(public) VALUES (true);
 INSERT INTO utilisateur(pseudo_uti, adresse_mail_uti, mot_de_passe_uti, admin_uti, active_uti, id_wishlist, id_collec) VALUES ('Paul', 'paul@gmail.com', 'qfsdabc', false, true, 11,11);
 
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 1);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 2);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 3);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 4);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 5);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 6);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 7);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 8);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 9);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 10);
-INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/1300845620/fr/vectoriel/appartement-dic%C3%B4ne-dutilisateur-isol%C3%A9-sur-le-fond-blanc-symbole-utilisateur.jpg?s=612x612&w=0&k=20&c=BVOfS7mmvy2lnfBPghkN__k8OMsg7Nlykpgjn0YOHj0=', 11);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.academiedugout.fr/images/17157/1200-auto/pomme_000.jpg?poix=50&poiy=50', 1);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Calais_hotel_de_ville_face.jpg/1200px-Calais_hotel_de_ville_face.jpg', 2);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.1jour1actu.com/wp-content/uploads/2021/10/VIDEO_histoire_tour_Eiffel.jpeg', 3);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://media.istockphoto.com/id/472620732/fr/photo/lego-t%C3%AAte-gros-plan.jpg?s=612x612&w=0&k=20&c=2WpW-lum5yKtK1pdUG89vyKQpx4-3IJrzrM7mJJm5AA=', 4);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.lapetitebrique.com/13365-thickbox_default/lego-accessoires-minifigure-tete-masculine-jaune-94.jpg', 5);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.jaimefruitsetlegumes.ca/wp-content/uploads/2019/10/23.png', 6);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.woopets.fr/assets/img/001/244/1200x675/choisir-chien-japonais.jpg', 7);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.santevet.com/upload/admin/images/article/PMO/chiens_pr%C3%A9f%C3%A9r%C3%A9s_fran%C3%A7ais_2021.jpg', 8);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://www.zooplus.fr/magazine/wp-content/uploads/2019/06/comprendre-le-langage-des-chats.jpg', 9);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://cdn-s-www.ledauphine.com/images/9EB5DC7D-F103-4176-A5EC-FF7A0502139D/NW_raw/selon-la-fondation-30-millions-d-amis-il-est-essentiel-d-apprendre-certaines-regles-pour-une-cohabitation-sereine-et-harmonieuse-photo-de-erik-jan-leusink-sur-unsplash-1690812877.jpg', 10);
+INSERT INTO photo_profil (lien_img_pro, id_uti) VALUES ('https://remeng.rosselcdn.net/sites/default/files/dpistyles_v2/rem_16_9_1124w/2022/09/24/node_410988/12875809/public/2022/09/24/B9732192089Z.1_20220924195646_000%2BGSQLA9V7I.1-0.jpg?itok=ul1VEAr21664042212', 11);

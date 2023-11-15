@@ -23,6 +23,7 @@
     }
     .footer_info{
         padding: var(--taille-10-px);
+        font-size: var(--taille-30-px);
     }
     #footer_line{
         position: var(--position-re);
@@ -47,10 +48,14 @@
     }
 
     .footer_info{
-        padding: var(--taille-10-px);
+        padding: var(--taille-5-px);
         text-shadow: var(--font--border-w);
-    }
-    .footer_info:first-child{
+        display: block;
         padding-left: var(--taille-0-px);
+        font-size: var(--taille-25-px);
+    }
+
+    .lien{
+        font-size: var(--taille-25-px);
     }
 }

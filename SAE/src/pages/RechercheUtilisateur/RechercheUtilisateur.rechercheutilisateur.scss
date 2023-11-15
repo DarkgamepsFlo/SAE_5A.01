@@ -28,7 +28,7 @@
   .utilisateur img{
     width: var(--taille-160-px);
     height: var(--taille-160-px);
-    object-fit: var(--img--type-contain);
+    object-fit: var(--img--type-cover);
     border-radius: var(--taille-20-px);
   }
   
@@ -37,11 +37,14 @@
     height: var(--taille-160-px);
     padding : var(--taille-0-px);
     position: var(--position-re);
+    transition: 0.2s;
   }
   
   .utilisateur:hover{
-    color:var(--color-black);
-    box-shadow: var(--taille-0) var(--taille-5-px) var(--taille-15-px) var(--color-black);
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    z-index: 5;
   }
   
   .pseudo{
@@ -49,13 +52,14 @@
     bottom: var(--taille-0-px);
     right: var(--taille-0-px);
     width: var(--taille-100-p);
-    background: rgba($color: var(--color-black), $alpha: var(--taille-0-1));
+    background: rgba(255,255,255,0.7);
     border-bottom-left-radius: var(--taille-20-px);
     border-bottom-right-radius: var(--taille-20-px);
   }
   
   #titreRechercherUti{
     font-size: var(--taille-96-px);
+    text-align: var(--position-c);
   }
 }
 
@@ -89,7 +93,7 @@
   .utilisateur img{
     width: var(--taille-160-px);
     height: var(--taille-160-px);
-    object-fit: var(--img--type-contain);
+    object-fit: var(--img--type-cover);
     border-radius: var(--taille-20-px);
   }
   
@@ -110,7 +114,7 @@
     bottom: var(--taille-0-px);
     right: var(--taille-0-px);
     width: var(--taille-100-p);
-    background: rgba($color: var(--color-black), $alpha: var(--taille-0-1));
+    background: rgba($color: var(--color-white), $alpha: var(--taille-0-7));
     border-bottom-left-radius: var(--taille-20-px);
     border-bottom-right-radius: var(--taille-20-px);
   }
