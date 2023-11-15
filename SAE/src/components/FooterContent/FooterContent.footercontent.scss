@@ -21,6 +21,13 @@
         font-size: var(--taille-30-px);
         text-align: var(--position-c);
     }
+    .footer_info{
+        padding: var(--taille-10-px);
+    }
+    #footer_line{
+        position: var(--position-re);
+        text-align: var(--position-c);
+    }
 }
 
 @media (max-width: 400px){
@@ -34,7 +41,16 @@
     }
     
     #texteFooter{
-        padding-top: var(--taille-100-px);
+        padding-top: var(--taille-90-px);
         font-size: var(--taille-20-px);
+        text-shadow: var(--font--border-w);
+    }
+
+    .footer_info{
+        padding: var(--taille-10-px);
+        text-shadow: var(--font--border-w);
+    }
+    .footer_info:first-child{
+        padding-left: var(--taille-0-px);
     }
 }
