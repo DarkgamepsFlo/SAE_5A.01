@@ -1,4 +1,4 @@
-    @media (min-width: 400px){
+    @media (min-width: 800px){
         #blockConnexion{
           margin-left: var(--position-auto);
           margin-right: var(--position-auto);
@@ -20,7 +20,7 @@
           text-decoration: var(--text-decoration-under);
         }
       }
-      @media (max-width: 400px){
+      @media (max-width: 800px){
         #blockConnexion{
           margin-left: var(--position-auto);
           margin-right: var(--position-auto);

@@ -2,7 +2,7 @@
     height: var(--taille-150-px);
   }
 
-  @media (min-width: 400px){
+  @media (min-width: 800px){
     #blockAjout{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);
@@ -19,7 +19,7 @@
         width: var(--taille-350-px);
     }
   }
-  @media (max-width: 400px){
+  @media (max-width: 800px){
     #blockAjout{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);

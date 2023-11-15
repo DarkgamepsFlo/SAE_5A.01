@@ -1,6 +1,38 @@
-#boite img{
-    width: var(--taille-160-px);
-    height: var(--taille-160-px);
+#boitePage img{
+    width: var(--taille-500-px);
+    height: var(--taille-500-px);
     object-fit: var(--img--type-contain);
     background-color: var(--vt-c-white);
+}
+
+#fiche{
+    text-align: center;
+}
+
+
+#boitePage p{
+    font-size: 24px;
+}
+
+
+#buttonProfilBoite{
+    text-align: center;
+}
+
+#buttonCollectionProfilBoite{
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+#buttonWishlistProfilBoite{
+    font-size: 18px;
+}
+
+#linkModifBoite{
+    font-size: 18px;
+}
+
+#titleBoitePage{
+    font-size: 54px;
+    margin-left: 15px;
 }

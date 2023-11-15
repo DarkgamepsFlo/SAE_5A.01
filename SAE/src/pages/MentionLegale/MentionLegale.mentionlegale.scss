@@ -1,0 +1,39 @@
+@media (min-width: 800px){
+    #titreMentionLegale{
+        font-size: 64px;
+    }
+    
+    #mentionLegaleDiv p{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    #mentionLegaleDiv ul{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    #mentionLegaleDiv h2{
+        font-size: 34px;
+    }
+    
+}
+
+@media (max-width: 800px){
+    #titreMentionLegale{
+        font-size: 54px;
+    }
+    
+    #mentionLegaleDiv p{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    #mentionLegaleDiv ul{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    #mentionLegaleDiv h2{
+        font-size: 34px;
+    }
+}

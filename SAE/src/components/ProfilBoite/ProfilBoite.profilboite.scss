@@ -1,6 +1,6 @@
 
 
-@media (min-width: 400px){
+@media (min-width: 800px){
   .boite {
     display: var(--display-f);
     align-items: var(--position-c); /* Centre les éléments verticalement */
@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 400px){
+@media (max-width: 800px){
   .boite {
     align-items: var(--position-c); /* Centre les éléments verticalement */
     border: var(--taille-1-px) var(--type-solid) var(--color-black);

@@ -1,0 +1,30 @@
+@media (min-width: 800px){
+    #titrePolitique{
+        font-size: 64px;
+    }
+    
+    #politiqueDiv p{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    #politiqueDiv h2{
+        font-size: 34px;
+    }
+    
+}
+
+@media (max-width: 800px){
+    #titrePolitique{
+        font-size: 54px;
+    }
+    
+    #politiqueDiv p{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    #politiqueDiv h2{
+        font-size: 34px;
+    }
+}

@@ -1,6 +1,6 @@
 
 
-  @media (min-width: 400px){
+  @media (min-width: 800px){
     #blockMonProfil{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);
@@ -34,8 +34,12 @@
         font-size: var(--taille-44-px);
         margin-left: var(--taille-15-px);
     }
+
+    #boutonEnvoie{
+      width: 50%;
+    }
   }
-  @media (max-width: 400px){
+  @media (max-width: 800px){
     #blockMonProfil{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);
@@ -66,5 +70,8 @@
     #estAdmin{
       font-size: var(--taille-32-px);
       margin-left: var(--taille-15-px);
-  }
+    }
+    #boutonEnvoie{
+      width: 75%;
+    }
   }

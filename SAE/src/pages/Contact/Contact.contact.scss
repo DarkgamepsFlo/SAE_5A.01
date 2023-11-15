@@ -1,4 +1,4 @@
-  @media (min-width: 400px){
+  @media (min-width: 800px){
     #blockContact{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);
@@ -16,7 +16,7 @@
       font-size: var(--taille-64-px);
     }
   }
-  @media (max-width: 400px){
+  @media (max-width: 800px){
     #blockContact{
       margin-left: var(--position-auto);
       margin-right: var(--position-auto);

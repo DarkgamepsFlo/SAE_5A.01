@@ -111,6 +111,7 @@
   --taille-96-px : 96px;
   --taille-100-px : 100px;
   --taille-130-px : 130px;
+  --taille-140-px : 140px;
   --taille-145-px : 145px;
   --taille-150-px : 150px;
   --taille-160-px : 160px;
@@ -276,7 +277,7 @@ body {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 800px) {
   .divBoutonPrincipal{
     text-align: var(--position-c);
   }

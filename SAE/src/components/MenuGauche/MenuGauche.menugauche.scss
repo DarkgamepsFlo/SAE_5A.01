@@ -1,4 +1,4 @@
-@media (min-width: 400px){
+@media (min-width: 800px){
     .boutonMenuGauche{
         margin-bottom: var(--taille-5-px);
         margin-left: var(--taille-20-px);
@@ -16,9 +16,14 @@
         border: var(--taille-1-px) var(--type-solid);
         margin-top: var(--taille-20-px);
     }
+
+    #blockMenuGauche{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-@media (max-width: 400px){
+@media (max-width: 800px){
     .boutonMenuGauche{
         margin-bottom: var(--taille-5-px);
         margin-left: var(--taille-20-px);

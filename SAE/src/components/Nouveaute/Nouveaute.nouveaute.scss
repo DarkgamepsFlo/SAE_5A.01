@@ -1,6 +1,6 @@
 
 
-@media (min-width: 400px){
+@media (min-width: 800px){
   
   #nouveaute{
     height: var(--taille-400-px);
@@ -57,7 +57,7 @@
   }
 }
 
-@media (max-width: 400px){
+@media (max-width: 800px){
   #nouveaute{
     height: var(--taille-150-px);
     text-align: var(--position-c);

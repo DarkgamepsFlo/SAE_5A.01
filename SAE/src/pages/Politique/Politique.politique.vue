@@ -1,7 +1,7 @@
 <template>
-    <h1>POLITIQUE DE CONFIDENTIALITE</h1>
+    <h1 id="titrePolitique">POLITIQUE DE CONFIDENTIALITE</h1>
 
-    <main>
+    <div id="politiqueDiv">
         <section>
             <p>Bienvenue sur la politique de confidentialité du site web LEGO. Chez LEGO, nous sommes engagés à protéger et à respecter votre vie privée. Cette politique explique comment nous collectons et utilisons vos informations personnelles. En utilisant notre site web, vous consentez à notre politique de confidentialité et à nos pratiques décrites ici.</p>
         </section>
@@ -30,7 +30,7 @@
             <h2>Contactez-nous</h2>
             <p>Si vous avez des questions ou des préoccupations concernant notre politique de confidentialité, veuillez nous contacter grâce à notre page <span @click="pageContact" style="color: rgb(0, 234, 255);">Contact</span>.</p>
         </section>
-    </main>
+    </div>
 </template>
 
 <script src="./Politique.politique.js"></script>

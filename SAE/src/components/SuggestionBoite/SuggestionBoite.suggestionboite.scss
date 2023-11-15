@@ -1,4 +1,4 @@
-@media (min-width: 400px){
+@media (min-width: 800px){
     #boiteDivSugg {
         display: var(--display-f);
         align-items: var(--position-c); /* Centre les éléments verticalement */
@@ -11,14 +11,19 @@
         width: 1160px;
       }
     #divImgSugg{
-        height: var(--taille-160-px); 
-        width: var(--taille-160-px);
+        height: var(--taille-130-px); 
+        width: var(--taille-130-px);
         object-fit: var(--img--type-contain);
+        margin-left: 30px;
       }
+
+      p {
+         text-align: center;
+       }
       
     #idImgSugg{
-        height: var(--taille-160-px); 
-        width: var(--taille-160-px);
+        height: var(--taille-130-px); 
+        width: var(--taille-130-px);
         object-fit: var(--img--type-contain);
         background-color: white;
       }
@@ -28,7 +33,7 @@
       }
       
       #nomBoiteSugg{
-        width: var(--taille-25-p);
+        width: var(--taille-20-p);
       }
       
       #numeroBoiteSugg{
@@ -46,4 +51,43 @@
       #anneSortieSugg{
         width: var(--taille-10-p);
       }
+}
+
+@media (max-width: 800px){
+  .boiteSugg{
+    align-items: var(--position-c); /* Centre les éléments verticalement */
+    border: var(--taille-1-px) var(--type-solid) var(--color-black);
+    padding: var(--taille-10-px);
+    width: var(--taille-375-px);
+    height: var(--taille-400-px);
+    margin-bottom: var(--taille-10-px);
+    background-image: var(--img-background-profilBoite-responsive);
+    background-size: var(--img--type-contain);
+  }
+
+  #divImgSugg{
+    max-width: var(--taille-100-p);
+    margin-left: var(--position-auto);
+    margin-right: var(--position-auto);
+  }
+
+  #idImgSugg{
+    margin-left: 25%;
+    height: var(--taille-170-px); 
+    width: var(--taille-170-px);
+    object-fit: var(--img--type-contain);
+    margin-top: var(--taille-22-px);
+  }
+
+  .boiteSugg p {
+    color:#000;
+    font-size: var(--taille-18-px);
+    text-align: var(--position-c);
+    -webkit-text-stroke: 0.5px black;
+    }
+
+  .actions{
+    text-align: var(--position-c);
+    margin-right: var(--taille-10-px);
+  }
 }
