@@ -64,8 +64,12 @@ export default {
         this.boutonPressed = true;
         
         const donneesMotDePasse = {
-          email: this.utilisateur.email
+          email: this.utilisateur.email,
+          inscrpt: false
         }
+
+        console.log("données qui vont être envoyé")
+        console.log(donneesMotDePasse)
 
         const response = await DemandeMotDePasseService.demandeMotDePasse(donneesMotDePasse)
   

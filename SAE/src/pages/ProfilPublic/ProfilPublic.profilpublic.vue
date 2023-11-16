@@ -12,6 +12,7 @@
             </div>  
             <router-link v-if="isUser" to="/profil">C'est ton profil ! Vas directement dessus</router-link>
             <!--L'id de l'utilisateur est aussi disponible-->
+            <button v-if="isAdmin" @click="deleteUser">Supprimer l'utilisateur</button>
         </div>
         <div id="collection" v-if="ifPublic">
 
@@ -30,7 +31,7 @@
             
         </div>
         <div v-else>
-            <h1>LA COLLECTION DE CET UTILISATEUR EST PRIVEE</h1>
+            <h1>La collection de cet utilisateur est privée</h1>
         </div>
     </div>
 </template>

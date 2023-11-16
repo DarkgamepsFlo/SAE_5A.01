@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const conf = require('../conf.json');
 const Joi = require('joi');
-const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist, contactUser, searchBestUsrs } = require("../services/db/crudUser");
+const { findUsers, inscriptionUser, connexionUser, motdepasseUser, changerpasswordUser, searchAllUsrs, changerInfoAvecMdpUser, changerInfoSansMdpUser, profilUsr, profilCollec, getCollection, getWishlist, contactUser, searchBestUsrs, deleteUser } = require("../services/db/crudUser");
 
 // 1 //
 // Cette fonction permet d'appeler la fonction findAllUsers lorsqu'on se situe sur la bonne URL
@@ -125,9 +125,12 @@ async function connexion (req, res, next) {
 async function motdepasse (req, res, next) {
   try{
     const donnee = req.body;
+    console.log("donne reçu : ")
+    console.log(donnee);
 
     const shema = Joi.object({
       email: Joi.string().email().required(),
+      inscrpt: Joi.bool().required()
     })
 
     const { error, value } = shema.validate(donnee);
@@ -150,6 +153,7 @@ async function motdepasse (req, res, next) {
     
   }catch(e){
     console.error(`Il y a une erreur dans la fonction motDePasse : ${e}`)
+    console.error(e)
   }
 }
 
@@ -194,7 +198,7 @@ async function changerpassword (req, res, next) {
     }
     
   }catch(e){
-    console.error(`Il y a une erreur dans la fonction motDePasse : ${e}`)
+    console.error(`Il y a une erreur dans la fonction changerpassword ${e}`)
   }
 }
 
@@ -458,6 +462,17 @@ async function searchBestUsers(req, res, next) {
   }
 }
 
+// 19 //
+async function deleteUsers(req, res, next) {
+  try{
+    const result = await deleteUser(req.body);
+    return res.send(result);
+  }catch(e){
+    console.error(`Il y a une erreur dans la fonction deleteUsers : ${e}`)
+  }
+}
+
+
 module.exports = {
   findAllUsers,
   inscription,
@@ -476,5 +491,6 @@ module.exports = {
   collection,
   wishlist,
   contact,
-  searchBestUsers
+  searchBestUsers,
+  deleteUsers
 };

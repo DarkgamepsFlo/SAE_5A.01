@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import ProfilBoite from "../../components/ProfilBoite/ProfilBoite.profilboite.vue";
 import WishlistService from "../../services/WishlistService";
 import CollectionService from "../../services/CollectionService";
+import Swal from 'sweetalert2';
 
 export default {
   props: ['id_uti'],
@@ -16,6 +17,7 @@ export default {
       collection: [], // Contient les collections des utilisateurs 
       ifPublic: false, // Contient si l'utilisateur veut partager sa collection ou non
       isUser: false, // Contient si l'utilisateur est propriétaire de ce profil
+      isAdmin: false, // Contient si l'utilisateur est un administrateur du site ou non
 
       /*Data de l'utilisateur courant*/
       collection_id: 0,
@@ -48,6 +50,36 @@ export default {
       const infoUser = await RecupererInformationUser.getToken();
       this.collection_id = infoUser.info.collection_id;
       this.wishlist_id = infoUser.info.wishlist_id;
+      this.isAdmin = infoUser.info.admin_uti
+    },
+
+    async deleteUser() {
+      Swal.fire({
+        title: 'Voulez-vous vraiment supprimer l\'utilisateur ?',
+        showDenyButton: true,
+        allowOutsideClick: false,
+        confirmButtonText: 'Oui',
+        denyButtonText: `Non`,
+        allowOutsideClick: false,
+        customClass: {
+            container: 'custom-sweetalert-container',
+            title: 'custom-sweetalert-title',
+            content: 'custom-sweetalert-text',
+        },
+        background: 'var(--color-background)',
+    }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            const donnee = {
+              id_uti: this.id_uti
+            }
+            const result = await ProfilService.deleteUser(donnee);
+
+            if(result){
+                window.location.href = "http://127.0.0.1:5173/rechercheUser";
+            }
+        } 
+    })
     },
 
     async getCollection(){//Récupérer la collection de l'utilisateur
