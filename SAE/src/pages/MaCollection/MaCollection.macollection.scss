@@ -1,13 +1,13 @@
 @media (min-width: 800px){
-    #collec h1{
+    #titreMaCollec{
         font-size: var(--taille-64-px);
+        text-align: var(--position-c);
     }
-    
 }
 
 @media (max-width: 800px){
-    #collec h1{
+    #titreMaCollec{
+        text-align: var(--position-c);
         font-size: var(--taille-44-px);
     }
-    
 }
