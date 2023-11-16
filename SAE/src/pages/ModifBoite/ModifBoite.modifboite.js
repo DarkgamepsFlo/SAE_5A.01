@@ -87,7 +87,7 @@ import BoiteService from '../../services/BoiteService';
         if (files.length > 0) {
           const selectedFile = files[0];
 
-          if (selectedFile.size <= 90000) { // 102400 représente 100 Ko (la limite de POST)
+          if (selectedFile.size <= 70000) { // 102400 représente 100 Ko (la limite de POST)
             const fileReader = new FileReader();
             fileReader.addEventListener('load', () => {
                 const imageDataUrl = fileReader.result;

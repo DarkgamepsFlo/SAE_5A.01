@@ -166,11 +166,8 @@ async function connexionUser(collectionName, donnee) {
 // 4 //
 async function motdepasseUser(collectionName, donnee) {
   try {
-    const querySelectEmail = `SELECT * from $1:name where adresse_mail_uti like $2`;
-    const resultSelectEmail = await db.any(querySelectEmail, [collectionName, donnee.email]);
-
-    return new Promise((resolve, reject) => {
-      if (resultSelectEmail.length > 0) {
+    if(donnee.inscrpt){
+      return new Promise((resolve, reject) => {
         var transport = nodemailer.createTransport({
           service: conf.Auth.host,
           auth: {
@@ -184,12 +181,12 @@ async function motdepasseUser(collectionName, donnee) {
           charset: 'numeric', // Utilisez 'alphabetic'/'alphanumeric' si vous souhaitez inclure des lettres/ des chiffres et lettres.
         });
 
-        const mailOptions = {
+        var mailOptions = {
           from: conf.Auth.user, // Adresse e-mail de l'expéditeur
           to: donnee.email, // Adresse e-mail du destinataire
           cc: conf.Auth.user,
-          subject: 'Demande de réinitialisation de mot de passe',
-          text: 'Veuillez insérer ce code de confirmation pour pouvoir réinitialiser votre mot de passe : ' + code,
+          subject: 'Vérification d\'inscription',
+          text: 'Veuillez insérer ce code de confirmation pour pouvoir vous inscrire sur le site : ' + code,
         };
 
         transport.sendMail(mailOptions, function (error, info) {
@@ -205,13 +202,55 @@ async function motdepasseUser(collectionName, donnee) {
             });
           }
         });
-      } else {
-        reject({
-          success: false,
-          message: 'Aucun utilisateur trouvé avec cette adresse e-mail.',
-        });
-      }
-    });
+      });
+    } else {
+      const querySelectEmail = `SELECT * from $1:name where adresse_mail_uti like $2`;
+      const resultSelectEmail = await db.any(querySelectEmail, [collectionName, donnee.email]);
+
+      return new Promise((resolve, reject) => {
+        if (resultSelectEmail.length > 0) {
+          var transport = nodemailer.createTransport({
+            service: conf.Auth.host,
+            auth: {
+              user: conf.Auth.user,
+              pass: conf.Auth.pass,
+            },
+          });
+
+          const code = randomstring.generate({
+            length: 6,
+            charset: 'numeric', // Utilisez 'alphabetic'/'alphanumeric' si vous souhaitez inclure des lettres/ des chiffres et lettres.
+          });
+
+          var mailOptions = {
+            from: conf.Auth.user, // Adresse e-mail de l'expéditeur
+            to: donnee.email, // Adresse e-mail du destinataire
+            cc: conf.Auth.user,
+            subject: 'Demande de réinitialisation de mot de passe',
+            text: 'Veuillez insérer ce code de confirmation pour pouvoir réinitialiser votre mot de passe : ' + code,
+          };
+
+          transport.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              reject({
+                success: false,
+                message: 'Erreur lors de l\'envoi de l\'e-mail : ' + error.message,
+              });
+            } else {
+              resolve({
+                success: true,
+                message: code
+              });
+            }
+          });
+        } else {
+          reject({
+            success: false,
+            message: 'Aucun utilisateur trouvé avec cette adresse e-mail.',
+          });
+        }
+      });
+    }
   } catch (e) {
     console.error(`Il y a une erreur dans la fonction motDePasseUser : ${e}`);
     // Rejeter la promesse en cas d'erreur
@@ -423,6 +462,35 @@ async function searchBestUsrs(collectionName) {
   }
 }
 
+async function deleteUser(donnee) {
+  try {
+    
+    const queryDeletePhoto = `DELETE FROM photo_profil WHERE id_uti = $1`;
+    await db.any(queryDeletePhoto, donnee.id_uti);
+
+    const queryDeleteLienColl = `DELETE FROM lien_collection WHERE id_collec = $1`;
+    await db.any(queryDeleteLienColl, donnee.id_uti);
+
+    const queryDeleteLienWish = `DELETE FROM lien_wishlist WHERE id_wishlist = $1`;
+    await db.any(queryDeleteLienWish, donnee.id_uti);
+
+    const queryDeleteUser = `DELETE FROM utilisateur WHERE id_uti = $1`;
+    await db.any(queryDeleteUser, donnee.id_uti);
+
+    const queryDeleteCollection = `DELETE FROM collection WHERE id_collec = $1`;
+    await db.any(queryDeleteCollection, donnee.id_uti);
+
+    const queryDeleteWishList = `DELETE FROM wishlist WHERE id_wishlist = $1`;
+    await db.any(queryDeleteWishList, donnee.id_uti);
+
+    return true;
+
+  } catch (e) {
+    console.error(`Il y a une erreur dans la fonction searchBestUsrsUsers : ${e}`);
+    throw e;
+  }
+}
+
 module.exports = {
   findUsers,
   searchAllUsrs,
@@ -438,4 +506,5 @@ module.exports = {
   getWishlist,
   contactUser,
   searchBestUsrs,
+  deleteUser
 };

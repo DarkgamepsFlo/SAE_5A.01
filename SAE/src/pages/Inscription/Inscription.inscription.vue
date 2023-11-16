@@ -1,8 +1,18 @@
 <template>
     <div id="blockInscription" v-if="!isAlreadyRegistered">
       <h1 class="titreBlock">INSCRIPTION</h1>
-      <div>
+      <div v-if="codeSend">
+        Veuillez indiquer le code reçu par mail :
         <form @submit.prevent="inscrireUtilisateur">
+          <div>
+            <label for="code" class="labelForm">Code:</label>
+            <input type="password" id="code" class="inputForm" v-model="utilisateur.codeBase" required />
+          </div>
+          <div id="divBoutonVerifieCode" class="divBoutonPrincipal"><button type="submit" id="boutonVerifieCode" class="boutonPrincipal"><span id="spanVerifieCode" class="spanBoutonPrincipal">Vérifier le code</span> </button></div>
+        </form>
+      </div>
+      <div v-else>
+        <form @submit.prevent="verifInformationCode">
         <div id="divUtilisateur">
           <label for="utilisateur" id="labelUtilisateur" class="labelForm">Pseudo:</label>
           <input type="text" id="utilisateur" class="inputForm" v-model="utilisateur.pseudo" required />
