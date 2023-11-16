@@ -1,26 +1,36 @@
 <template>
     <div id="profil">
-        <h1>Voici le profil d'un utilisateur</h1>
+        <h1>PROFIL UTILISATEUR</h1>
         <div id="user" v-for="item in user" :key="item.id_uti">
-            <p>Pseudo : {{ item.pseudo_uti }}</p>
-            <img :src="item.lien_img_pro">
-            <p>Public : {{ item.public }}</p>
+            <p>Profil de {{ item.pseudo_uti }}</p>
+            <img id="imgProfilPublic" :src="item.lien_img_pro">
+            <div v-if="item.public">
+                <p>La collection de {{ item.pseudo_uti }}</p>
+            </div>
+            <div v-else>
+                <p>La collection de {{ item.pseudo_uti }} est en privé!</p>
+            </div>  
             <router-link v-if="isUser" to="/profil">C'est ton profil ! Vas directement dessus</router-link>
             <!--L'id de l'utilisateur est aussi disponible-->
         </div>
         <div id="collection" v-if="ifPublic">
-            <ProfilBoite v-for="item in collection" :key="item.nom_boi" :boite="item" 
-            :search="true" 
-            :presentation="false"
-            :collection_uti="collection_uti"
-            :wishlist_uti="wishlist_uti"
-            @deleteBoiteCollection="deleteBoiteCollection" 
-            @addBoiteCollection="addBoiteCollection" 
-            @addBoiteWishlist="addBoiteWishlist" 
-            @deleteBoiteWishlist="deleteBoiteWishlist"/>
+
+            <h1>COLLECTION</h1>
+            <div id="collectionBoites">
+                <ProfilBoite v-for="item in collection" :key="item.nom_boi" :boite="item" 
+                :search="true" 
+                :presentation="false"
+                :collection_uti="collection_uti"
+                :wishlist_uti="wishlist_uti"
+                @deleteBoiteCollection="deleteBoiteCollection" 
+                @addBoiteCollection="addBoiteCollection" 
+                @addBoiteWishlist="addBoiteWishlist" 
+                @deleteBoiteWishlist="deleteBoiteWishlist"/>
+            </div>
+            
         </div>
         <div v-else>
-            <h1>La collection de cet utilisateur est privée</h1>
+            <h1>LA COLLECTION DE CET UTILISATEUR EST PRIVEE</h1>
         </div>
     </div>
 </template>

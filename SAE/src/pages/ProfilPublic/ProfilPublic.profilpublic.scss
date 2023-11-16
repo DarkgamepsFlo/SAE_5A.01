@@ -1,6 +1,47 @@
-#profil img{
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    background-color: white;
+@media (max-width: 800px){
+    #profil{
+        margin-left: 15px;
+    }
+    #profil h1{
+        font-size: 43px;
+    }
+    #profil p{
+        font-size: var(--taille-14-px);
+    }
+    #imgProfilPublic{
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        background-color: white;
+    }
+
+    #collectionBoites{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 800px){
+    #profil{
+        margin-left: 15px;
+    }
+    #profil h1{
+        font-size: var(--taille-64-px);
+    }
+    #profil p{
+        font-size: var(--taille-24-px);
+    }
+    #imgProfilPublic{
+        width: 400px;
+        height: 400px;
+        object-fit: contain;
+        background-color: white;
+    }
+
+    #collectionBoites{
+        width: 1285px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }

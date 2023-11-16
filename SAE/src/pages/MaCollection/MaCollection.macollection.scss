@@ -1,0 +1,13 @@
+@media (min-width: 800px){
+    #collec h1{
+        font-size: var(--taille-64-px);
+    }
+    
+}
+
+@media (max-width: 800px){
+    #collec h1{
+        font-size: var(--taille-44-px);
+    }
+    
+}

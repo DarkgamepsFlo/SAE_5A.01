@@ -1,6 +1,6 @@
 <template>
     <div id="blockInscription" v-if="!isAlreadyRegistered">
-      <h1 class="titreBlock">INSCRIPTION</h1>
+      <h1 class="titreBlock" id="titreInscription">INSCRIPTION</h1>
       <div>
         <form @submit.prevent="inscrireUtilisateur">
         <div id="divUtilisateur">

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="maWishlistDiv">
       <h1>MA WISHLIST</h1>
       <Wishlist v-if="wishlist_id !== -1" :wishlist_id="wishlist_id"></Wishlist>
     </div>

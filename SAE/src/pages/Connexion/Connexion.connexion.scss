@@ -1,4 +1,9 @@
     @media (min-width: 800px){
+
+        #titreConnexion{
+          font-size: var(--taille-64-px);
+        }
+      
         #blockConnexion{
           margin-left: var(--position-auto);
           margin-right: var(--position-auto);
@@ -28,5 +33,8 @@
           width: var(--taille-300-px);
           margin-top: var(--taille-100-px);
           margin-bottom: var(--taille-100-px);
+        }
+        #blockConnexion h1{
+          font-size: var(--taille-44-px);
         }
       }

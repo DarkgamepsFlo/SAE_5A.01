@@ -18,11 +18,13 @@
         border-color: var(--color-transparent);
         float: var(--position-r);
         margin-top: var(--taille-50-px);
+        box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.9);
     }
     
     #boutonMenu{
-        background: var(--color-transparent);
         border-color: var(--color-transparent);
+        height: 100px;
+        box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.9);
     }
     #imgBoutonMenu{
         height: var(--taille-100-px);
@@ -39,14 +41,22 @@
 }
 
 @media (max-width: 800px){
-    header{
+    #headerResponsive{
         background-image: var(--img-background-header);
         height: var(--taille-100-px);
         width: var(--taille-100-p);
         margin-left: var(--taille-0-px);
         margin-right: var(--taille-0-px);
         filter: var(--opacity-80);
-        margin-bottom: var(--taille-50-px);
+    }
+    #headerNormal{
+        height: var(--taille-100-px);
+        width: var(--taille-100-p);
+        margin-left: var(--taille-0-px);
+        margin-right: var(--taille-0-px);
+        filter: var(--opacity-80);
+        margin-bottom: var(--taille-90-px);
+
     }
 
     #imgProfil{
@@ -58,8 +68,8 @@
         background: var(--color-transparent);
         border-color: var(--color-transparent);
         float: var(--position-r);
-        margin-left: var(--taille-20-px);
         height: var(--taille-20-p);
+        margin-top: 50px;
     }
     
     #boutonMenu{
@@ -68,13 +78,14 @@
     }
     #imgBoutonMenu{
         height: var(--taille-60-px);
+        margin-bottom: 50px;
     }
     #imgLogo{
-        height: var(--taille-70-px);
+        height: 170px;
     }
     #divImgLogo{
         display: var(--display-ilb);
-        margin-left: var(--taille-20-p);
+        margin-left: 40px;
     }
 }
 

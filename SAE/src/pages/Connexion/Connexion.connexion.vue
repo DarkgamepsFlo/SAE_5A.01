@@ -2,7 +2,7 @@
   <div>
     <!-- Vérification de la présence du cookie "connexion" et de sa valeur -->
     <div id="blockConnexion" v-if="!isAlreadyRegistered">
-      <h1 class="titreBlock">CONNEXION</h1>
+      <h1 class="titreBlock" id="titreConnexion">CONNEXION</h1>
       <form @submit.prevent="connexionUtilisateur">
       <div>
         <label for="pseudo" id="labelPseudo" class="labelForm">Pseudo:</label>
