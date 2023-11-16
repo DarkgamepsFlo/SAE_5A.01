@@ -9,6 +9,7 @@
                 <p>Année de sortie de la boite</p>
                 <p>Action</p>
             </div>
+            <div v-else><h1>VOTRE COLLECTION EST VIDE</h1></div>
             <div v-for="item in collection" :key="item.id_boite">
                 <ProfilBoite :boite="item" :search="false" :collection_uti="collection" @deleteBoite="deleteBoite"></ProfilBoite>
             </div>
